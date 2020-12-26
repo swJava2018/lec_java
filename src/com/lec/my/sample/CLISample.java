@@ -30,7 +30,7 @@ public class CLISample {
 	private static CommandLine cmd;
 	private static CliCommands commands;
 	private static DescriptionGenerator descriptionGenerator;
-	
+
 	public static void main(String[] args) {
 		AnsiConsole.systemInstall();
 		try {
@@ -40,11 +40,11 @@ public class CLISample {
 			Path workDir = Paths.get("");
 			PicocliCommands picocliCommands = new PicocliCommands(workDir, cmd);
 			Terminal terminal = TerminalBuilder.builder().build();
-			LineReader reader = LineReaderBuilder.builder().terminal(terminal)
-					.parser(new DefaultParser()).variable(LineReader.LIST_MAX, 50) // max tab completion candidates
+			LineReader reader = LineReaderBuilder.builder().terminal(terminal).parser(new DefaultParser())
+					.variable(LineReader.LIST_MAX, 50) // max tab completion candidates
 					.build();
 			commands.setReader(reader);
-			
+
 			descriptionGenerator = new DescriptionGenerator(picocliCommands);
 			new TailTipWidgets(reader, descriptionGenerator::commandDescription, 5, TipType.COMPLETER);
 
@@ -59,11 +59,11 @@ public class CLISample {
 					if (line.matches("^\\s*#.*")) {
 						continue;
 					}
-					
+
 					// 명령어 파싱
 					ParsedLine pl = reader.getParser().parse(line, 0);
 					String[] arguments = pl.words().toArray(new String[0]);
-					
+
 					// 명령어 실행
 					new CommandLine(commands).execute(arguments);
 				} catch (UserInterruptException e) {

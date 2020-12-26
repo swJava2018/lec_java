@@ -9,11 +9,7 @@ import picocli.CommandLine.ParentCommand;
 /**
  * Command that clears the screen.
  */
-@Command(name = "cls", 
-	aliases = "clear", 
-	mixinStandardHelpOptions = true, 
-	description = "Clears the screen", 
-	version = "1.0")
+@Command(name = "cls", aliases = "clear", mixinStandardHelpOptions = true, description = "Clears the screen", version = "1.0")
 public class ClearScreen implements Callable<Void> {
 	@ParentCommand
 	CliCommands parent;
@@ -22,4 +18,4 @@ public class ClearScreen implements Callable<Void> {
 		parent.reader.clearScreen();
 		return null;
 	}
-}	
+}

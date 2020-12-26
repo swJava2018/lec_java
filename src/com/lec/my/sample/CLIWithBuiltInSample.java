@@ -34,7 +34,7 @@ public class CLIWithBuiltInSample {
 	private static CommandLine cmd;
 	private static CliCommands commands;
 	private static DescriptionGenerator descriptionGenerator;
-	
+
 	public static void main(String[] args) {
 		AnsiConsole.systemInstall();
 		try {
@@ -45,7 +45,7 @@ public class CLIWithBuiltInSample {
 			builtins.alias("zle", "widget");
 			builtins.alias("bindkey", "keymap");
 			SystemCompleter systemCompleter = builtins.compileCompleters();
-			
+
 			// 추가 명령어 세팅 (picocli 명령어)
 			commands = new CliCommands();
 			cmd = new CommandLine(commands);
@@ -58,7 +58,7 @@ public class CLIWithBuiltInSample {
 					.build();
 			builtins.setLineReader(reader);
 			commands.setReader(reader);
-			
+
 			descriptionGenerator = new DescriptionGenerator(builtins, picocliCommands);
 			new TailTipWidgets(reader, descriptionGenerator::commandDescriptionWithBuildIn, 5, TipType.COMPLETER);
 
@@ -73,15 +73,16 @@ public class CLIWithBuiltInSample {
 					if (line.matches("^\\s*#.*")) {
 						continue;
 					}
-					
+
 					// 명령어 파싱
 					ParsedLine pl = reader.getParser().parse(line, 0);
 					String[] arguments = pl.words().toArray(new String[0]);
 					String command = Parser.getCommand(pl.word());
-					
+
 					// 명령어 정의되었는지 확인
 					if (builtins.hasCommand(command)) {
-						builtins.execute(command, Arrays.copyOfRange(arguments, 1, arguments.length), System.in, System.out, System.err);
+						builtins.execute(command, Arrays.copyOfRange(arguments, 1, arguments.length), System.in,
+								System.out, System.err);
 					} else {
 						new CommandLine(commands).execute(arguments);
 					}

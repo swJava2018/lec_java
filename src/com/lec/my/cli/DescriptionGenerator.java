@@ -18,7 +18,7 @@ public class DescriptionGenerator {
 	public DescriptionGenerator(PicocliCommands picocli) {
 		this.picocli = picocli;
 	}
-	
+
 	public CmdDesc commandDescription(CmdLine line) {
 		CmdDesc out = null;
 		switch (line.getDescriptionType()) {
@@ -33,7 +33,7 @@ public class DescriptionGenerator {
 		}
 		return out;
 	}
-	
+
 	public DescriptionGenerator(Builtins builtins, PicocliCommands picocli) {
 		this.builtins = builtins;
 		this.picocli = picocli;
