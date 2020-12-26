@@ -15,15 +15,16 @@ public class UserAPI {
 	private EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	private EntityManager em = factory.createEntityManager();
 	
-	public int register(String userNumber, String pwd, String role) {
+	public int register(String id, String name, String password) {
 		boolean isSuccess = true;
 		
 		// check 학번
 		// insert
 		try {
 			User user = new User();
-			user.setId("202102101");
-			user.setName("홍길동");
+			user.setId(id);
+			user.setName(name);
+			user.setPassword(password);
 			
 			EntityTransaction transaction = em.getTransaction();
 	        transaction.begin(); 
@@ -47,9 +48,9 @@ public class UserAPI {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public int login(String userNumber, String pwd) {
+	public int login(String id, String pwd) {
 		
-		Query query = em.createQuery("select t from User t where id = " + userNumber + "and password = " + pwd);
+		Query query = em.createQuery("select t from User t where id = " + id + "and password = " + pwd);
         List<User> resultList = query.getResultList();
         
         if(resultList.size() == 1)
@@ -58,7 +59,22 @@ public class UserAPI {
         	return -1;
 	}
 	
-	public int update() {
+	public int update(String id, String name, String password, String address) {
 		return -1;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public User read(String id) {
+		Query query = em.createQuery("select t from User t where id = " + id);
+        List<User> resultList = query.getResultList();
+        
+        if(resultList.size() == 1)
+        	return resultList.get(0);
+        else 
+        	return null;
+	}
+	
+	public List<User> readAll() {
+		return null;
 	}
 }

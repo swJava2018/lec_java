@@ -28,6 +28,7 @@ public class PrintInfo implements Runnable  {
 	CliCommands parent;
 
 	public void run() {
+		
 		if (phone != "") {
 			parent.out.printf("hi! %s(id). your phone number is %s%n", name, id, phone);
 		} else {
