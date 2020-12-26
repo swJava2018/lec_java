@@ -20,22 +20,25 @@ public class CommonLogin implements Runnable  {
 	CliCommands parent;
 	
 	public void run() {
-		int result = 0;
 		switch(role) {
 			case "student":
 				UserAPI api = new UserAPI();
-				result = api.login(id, password);
+				boolean result = api.login(id, password);
+				if (result) {
+					parent.out.println("login success");
+				} else {
+					parent.out.println("login fail");
+				}
 				break;
 			case "professor":
 				break;
 			case "employee":
 				break;
 			default:
+				parent.out.printf("'%s' is not support\n", role);
 				break;
 		}
 		
-		if (result != 0) {
-			parent.out.printf("fail to login %s\n", id);
-		}
+		
 	}
 }

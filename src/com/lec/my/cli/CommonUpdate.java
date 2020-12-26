@@ -1,15 +1,16 @@
 package com.lec.my.cli;
 
 import com.lec.my.api.UserAPI;
-import com.lec.my.model.User;
 
+import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.ParentCommand;
 
+@Command(name = "update")
 public class CommonUpdate implements Runnable  {
-	@Parameters(paramLabel = "Operation", description = "The operation")
-    private String op;
+	@Parameters(paramLabel = "Role", description = "The role")
+    private String role;
 	
 	@Option(names = { "-i", "--id" }, description = "The student ID")
 	private String id;
@@ -27,21 +28,21 @@ public class CommonUpdate implements Runnable  {
 	CliCommands parent;
 	
 	public void run() {
-		UserAPI api = new UserAPI();
-		int result = 0;
-		
-		switch(op) {
-			case "stduent":
+		switch(role) {
+			case "student":
 				if(id == "")
 					break;
-				result = api.update(id, name, password, address);
+				UserAPI api = new UserAPI();
+				boolean result = api.update(id, name, password, address);
+				if (result) {
+					parent.out.println("update success");
+				} else {
+					parent.out.println("update fail");
+				}
 				break;
 			default:
+				parent.out.printf("'%s' is not support\n", role);
 				break;
-		}
-		
-		if (result != 0) {
-			parent.out.printf("fail to register %s\n", name);
 		}
 	}
 }

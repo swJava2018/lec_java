@@ -27,13 +27,18 @@ public class CommonRead implements Runnable {
 			case "student":
 				UserAPI api = new UserAPI();
 				User user = api.read(id);
-				parent.out.println(user.toString());
+				if (user != null) {
+					parent.out.println(user.toString());
+				} else {
+					parent.out.printf("%s is not exist\n", id);
+				}
 				break;
 			case "professor":
 				break;
 			case "employee":
 				break;
 			default:
+				parent.out.printf("'%s' is not support\n", role);
 				break;
 		}
 	}

@@ -33,17 +33,19 @@ public class CommonRegister implements Runnable  {
 				UserAPI api = new UserAPI();
 				if(id == "" || name == "" || password == "")
 					break;
-				int result = api.register(id, name, password);
-				if (result == 0)
-					parent.out.println("success");
-				else 
-					parent.out.println("fail");
+				boolean result = api.register(id, name, password);
+				if (result) {
+					parent.out.println("register success");
+				} else {
+					parent.out.println("register fail");
+				}
 				break;
 			case "professor":
 				break;
 			case "employee":
 				break;
 			default:
+				parent.out.printf("'%s' is not support\n", role);
 				break;
 		}
 	}

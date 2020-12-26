@@ -1,4 +1,4 @@
-package com.lec.my;
+package com.lec.my.sample;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import javax.persistence.Query;
 
 import com.lec.my.model.User;
 
-public class DBTest {
+public class DBSample {
 	private static final String PERSISTENCE_UNIT_NAME = "h2";
 	private static EntityManagerFactory factory;
 

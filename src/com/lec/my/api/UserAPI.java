@@ -12,14 +12,10 @@ import com.lec.my.model.User;
 
 public class UserAPI {
 	private static final String PERSISTENCE_UNIT_NAME = "h2";
-	private EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-	private EntityManager em = factory.createEntityManager();
+	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+	private static final EntityManager em = factory.createEntityManager();
 	
-	public int register(String id, String name, String password) {
-		boolean isSuccess = true;
-		
-		// check 학번
-		// insert
+	public boolean register(String id, String name, String password) {
 		try {
 			User user = new User();
 			user.setId(id);
@@ -29,43 +25,46 @@ public class UserAPI {
 			EntityTransaction transaction = em.getTransaction();
 	        transaction.begin(); 
 	        em.persist(user);
-	        transaction.commit(); 
-	        
-//	        em.createNativeQuery("INSERT INTO User (id, name) VALUES (?,?)")
-//	        	.setParameter(1, "202102101")
-//	        	.setParameter(2, "홍길동")
-//	        	.executeUpdate();
-	        
+	        transaction.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			isSuccess = false;
-		} finally {
-			em.close();
-			if (isSuccess == false)
-				return -1;
-		}
-		return 0;
+			return false;
+		} 
+		return true;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public int login(String id, String pwd) {
-		
-		Query query = em.createQuery("select t from User t where id = " + id + "and password = " + pwd);
+	public boolean login(String id, String pwd) {
+		Query query = em.createQuery("select t from User t where id = " + id + " and password = " + pwd);
         List<User> resultList = query.getResultList();
         
         if(resultList.size() == 1)
-        	return 0;
+        	return true;
         else 
-        	return -1;
+        	return false;
 	}
 	
-	public int update(String id, String name, String password, String address) {
-		return -1;
+	public boolean update(String id, String name, String password, String address) {
+		try {
+			User user = em.find(User.class, id);
+			
+			EntityTransaction transaction = em.getTransaction();
+	        transaction.begin(); 
+			user.setName(name);
+			user.setPassword(password);
+			user.setAddress(address);
+			transaction.commit();
+	        
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} 
+		return true;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public User read(String id) {
-		Query query = em.createQuery("select t from User t where id = " + id);
+		Query query = em.createQuery("select u from User u where id = " + id);
         List<User> resultList = query.getResultList();
         
         if(resultList.size() == 1)

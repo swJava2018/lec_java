@@ -18,7 +18,8 @@ import picocli.CommandLine.Command;
 				ClearScreen.class, 
 				CommandLine.HelpCommand.class,
 				CommonRegister.class,
-				CommonRead.class})
+				CommonRead.class,
+				CommonUpdate.class})
 public class CliCommands implements Runnable {
 	LineReaderImpl reader;
 	PrintWriter out;
