@@ -36,16 +36,19 @@ public class UserAPI {
 	}
 
 	@SuppressWarnings("unchecked")
-	public boolean login(String id, String pwd) {
+	public User login(String id, String pwd) {
 		Query query = em.createQuery("select t from User t where id = " + id + " and password = " + pwd);
 		List<User> resultList = query.getResultList();
 
 		if (resultList.size() == 1) {
-			CliAuth.getInstance().login(resultList.get(0));
-			return true;
+			return resultList.get(0);
 		}
 		else
-			return false;
+			return null;
+	}
+	
+	public boolean logout() {
+		return true;
 	}
 
 	public boolean update(String id, String name, String password, String address) {
