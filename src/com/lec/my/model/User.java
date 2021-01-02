@@ -35,6 +35,9 @@ public class User {
 
 	@Column
 	private String password; // 비밀번호
+	
+	@Column
+	private String role; // 역할
 
 	public String getId() {
 		return id;
@@ -107,9 +110,17 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getRole() {
+		return role;
+	}
+	
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	@Override
 	public String toString() {
-		return "id:" + id + ", name:" + name;
+		return "id:" + id + ", name:" + name + ", role:" + role;
 	}
 }

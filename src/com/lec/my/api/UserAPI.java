@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.lec.my.cli.CliAuth;
 import com.lec.my.model.User;
 
 public class UserAPI {
@@ -21,6 +22,7 @@ public class UserAPI {
 			user.setId(id);
 			user.setName(name);
 			user.setPassword(password);
+			user.setRole("student");
 
 			EntityTransaction transaction = em.getTransaction();
 			transaction.begin();
@@ -38,8 +40,10 @@ public class UserAPI {
 		Query query = em.createQuery("select t from User t where id = " + id + " and password = " + pwd);
 		List<User> resultList = query.getResultList();
 
-		if (resultList.size() == 1)
+		if (resultList.size() == 1) {
+			CliAuth.getInstance().login(resultList.get(0));
 			return true;
+		}
 		else
 			return false;
 	}

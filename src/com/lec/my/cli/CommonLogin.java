@@ -2,41 +2,28 @@ package com.lec.my.cli;
 
 import com.lec.my.api.UserAPI;
 
-import picocli.CommandLine.Option;
+import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.ParentCommand;
 
+@Command(name = "login")
 public class CommonLogin implements Runnable {
-	@Parameters(paramLabel = "Role", description = "The role")
-	private String role;
-
-	@Option(names = { "-i", "--id" }, description = "The ID", required = true)
+	@Parameters(paramLabel = "ID", description = "The ID", index = "0")
 	private String id;
 
-	@Option(names = { "-p", "--password" }, description = "The student Password", required = true)
+	@Parameters(paramLabel = "Password", description = "The Password", index = "1")
 	private String password;
 
 	@ParentCommand
 	CliCommands parent;
 
 	public void run() {
-		switch (role) {
-		case "student":
-			UserAPI api = new UserAPI();
-			boolean result = api.login(id, password);
-			if (result) {
-				parent.out.println("login success");
-			} else {
-				parent.out.println("login fail");
-			}
-			break;
-		case "professor":
-			break;
-		case "employee":
-			break;
-		default:
-			parent.out.printf("'%s' is not support\n", role);
-			break;
+		UserAPI api = new UserAPI();
+		boolean result = api.login(id, password);
+		if (result) {
+			parent.out.println("login success");
+		} else {
+			parent.out.println("login fail");
 		}
 	}
 }
