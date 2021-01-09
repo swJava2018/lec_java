@@ -1,10 +1,8 @@
 package com.lec.my.sample;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
 import com.lec.my.ui.main.LoginPanel;
