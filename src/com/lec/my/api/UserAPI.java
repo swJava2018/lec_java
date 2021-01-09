@@ -7,6 +7,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import com.lec.my.cli.CliAuth;
 import com.lec.my.model.User;
@@ -37,7 +41,16 @@ public class UserAPI {
 
 	@SuppressWarnings("unchecked")
 	public User login(String id, String pwd) {
-		Query query = em.createQuery("select t from User t where id = " + id + " and password = " + pwd);
+		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+		
+		CriteriaQuery<User> cQuery = criteriaBuilder.createQuery(User.class);
+		Root<User> from = cQuery.from(User.class);
+		Predicate where1 = criteriaBuilder.equal(from.get("id"), id);
+		Predicate where2 = criteriaBuilder.equal(from.get("password"), pwd);
+		Predicate whereFinal = criteriaBuilder.and(where1, where2);
+		cQuery.where(whereFinal);
+		
+		Query query = em.createQuery(cQuery);
 		List<User> resultList = query.getResultList();
 
 		if (resultList.size() == 1) {
@@ -71,7 +84,14 @@ public class UserAPI {
 
 	@SuppressWarnings("unchecked")
 	public User read(String id) {
-		Query query = em.createQuery("select u from User u where id = " + id);
+		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+		
+		CriteriaQuery<User> cQuery = criteriaBuilder.createQuery(User.class);
+		Root<User> from = cQuery.from(User.class);
+		Predicate where = criteriaBuilder.equal(from.get("id"), id);
+		cQuery.where(where);
+		
+		Query query = em.createQuery(cQuery);
 		List<User> resultList = query.getResultList();
 
 		if (resultList.size() == 1)
