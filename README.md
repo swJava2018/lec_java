@@ -20,6 +20,9 @@ CLI
 
 > Shade Plugin is to make a single jar(=uber jar) with dependencies.
 
+### Pattern
+- Singleton Pattern
+
 ### How to use
 
 run

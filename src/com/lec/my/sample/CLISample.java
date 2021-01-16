@@ -13,6 +13,7 @@ import org.jline.terminal.TerminalBuilder;
 import org.jline.utils.AttributedStringBuilder;
 import org.jline.utils.AttributedStyle;
 
+import com.lec.my.api.UserAPI;
 import com.lec.my.cli.CliAuth;
 import com.lec.my.cli.CliCommands;
 import com.lec.my.cli.DescriptionGenerator;

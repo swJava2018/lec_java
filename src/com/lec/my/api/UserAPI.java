@@ -20,6 +20,15 @@ public class UserAPI {
 	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	private static final EntityManager em = factory.createEntityManager();
 
+	private static UserAPI instance; 
+	
+	public static UserAPI getInstance() {
+		if(instance == null) {	
+			instance = new UserAPI();
+		}
+		return instance;
+	}
+	
 	public boolean register(String id, String name, String password) {
 		try {
 			User user = new User();
