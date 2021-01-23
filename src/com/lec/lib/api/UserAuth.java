@@ -1,15 +1,15 @@
-package com.lec.cli.controller;
+package com.lec.lib.api;
 
 import com.lec.lib.model.User;
 
-public class CliAuth {
-	private static CliAuth instance;
+public class UserAuth {
+	private static UserAuth instance;
 	private User loginUser;
 	
 	// Singleton Pattern
-	public static CliAuth getInstance() {
+	public static UserAuth getInstance() {
 		if(instance == null) {
-			instance = new CliAuth();
+			instance = new UserAuth();
 		}
 		return instance;
 	}

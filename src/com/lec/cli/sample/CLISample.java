@@ -13,9 +13,9 @@ import org.jline.terminal.TerminalBuilder;
 import org.jline.utils.AttributedStringBuilder;
 import org.jline.utils.AttributedStyle;
 
-import com.lec.cli.controller.CliAuth;
 import com.lec.cli.controller.CliCommands;
 import com.lec.cli.controller.DescriptionGenerator;
+import com.lec.lib.api.UserAuth;
 import com.lec.lib.api.UserAPI;
 
 import picocli.CommandLine;
@@ -32,7 +32,7 @@ public class CLISample {
 	private static CommandLine cmd;
 	private static CliCommands commands;
 	private static DescriptionGenerator descriptionGenerator;
-	private static CliAuth auth = CliAuth.getInstance();
+	private static UserAuth auth = UserAuth.getInstance();
 
 	public static void main(String[] args) {
 		AnsiConsole.systemInstall();

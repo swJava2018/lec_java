@@ -12,7 +12,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.lec.cli.controller.CliAuth;
 import com.lec.lib.model.User;
 
 public class UserAPI {

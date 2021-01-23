@@ -1,5 +1,6 @@
 package com.lec.cli.controller;
 
+import com.lec.lib.api.UserAuth;
 import com.lec.lib.api.UserAPI;
 import com.lec.lib.model.User;
 
@@ -22,7 +23,7 @@ public class CommonLogin implements Runnable {
 		UserAPI api = new UserAPI();
 		User user = api.login(id, password);
 		if (user != null) {
-			CliAuth.getInstance().login(user);
+			UserAuth.getInstance().login(user);
 			parent.out.println("login success");
 		} else {
 			parent.out.println("login fail");

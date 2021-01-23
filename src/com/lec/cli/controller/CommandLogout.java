@@ -1,5 +1,6 @@
 package com.lec.cli.controller;
 
+import com.lec.lib.api.UserAuth;
 import com.lec.lib.api.UserAPI;
 
 import picocli.CommandLine.Command;
@@ -14,7 +15,7 @@ public class CommandLogout implements Runnable {
 		UserAPI api = new UserAPI();
 		boolean isLogout = api.logout();
 		if (isLogout) {
-			CliAuth.getInstance().logout();
+			UserAuth.getInstance().logout();
 			parent.out.println("login success");
 		} else {
 			parent.out.println("login fail");
