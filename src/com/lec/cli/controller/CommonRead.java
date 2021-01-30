@@ -18,16 +18,7 @@ public class CommonRead implements Runnable {
 			return;
 		}
 		
-		User user = UserAuth.getInstance().getUser();
-		
-		switch (user.getRole()) {
-		case "student":
-			parent.out.println(user.toString());
-			break;
-		case "professor":
-			break;
-		case "employee":
-			break;
-		}
+		User user = auth.getUser();
+		parent.out.println(user.toString());
 	}
 }

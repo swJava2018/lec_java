@@ -1,6 +1,7 @@
 package com.lec.cli.controller;
 
 import com.lec.lib.api.UserAPI;
+import com.lec.lib.api.UserAuth;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -28,21 +29,18 @@ public class CommonUpdate implements Runnable {
 	CliCommands parent;
 
 	public void run() {
-		switch (role) {
-		case "student":
-			if (id == "")
-				break;
-			UserAPI api = new UserAPI();
-			boolean result = api.update(id, name, password, address);
-			if (result) {
-				parent.out.println("update success");
-			} else {
-				parent.out.println("update fail");
-			}
-			break;
-		default:
-			parent.out.printf("'%s' is not support\n", role);
-			break;
+		UserAuth auth = UserAuth.getInstance();
+		if(!auth.isLogin()) {
+			parent.out.println("it's need to login");
+			return;
+		}
+		
+		UserAPI api = auth.getUserAPI();
+		boolean result = api.update(id, name, password, address);
+		if (result) {
+			parent.out.println("update success");
+		} else {
+			parent.out.println("update fail");
 		}
 	}
 }

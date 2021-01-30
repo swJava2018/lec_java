@@ -14,40 +14,28 @@ import javax.persistence.criteria.Root;
 
 import com.lec.lib.model.User;
 
-public class UserAPI {
+public class UserAPI implements IUserAPI {
 	private static final String PERSISTENCE_UNIT_NAME = "h2";
 	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-	private static final EntityManager em = factory.createEntityManager();
+	protected static final EntityManager em = factory.createEntityManager();
 
-	private static UserAPI instance; 
-	
-	public static UserAPI getInstance() {
-		if(instance == null) {	
-			instance = new UserAPI();
-		}
-		return instance;
-	}
-	
+//	private static UserAPI instance; 
+//	
+//	public static UserAPI getInstance() {
+//		if(instance == null) {	
+//			instance = new UserAPI();
+//		}
+//		return instance;
+//	}
+
+	@Override
 	public boolean register(String id, String name, String password) {
-		try {
-			User user = new User();
-			user.setId(id);
-			user.setName(name);
-			user.setPassword(password);
-			user.setRole("student");
-
-			EntityTransaction transaction = em.getTransaction();
-			transaction.begin();
-			em.persist(user);
-			transaction.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
+		// TODO Auto-generated method stub
+		return false;
 	}
-
+	
 	@SuppressWarnings("unchecked")
+	@Override
 	public User login(String id, String pwd) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 		
@@ -68,10 +56,12 @@ public class UserAPI {
 			return null;
 	}
 	
+	@Override
 	public boolean logout() {
 		return true;
 	}
 
+	@Override
 	public boolean update(String id, String name, String password, String address) {
 		try {
 			User user = em.find(User.class, id);
@@ -91,6 +81,7 @@ public class UserAPI {
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public User read(String id) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 		
@@ -108,6 +99,7 @@ public class UserAPI {
 			return null;
 	}
 
+	@Override
 	public List<User> readAll() {
 		return null;
 	}

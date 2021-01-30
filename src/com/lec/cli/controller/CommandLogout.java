@@ -12,7 +12,13 @@ public class CommandLogout implements Runnable {
 	CliCommands parent;
 
 	public void run() {
-		UserAPI api = new UserAPI();
+		UserAuth auth = UserAuth.getInstance();
+		if(!auth.isLogin()) {
+			parent.out.println("it's need to login");
+			return;
+		}
+		
+		UserAPI api = auth.getUserAPI();
 		boolean isLogout = api.logout();
 		if (isLogout) {
 			UserAuth.getInstance().logout();

@@ -5,6 +5,7 @@ import com.lec.lib.model.User;
 public class UserAuth {
 	private static UserAuth instance;
 	private User loginUser;
+	private UserAPI loginAPI;
 	
 	// Singleton Pattern
 	public static UserAuth getInstance() {
@@ -16,6 +17,17 @@ public class UserAuth {
 	
 	public void login(User user) {
 		this.loginUser = user;
+		switch(user.getRole()) {
+		case "student": 
+			loginAPI = new StudentAPI(); break;
+		case "professor": 
+			loginAPI = new ProfessorAPI(); break;
+		case "admin": 
+			loginAPI = new AdminAPI(); break;
+		case "employee": 
+			loginAPI = new EmployeeAPI(); break;
+		default: break;
+		}
 	}
 	
 	public boolean isLogin() {
@@ -30,7 +42,12 @@ public class UserAuth {
 		return loginUser;
 	}
 	
+	public UserAPI getUserAPI() {
+		return loginAPI;
+	}
+	
 	public void logout() {
 		loginUser = null;
+		loginAPI = null;
 	}
 }

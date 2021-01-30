@@ -1,6 +1,8 @@
 package com.lec.cli.controller;
 
 import com.lec.lib.api.UserAuth;
+import com.lec.lib.api.AdminAPI;
+import com.lec.lib.api.StudentAPI;
 import com.lec.lib.api.UserAPI;
 import com.lec.lib.model.User;
 
@@ -20,6 +22,12 @@ public class CommonLogin implements Runnable {
 	CliCommands parent;
 
 	public void run() {
+		UserAuth auth = UserAuth.getInstance();
+		if(auth.isLogin()) {
+			parent.out.println("it's need to logout");
+			return;
+		}
+		
 		UserAPI api = new UserAPI();
 		User user = api.login(id, password);
 		if (user != null) {
