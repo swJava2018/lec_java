@@ -1,4 +1,4 @@
-package com.lec.lib.api;
+package com.lec.lib.service;
 
 import java.util.List;
 
@@ -12,30 +12,42 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.lec.lib.api.config.Permission;
 import com.lec.lib.model.User;
 
-public class UserAPI implements IUserAPI {
+public class UserDatabase {
 	private static final String PERSISTENCE_UNIT_NAME = "h2";
 	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	protected static final EntityManager em = factory.createEntityManager();
 
-//	private static UserAPI instance; 
-//	
-//	public static UserAPI getInstance() {
-//		if(instance == null) {	
-//			instance = new UserAPI();
-//		}
-//		return instance;
-//	}
-
-	@Override
-	public boolean register(String id, String name, String password) {
-		// TODO Auto-generated method stub
-		return false;
+	private static UserDatabase instance;
+	
+	public static UserDatabase getInstance() {
+		if(instance == null) {
+			instance = new UserDatabase();
+		}
+		return instance;
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Override
+	public boolean register(String id, String name, String password, Permission role) {
+		try {
+			User user = new User();
+			user.setId(id);
+			user.setName(name);
+			user.setPassword(password);
+			user.setRole(role);
+
+			EntityTransaction transaction = em.getTransaction();
+			transaction.begin();
+			em.persist(user);
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
 	public User login(String id, String pwd) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 		
@@ -56,12 +68,6 @@ public class UserAPI implements IUserAPI {
 			return null;
 	}
 	
-	@Override
-	public boolean logout() {
-		return true;
-	}
-
-	@Override
 	public boolean update(String id, String name, String password, String address) {
 		try {
 			User user = em.find(User.class, id);
@@ -79,9 +85,7 @@ public class UserAPI implements IUserAPI {
 		}
 		return true;
 	}
-
-	@SuppressWarnings("unchecked")
-	@Override
+	
 	public User read(String id) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 		
@@ -98,9 +102,19 @@ public class UserAPI implements IUserAPI {
 		else
 			return null;
 	}
-
-	@Override
+	
 	public List<User> readAll() {
-		return null;
+		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+		
+		CriteriaQuery<User> cQuery = criteriaBuilder.createQuery(User.class);
+		cQuery.from(User.class);
+		
+		Query query = em.createQuery(cQuery);
+		List<User> resultList = query.getResultList();
+
+		if (resultList.size() > 0)
+			return resultList;
+		else
+			return null;
 	}
 }

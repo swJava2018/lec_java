@@ -16,7 +16,7 @@ import org.jline.utils.AttributedStyle;
 import com.lec.cli.controller.CliCommands;
 import com.lec.cli.controller.DescriptionGenerator;
 import com.lec.lib.api.UserAuth;
-import com.lec.lib.api.UserAPI;
+import com.lec.lib.api.impl.UserImpl;
 
 import picocli.CommandLine;
 import picocli.shell.jline3.PicocliCommands;

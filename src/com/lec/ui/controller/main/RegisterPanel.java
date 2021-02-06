@@ -10,10 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.lec.lib.api.UserAPI;
+import com.lec.lib.api.impl.UserImpl;
 
 @SuppressWarnings("serial")
-public class SignUpPanel extends JPanel {
+public class RegisterPanel extends JPanel {
 	private Frame frame;
 
 	// component
@@ -22,7 +22,7 @@ public class SignUpPanel extends JPanel {
 	private JTextField pwdField;
 	private JButton signUpBtn;
 
-	public SignUpPanel(Frame frame) {
+	public RegisterPanel(Frame frame) {
 		this.frame = frame;
 
 //		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -49,7 +49,7 @@ public class SignUpPanel extends JPanel {
 
 			if (id == "" || name == "" || password == "")
 				return;
-			boolean result = UserAPI.getInstance().register(id, name, password);
+			boolean result = UserImpl.getInstance().register(id, name, password);
 			JOptionPane op1 = new JOptionPane();
 			if (result) {
 				op1.showMessageDialog(null, id + " 회원가입 성공");

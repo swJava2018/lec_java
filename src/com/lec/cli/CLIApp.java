@@ -20,9 +20,10 @@ import org.jline.utils.AttributedStyle;
 
 import com.lec.cli.controller.CliCommands;
 import com.lec.cli.controller.DescriptionGenerator;
-import com.lec.lib.api.AdminAPI;
-import com.lec.lib.api.UserAPI;
+import com.lec.lib.api.IAdmin;
 import com.lec.lib.api.UserAuth;
+import com.lec.lib.api.config.Permission;
+import com.lec.lib.api.impl.AdminImpl;
 
 import picocli.CommandLine;
 import picocli.shell.jline3.PicocliCommands;
@@ -32,7 +33,7 @@ public class CLIApp {
 	private static CliCommands commands;
 	private static DescriptionGenerator descriptionGenerator;
 	private static UserAuth auth = UserAuth.getInstance();
-	
+
 	public static void main(String[] args) {
 		AnsiConsole.systemInstall();
 		try {
@@ -52,7 +53,7 @@ public class CLIApp {
 
 			// 초기화 (Default 어드민 계정 추가)
 			Init();
-			
+
 			// start the shell and process input until the user quits with Ctrl-D
 			String prompt = "";
 			String rightPrompt = null;
@@ -64,7 +65,7 @@ public class CLIApp {
 					} else {
 						prompt = "prompt> ";
 					}
-					
+
 					// 명령어 읽기
 					line = reader.readLine(prompt, rightPrompt, (MaskingCallback) null, null);
 					if (line.matches("^\\s*#.*")) {
@@ -91,10 +92,10 @@ public class CLIApp {
 			t.printStackTrace();
 		}
 	}
-	
+
 	private static void Init() {
-		UserAPI api = new AdminAPI();
-		boolean result = api.register("admin", "admin", "1234");
+		IAdmin api = new AdminImpl();
+		boolean result = api.register("admin", "admin", "1234", Permission.Admin);
 		if (result) {
 			System.out.println("init success");
 		} else {

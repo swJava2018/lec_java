@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.lec.lib.api.config.Permission;
+
 @Entity
 @Table
 public class User {
@@ -37,7 +39,7 @@ public class User {
 	private String password; // 비밀번호
 	
 	@Column
-	private String role; // 역할
+	private Permission role; // 역할
 
 	public String getId() {
 		return id;
@@ -111,11 +113,11 @@ public class User {
 		this.password = password;
 	}
 	
-	public String getRole() {
+	public Permission getRole() {
 		return role;
 	}
 	
-	public void setRole(String role) {
+	public void setRole(Permission role) {
 		this.role = role;
 	}
 

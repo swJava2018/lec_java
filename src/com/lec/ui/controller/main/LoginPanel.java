@@ -9,13 +9,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.lec.lib.api.UserAPI;
 import com.lec.lib.api.UserAuth;
+import com.lec.lib.api.impl.UserImpl;
 import com.lec.lib.model.User;
 import com.lec.ui.SwingApp;
 
 @SuppressWarnings("serial")
-public class SignInPanel extends JPanel {
+public class LoginPanel extends JPanel {
 	private SwingApp frame;
 
 	// component
@@ -24,10 +24,10 @@ public class SignInPanel extends JPanel {
 	private JButton loginBtn;
 
 	// api
-	private UserAPI api;
+	private UserImpl api;
 	private UserAuth auth;
 
-	public SignInPanel(SwingApp frame) {
+	public LoginPanel(SwingApp frame) {
 		this.frame = frame;
 
 //		setLayout(new GridLayout(5, 1));
@@ -43,7 +43,7 @@ public class SignInPanel extends JPanel {
 		add(loginBtn);
 		loginBtn.addActionListener(loginListener);
 
-		api = UserAPI.getInstance();
+		api = new UserImpl();
 		auth = UserAuth.getInstance();
 	}
 

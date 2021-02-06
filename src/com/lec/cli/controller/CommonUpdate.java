@@ -1,6 +1,5 @@
 package com.lec.cli.controller;
 
-import com.lec.lib.api.UserAPI;
 import com.lec.lib.api.UserAuth;
 
 import picocli.CommandLine.Command;
@@ -30,13 +29,15 @@ public class CommonUpdate implements Runnable {
 
 	public void run() {
 		UserAuth auth = UserAuth.getInstance();
-		if(!auth.isLogin()) {
+
+		// 로그인 확인
+		if (!auth.isLogin()) {
 			parent.out.println("it's need to login");
 			return;
 		}
-		
-		UserAPI api = auth.getUserAPI();
-		boolean result = api.update(id, name, password, address);
+
+		// 사용자 정보 갱신
+		boolean result = auth.getUserAPI().update(id, name, password, address);
 		if (result) {
 			parent.out.println("update success");
 		} else {
