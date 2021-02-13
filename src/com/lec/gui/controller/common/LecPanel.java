@@ -1,10 +1,10 @@
-package com.lec.ui.controller.common;
+package com.lec.gui.controller.common;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.lec.gui.SwingApp;
 import com.lec.lib.service.UserDatabase;
-import com.lec.ui.SwingApp;
 
 @SuppressWarnings("serial")
 public class LecPanel extends JPanel {

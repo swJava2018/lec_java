@@ -1,4 +1,4 @@
-package com.lec.ui.controller.admin;
+package com.lec.gui.controller.admin;
 
 import javax.swing.table.AbstractTableModel;
 

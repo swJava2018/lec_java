@@ -1,4 +1,4 @@
-package com.lec.ui.controller.admin;
+package com.lec.gui.controller.admin;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -7,11 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import com.lec.gui.SwingApp;
+import com.lec.gui.controller.common.LecPanel;
 import com.lec.lib.api.IAdmin;
 import com.lec.lib.api.UserAuth;
 import com.lec.lib.api.config.Permission;
-import com.lec.ui.SwingApp;
-import com.lec.ui.controller.common.LecPanel;
 
 @SuppressWarnings("serial")
 public class RegisterPanel extends LecPanel {

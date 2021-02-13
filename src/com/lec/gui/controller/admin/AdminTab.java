@@ -1,8 +1,8 @@
-package com.lec.ui.controller.admin;
+package com.lec.gui.controller.admin;
 
 import javax.swing.JTabbedPane;
 
-import com.lec.ui.SwingApp;
+import com.lec.gui.SwingApp;
 
 @SuppressWarnings("serial")
 public class AdminTab extends JTabbedPane {

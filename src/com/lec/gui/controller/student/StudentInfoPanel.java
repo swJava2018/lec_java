@@ -1,4 +1,4 @@
-package com.lec.ui.controller.student;
+package com.lec.gui.controller.student;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

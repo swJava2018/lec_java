@@ -1,4 +1,4 @@
-package com.lec.ui.controller.admin;
+package com.lec.gui.controller.admin;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -9,9 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import com.lec.gui.SwingApp;
+import com.lec.gui.controller.common.LecPanel;
 import com.lec.lib.model.User;
-import com.lec.ui.SwingApp;
-import com.lec.ui.controller.common.LecPanel;
 
 @SuppressWarnings("serial")
 public class UserListPanel extends LecPanel {

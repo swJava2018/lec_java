@@ -1,4 +1,4 @@
-package com.lec.ui;
+package com.lec.gui;
 
 import java.awt.CardLayout;
 import java.awt.Container;
@@ -6,13 +6,13 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
+import com.lec.gui.controller.admin.AdminTab;
+import com.lec.gui.controller.main.MainTab;
+import com.lec.gui.controller.professor.ProfessorTab;
+import com.lec.gui.controller.student.StudentTab;
 import com.lec.lib.api.IAdmin;
 import com.lec.lib.api.config.Permission;
 import com.lec.lib.api.impl.AdminImpl;
-import com.lec.ui.controller.main.MainTab;
-import com.lec.ui.controller.admin.AdminTab;
-import com.lec.ui.controller.professor.ProfessorTab;
-import com.lec.ui.controller.student.StudentTab;
 
 @SuppressWarnings("serial")
 public class SwingApp extends JFrame {

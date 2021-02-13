@@ -1,9 +1,9 @@
-package com.lec.ui.controller.main;
+package com.lec.gui.controller.main;
 
 import javax.swing.JTabbedPane;
 
-import com.lec.ui.SwingApp;
-import com.lec.ui.controller.admin.RegisterPanel;
+import com.lec.gui.SwingApp;
+import com.lec.gui.controller.admin.RegisterPanel;
 
 @SuppressWarnings("serial")
 public class MainTab extends JTabbedPane {

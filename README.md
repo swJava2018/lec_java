@@ -13,6 +13,9 @@ CLI
 - Picocli Shell JLine3 : java library for handling console input. [source](https://github.com/remkop/picocli/tree/master/picocli-shell-jline3)
 - [Jansi](https://fusesource.github.io/jansi/) : java library for ANSI escape codes. [source](https://github.com/fusesource/jansi)
 
+GUI
+- [Javax Swing](https://docs.oracle.com/javase/8/docs/technotes/guides/swing/index.html)
+
 ### Plugin
 - Shade Plugin : [Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/)
 - Shade Plugin : [Apache Maven Assembly Plugin](http://maven.apache.org/plugins/maven-assembly-plugin/) (not use)

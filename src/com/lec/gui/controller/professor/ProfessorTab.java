@@ -1,4 +1,4 @@
-package com.lec.ui.controller.professor;
+package com.lec.gui.controller.professor;
 
 import java.awt.Frame;
 
