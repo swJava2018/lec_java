@@ -5,30 +5,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.lec.lib.api.UserAuth;
-import com.lec.lib.api.impl.UserImpl;
-import com.lec.lib.model.User;
 import com.lec.ui.SwingApp;
+import com.lec.ui.controller.common.LecPanel;
 
 @SuppressWarnings("serial")
-public class LoginPanel extends JPanel {
-	private SwingApp frame;
-
+public class LoginPanel extends LecPanel {
 	// component
 	private JTextField idField;
 	private JTextField pwdField;
 	private JButton loginBtn;
 
-	// api
-	private UserImpl api;
-	private UserAuth auth;
-
 	public LoginPanel(SwingApp frame) {
-		this.frame = frame;
+		super(frame);
 
 //		setLayout(new GridLayout(5, 1));
 		idField = new JTextField("아이디");
@@ -42,9 +33,6 @@ public class LoginPanel extends JPanel {
 		add(pwdField);
 		add(loginBtn);
 		loginBtn.addActionListener(loginListener);
-
-		api = new UserImpl();
-		auth = UserAuth.getInstance();
 	}
 
 	private ActionListener loginListener = new ActionListener() {
@@ -54,14 +42,36 @@ public class LoginPanel extends JPanel {
 			if (id == "" || password == "")
 				return;
 
-			User user = api.login(id, password);
-			JOptionPane op1 = new JOptionPane();
-			if (user != null) {
-				auth.login(user);
-				frame.changeStudentTab();
-				op1.showMessageDialog(null, user.getName() + " 로그인 성공");
+			UserAuth auth = UserAuth.getInstance();
+
+			// 로그인 확인
+			if (auth.isLogin()) {
+				showMessageBox("it's need to logout");
+				return;
+			}
+
+			// 로그인
+			if (!auth.login(id, password)) {
+				showMessageBox("로그인 실패");
 			} else {
-				op1.showMessageDialog(null, user.getName() + " 로그인 실패");
+				showMessageBox("로그인 성공");
+				switch (auth.getUser().getRole()) {
+				case Student:
+					frame.changeStudentTab();
+					break;
+				case Professor:
+					frame.changeProfessorTab();
+					break;
+				case Employee:
+					frame.changeEmployeeTab();
+					break;
+				case Admin:
+					frame.changeAdminTab();
+					break;
+				default:
+					break;
+				}
+
 			}
 		}
 	};

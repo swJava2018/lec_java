@@ -1,29 +1,29 @@
-package com.lec.ui.controller.main;
+package com.lec.ui.controller.admin;
 
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.lec.lib.api.impl.UserImpl;
+import com.lec.lib.api.IAdmin;
+import com.lec.lib.api.UserAuth;
+import com.lec.lib.api.config.Permission;
+import com.lec.ui.SwingApp;
+import com.lec.ui.controller.common.LecPanel;
 
 @SuppressWarnings("serial")
-public class RegisterPanel extends JPanel {
-	private Frame frame;
-
+public class RegisterPanel extends LecPanel {
 	// component
 	private JTextField idField;
 	private JTextField nameField;
 	private JTextField pwdField;
+	private JTextField roleField;
 	private JButton signUpBtn;
 
-	public RegisterPanel(Frame frame) {
-		this.frame = frame;
+	public RegisterPanel(SwingApp frame) {
+		super(frame);
 
 //		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		idField = new JTextField("아이디");
@@ -32,11 +32,14 @@ public class RegisterPanel extends JPanel {
 		nameField.setPreferredSize(new Dimension(200, 30));
 		pwdField = new JTextField("비밀번호");
 		pwdField.setPreferredSize(new Dimension(200, 30));
+		roleField = new JTextField("권한");
+		roleField.setPreferredSize(new Dimension(200, 30));
 		signUpBtn = (new JButton("회원가입"));
 
 		add(idField);
 		add(nameField);
 		add(pwdField);
+		add(roleField);
 		add(signUpBtn);
 		signUpBtn.addActionListener(signUpListener);
 	}
@@ -46,15 +49,37 @@ public class RegisterPanel extends JPanel {
 			String id = idField.getText();
 			String name = nameField.getText();
 			String password = pwdField.getText();
+			String role = roleField.getText();
 
 			if (id == "" || name == "" || password == "")
 				return;
-			boolean result = UserImpl.getInstance().register(id, name, password);
-			JOptionPane op1 = new JOptionPane();
+
+			UserAuth auth = UserAuth.getInstance();
+
+			// 로그인 확인
+			if (!auth.isLogin()) {
+				return;
+			}
+
+			// 권한 확인
+			if (!auth.hasAdminPermission()) {
+				showMessageBox("your account have not register permission");
+				return;
+			}
+
+			// 입력 내용 확인
+			Permission p = Permission.valueOfType(role);
+			if (p == null) {
+				showMessageBox("role is wrong");
+				return;
+			}
+
+			// 사용자 추가
+			boolean result = ((IAdmin) auth.getUserAPI()).register(id, name, password, p);
 			if (result) {
-				op1.showMessageDialog(null, id + " 회원가입 성공");
+				showMessageBox("회원등록 성공");
 			} else {
-				op1.showMessageDialog(null, id + " 회원가입 실패");
+				showMessageBox("회원등록 실패");
 			}
 		}
 	};

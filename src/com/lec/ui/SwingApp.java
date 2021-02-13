@@ -6,7 +6,11 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
+import com.lec.lib.api.IAdmin;
+import com.lec.lib.api.config.Permission;
+import com.lec.lib.api.impl.AdminImpl;
 import com.lec.ui.controller.main.MainTab;
+import com.lec.ui.controller.admin.AdminTab;
 import com.lec.ui.controller.professor.ProfessorTab;
 import com.lec.ui.controller.student.StudentTab;
 
@@ -19,11 +23,14 @@ public class SwingApp extends JFrame {
 	private final static String MainTab = "MAIN";
 	private final static String ProfessorTab = "PROFESSOR";
 	private final static String StudentTab = "STUDENT";
+	private final static String EmployeeTab = "EMPLOYEE";
+	private final static String AdminTab = "ADMIN";
 
 	// component
 	private JTabbedPane mainTab;
 	private JTabbedPane professorTab;
 	private JTabbedPane studentTab;
+	private JTabbedPane adminTab;
 
 	public static void main(String[] args) {
 		instance.start();
@@ -37,6 +44,7 @@ public class SwingApp extends JFrame {
 		mainTab = new MainTab(this);
 		professorTab = new ProfessorTab(this);
 		studentTab = new StudentTab(this);
+		adminTab = new AdminTab(this);
 
 		// set layout
 		Container pan = getContentPane();
@@ -44,6 +52,10 @@ public class SwingApp extends JFrame {
 		pan.add(MainTab, mainTab);
 		pan.add(ProfessorTab, professorTab);
 		pan.add(StudentTab, studentTab);
+		pan.add(AdminTab, adminTab);
+
+		// 초기화 (Default 어드민 계정 추가)
+		InitDB();
 	}
 
 	private void start() {
@@ -56,5 +68,23 @@ public class SwingApp extends JFrame {
 
 	public void changeStudentTab() {
 		layout.show(this.getContentPane(), StudentTab);
+	}
+	
+	public void changeEmployeeTab() {
+		layout.show(this.getContentPane(), EmployeeTab);
+	}
+	
+	public void changeAdminTab() {
+		layout.show(this.getContentPane(), AdminTab);
+	}
+
+	private static void InitDB() {
+		IAdmin api = new AdminImpl();
+		boolean result = api.register("admin", "admin", "1234", Permission.Admin);
+		if (result) {
+			System.out.println("init success");
+		} else {
+			System.out.println("init fail");
+		}
 	}
 }
