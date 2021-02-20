@@ -38,7 +38,7 @@ public class SwingApp extends JFrame {
 
 	public SwingApp() {
 		// set configuration
-		setSize(500, 500);
+		setSize(1000, 700);
 		setLocation(200, 400);
 
 		mainTab = new MainTab(this);

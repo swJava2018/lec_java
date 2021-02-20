@@ -1,10 +1,13 @@
 package com.lec.gui.controller.main;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.lec.gui.SwingApp;
@@ -13,26 +16,51 @@ import com.lec.lib.api.UserAuth;
 
 @SuppressWarnings("serial")
 public class LoginPanel extends LecPanel {
-	// component
-	private JTextField idField;
-	private JTextField pwdField;
+	// components
+	private JLabel idLabel, pwdLabel;
+	private JTextField idField, pwdField;
 	private JButton loginBtn;
 
 	public LoginPanel(SwingApp frame) {
 		super(frame);
 
-//		setLayout(new GridLayout(5, 1));
-		idField = new JTextField("아이디");
-		idField.setPreferredSize(new Dimension(200, 30));
-		pwdField = new JTextField("비밀번호");
-		pwdField.setPreferredSize(new Dimension(200, 30));
+		idLabel = new JLabel("아이디");
+		idField = new JTextField(25);
+		idField.setPreferredSize(new Dimension(100, 30));
+		pwdLabel = new JLabel("비밀번호");
+		pwdField = new JTextField(25);
+		pwdField.setPreferredSize(new Dimension(100, 30));
 		loginBtn = (new JButton("로그인"));
-		loginBtn.setPreferredSize(new Dimension(200, 30));
-
-		add(idField);
-		add(pwdField);
-		add(loginBtn);
+		loginBtn.setPreferredSize(new Dimension(100, 30));
 		loginBtn.addActionListener(loginListener);
+		
+		initLayout();
+	}
+	
+	private void initLayout() {
+		setLayout(new GridBagLayout());
+		
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
+		add(idLabel, c);
+
+		c.gridx = 1;
+		c.gridy = 0;
+		add(idField, c);
+
+		c.gridx = 0;
+		c.gridy = 1;
+		add(pwdLabel, c);
+
+		c.gridx = 1;
+		c.gridy = 1;
+		add(pwdField, c);
+
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 3;
+		add(loginBtn, c);
 	}
 
 	private ActionListener loginListener = new ActionListener() {

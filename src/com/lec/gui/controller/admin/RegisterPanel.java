@@ -15,7 +15,7 @@ import com.lec.lib.api.config.Permission;
 
 @SuppressWarnings("serial")
 public class RegisterPanel extends LecPanel {
-	// component
+	// components
 	private JTextField idField;
 	private JTextField nameField;
 	private JTextField pwdField;
@@ -25,7 +25,6 @@ public class RegisterPanel extends LecPanel {
 	public RegisterPanel(SwingApp frame) {
 		super(frame);
 
-//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		idField = new JTextField("아이디");
 		idField.setPreferredSize(new Dimension(200, 30));
 		nameField = new JTextField("이름");
