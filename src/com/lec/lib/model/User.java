@@ -8,37 +8,37 @@ import javax.persistence.Table;
 import com.lec.lib.api.config.Permission;
 
 @Entity
-@Table
+@Table(name = "user")
 public class User {
 	@Id
-	@Column
-	private String id; // 학번 or 교수코드 or 직원코드
+	@Column(name = "id")
+	private String id; // 사용자 번호 (학생 번호 or 교수 번호 or 직원 번호)
 
-	@Column
+	@Column(name = "name")
 	private String name; // 이름
 
-	@Column
+	@Column(name = "address")
 	private String address; // 주소
 
-	@Column
+	@Column(name = "phone_number")
 	private String phoneNumber; // 전화번호
 
-	@Column
+	@Column(name = "country")
 	private String country; // 국적
 
-	@Column
+	@Column(name = "regdent_number")
 	private String regdentNumber; // 주민번호
 
-	@Column
+	@Column(name = "email")
 	private String email; // 이메일
 
-	@Column
+	@Column(name = "birth_date")
 	private String birthDate; // 생년월일
 
-	@Column
+	@Column(name = "password")
 	private String password; // 비밀번호
-	
-	@Column
+
+	@Column(name = "role")
 	private Permission role; // 역할
 
 	public String getId() {
@@ -112,11 +112,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public Permission getRole() {
 		return role;
 	}
-	
+
 	public void setRole(Permission role) {
 		this.role = role;
 	}

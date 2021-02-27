@@ -1,0 +1,14 @@
+
+학과 등록
+insert into department values ("DEP001", "Computer Science");
+
+학부 등록
+insert into division values ("DIV001", "Information Communication Technology");
+
+교수 정보 등록
+insert into user (id, password, role) values ("prof001", "1234", 2);
+insert into professor values ("prof001", "DEP001", "DIV001");
+
+학생 정보 등록
+insert into user (id, password, role) values ("student001", "1234", 3);
+insert into student (id, dep_code, div_code, status, disability) values ("student001", "DEP001", "DIV001", "active", false);

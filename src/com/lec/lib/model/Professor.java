@@ -2,7 +2,6 @@ package com.lec.lib.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,12 +11,12 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "student")
-public class Student implements Serializable {
+@Table(name = "professor")
+public class Professor implements Serializable {
 	@Id
 	@OneToOne
 	@JoinColumn(name = "id", referencedColumnName = "id")
-	private User user; // 학생 번호
+	private User user; // 교수 번호
 
 	@ManyToOne
 	@JoinColumn(name = "div_code", insertable = false, updatable = false)
@@ -26,12 +25,6 @@ public class Student implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "dep_code", insertable = false, updatable = false)
 	private Department dep; // 학과 코드
-
-	@Column(name = "status")
-	private String status; // 학적 상태
-
-	@Column(name = "disability")
-	private Boolean disability; // 장애 여부
 
 	public User getUser() {
 		return user;
@@ -55,21 +48,5 @@ public class Student implements Serializable {
 
 	public void setDep(Department dep) {
 		this.dep = dep;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public Boolean getDisability() {
-		return disability;
-	}
-
-	public void setDisability(Boolean disability) {
-		this.disability = disability;
 	}
 }
