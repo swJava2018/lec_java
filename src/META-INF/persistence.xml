@@ -11,7 +11,7 @@
 		java entity mapping example : https://kihoonkim.github.io/2017/01/27/JPA(Java%20ORM)/3.%20JPA-%EC%97%94%ED%8B%B0%ED%8B%B0%20%EB%A7%A4%ED%95%91/
 	 -->
 	
-	<!-- h2 -->
+	<!-- H2 Database -->
 
 	<persistence-unit name="h2" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
@@ -51,6 +51,22 @@
 			<!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables" /> 
 			<property name="eclipselink.ddl-generation.output-mode" value="database" 
 				/> -->
+		</properties>
+	</persistence-unit>
+	
+	<!-- MySQL Database -->
+	<persistence-unit name="mysql">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/lec_java" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="mypass" />
+			<!-- <property name="hibernate.show_sql" value="true"/> -->
+			<property name="hibernate.flushMode" value="FLUSH_AUTO" />
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create | create-drop | update | validate -->
 		</properties>
 	</persistence-unit>
 	

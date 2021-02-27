@@ -8,6 +8,7 @@
 
 	<dependencies>
 
+		<!-- Hibernate -->
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -15,6 +16,15 @@
 			<version>5.4.21.Final</version>
 		</dependency>
 
+		<!-- JPA -->
+		<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<!-- H2 -->
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -23,13 +33,15 @@
 			<!-- <scope>test</scope> -->
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
+		<!-- MySQL -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.22</version>
 		</dependency>
 
+		<!-- Pico CLI -->
 		<!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
 		<dependency>
 			<groupId>info.picocli</groupId>
@@ -37,6 +49,7 @@
 			<version>4.2.0</version>
 		</dependency>
 
+		<!-- Pico CLI -->
 		<!-- https://mvnrepository.com/artifact/info.picocli/picocli-shell-jline3 -->
 		<dependency>
 			<groupId>info.picocli</groupId>
@@ -44,6 +57,7 @@
 			<version>4.2.0</version>
 		</dependency>
 
+		<!-- Pico CLI -->
 		<!-- https://mvnrepository.com/artifact/org.fusesource.jansi/jansi -->
 		<dependency>
 			<groupId>org.fusesource.jansi</groupId>

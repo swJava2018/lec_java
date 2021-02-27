@@ -16,7 +16,7 @@ import com.lec.lib.api.config.Permission;
 import com.lec.lib.model.User;
 
 public class UserDatabase {
-	private static final String PERSISTENCE_UNIT_NAME = "h2";
+	private static final String PERSISTENCE_UNIT_NAME = "mysql";
 	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	protected static final EntityManager em = factory.createEntityManager();
 

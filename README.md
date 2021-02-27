@@ -5,7 +5,8 @@
 ### Library
 Database
 - [Hibernate](https://hibernate.org/) : java library for ORM
-- [H2](https://www.h2database.com/) : java library for in memory database
+- [H2](https://www.h2database.com/) : in-memory database
+- [MySQL](https://www.h2database.com/) :relational database (RDB)
 - [Java Persistence API](https://www.oracle.com/java/technologies/persistence-jsp.html) : java library for standard interface for accessing databases in java
 
 CLI
@@ -25,6 +26,20 @@ GUI
 
 ### Pattern
 - Singleton Pattern
+
+### How to set database
+- H2 (auto)
+- MySQL (use docker)
+
+```
+$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=mypass -d -p 3306:3306 mysql
+$ docker exec -it mysql /bin/bash`
+$ mysql -u root -p mypass
+$ show databases;
+$ CREATE DATABASE lec_java
+$ use lec_java;
+$ show tables;
+```
 
 ### How to use
 
