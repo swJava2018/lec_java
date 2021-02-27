@@ -7,8 +7,36 @@ insert into division values ("DIV001", "Information Communication Technology");
 
 교수 정보 등록
 insert into user (id, password, role) values ("prof001", "1234", 2);
+insert into user (id, password, role) values ("prof002", "1234", 2);
 insert into professor values ("prof001", "DEP001", "DIV001");
+insert into professor values ("prof002", "DEP001", "DIV001");
 
 학생 정보 등록
 insert into user (id, password, role) values ("student001", "1234", 3);
+insert into user (id, password, role) values ("student002", "1234", 3);
+insert into user (id, password, role) values ("student003", "1234", 3);
 insert into student (id, dep_code, div_code, status, disability) values ("student001", "DEP001", "DIV001", "active", false);
+insert into student (id, dep_code, div_code, status, disability) values ("student002", "DEP001", "DIV001", "active", false);
+insert into student (id, dep_code, div_code, status, disability) values ("student003", "DEP001", "DIV001", "active", false);
+
+학생 가족 정보 등록
+insert into user_family (name, phone_number, relation, user_id) values ("lee min jae", "010-1234-5678", "father", "student001");
+insert into user_family (name, phone_number, relation, user_id) values ("lee su min", "010-1234-5678", "mother", "student001");
+
+과목 등록
+insert into subject values ("COM001", "C Programming");
+insert into subject values ("COM002", "Object Oriented Programming(OOP)");
+insert into subject values ("COM003", "Embedded Programming");
+insert into subject values ("COM004", "Data Structure");
+insert into subject values ("COM005", "Operating System");
+insert into subject values ("COM006", "Database");
+insert into subject values ("COM007", "Network Programming");
+
+강의 등록
+insert into lecture (code, name, description, professor_id, subject_code) values ("LEC001", "C Programming #1", "Let's study how to develop a program", "prof001", "COM001");
+insert into lecture (code, name, description, professor_id, subject_code) values ("LEC002", "C Programming #2", "Let's study how to develop a program", "prof001", "COM001");
+
+강의 신청
+insert into lecture_history (lecture_code, student_id) values ("LEC001", "student001");
+insert into lecture_history (lecture_code, student_id) values ("LEC002", "student002");
+insert into lecture_history (lecture_code, student_id) values ("LEC002", "student003");

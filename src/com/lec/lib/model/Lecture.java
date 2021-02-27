@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-//@IdClass(LectureId.class)
 @Table(name = "lecture")
 public class Lecture {
 	@Id
@@ -32,6 +31,6 @@ public class Lecture {
 	@Column(name = "name")
 	private String name; // 강의 제목
 	
-	@Column(name = "contents")
-	private String contents; // 강의 내용
+	@Column(name = "description")
+	private String description; // 강의 내용
 }

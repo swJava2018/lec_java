@@ -5,20 +5,22 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
+@IdClass(LectureHistoryId.class)
 @Table(name = "lecture_history")
 public class LectureHistory implements Serializable {
 	@Id
-	@OneToOne
-	@JoinColumn(name = "code", referencedColumnName = "code")
+	@ManyToOne
+	@JoinColumn(name = "lecture_code", insertable = false, updatable = false)
 	private Lecture lecture; // 강의 코드
 
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "student_id", insertable = false, updatable = false)
 	private Student student; // 학생 번호

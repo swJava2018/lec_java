@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "user_family")
 public class UserFamily {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id")
 	private String id; // 구분 번호
 
