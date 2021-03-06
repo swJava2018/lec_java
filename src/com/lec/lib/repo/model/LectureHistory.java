@@ -11,19 +11,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//@SuppressWarnings("serial")
-//@Entity
-//@IdClass(LectureHistoryId.class)
-//@Table(name = "lecture_history")
+@SuppressWarnings("serial")
+@Entity
+@IdClass(LectureHistoryId.class)
+@Table(name = "lecture_history")
 public class LectureHistory implements Serializable {
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "lecture_code", insertable = false, updatable = false)
+	@JoinColumn(name = "lecture_code", referencedColumnName = "code")
 	private Lecture lecture; // 강의 코드
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "student_id", insertable = false, updatable = false)
+	@JoinColumn(name = "student_id", referencedColumnName = "id")
 	private Student student; // 학생 번호
 
 	@Column(name = "grade")
