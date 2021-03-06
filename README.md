@@ -2,7 +2,7 @@
 - Build Tool : Maven
 - Language : Java
 
-### Library
+## Library
 Database
 - [Hibernate](https://hibernate.org/) : java library for ORM
 - [H2](https://www.h2database.com/) : in-memory database
@@ -17,17 +17,17 @@ CLI
 GUI
 - [Javax Swing](https://docs.oracle.com/javase/8/docs/technotes/guides/swing/index.html)
 
-### Plugin
+## Plugin
 - Shade Plugin : [Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/)
 - Shade Plugin : [Apache Maven Assembly Plugin](http://maven.apache.org/plugins/maven-assembly-plugin/) (not use)
 - Compile Plugin : [Apache Maven Compiler Plugin](https://maven.apache.org/plugins/maven-compiler-plugin/)
 
 > Shade Plugin is to make a single jar(=uber jar) with dependencies.
 
-### Pattern
+## Pattern
 - Singleton Pattern
 
-### How to set database
+## How to set database
 - H2 (auto)
 - MySQL (use docker)
 
@@ -41,9 +41,11 @@ $ use lec_java;
 $ show tables;
 ```
 
-### How to use
+## How to run
 
-run
+**CLI Version**
+
+Run
 
 ```
 $ java -cp ./com.lec-0.0.1-SNAPSHOT.jar com.lec.my.App
@@ -51,8 +53,52 @@ or
 $ java -jar com.lec-0.0.1-SNAPSHOT.jar
 ```
 
-stop 
+Stop 
 
 ```
 $ "Ctrl" + 'D'
 ```
+
+## How to use
+
+**CLI Version**
+
+Login
+
+```
+> login admin 1234
+```
+
+Register
+
+```
+> register student -id 2021160124 -p 1234 -n alice
+```
+
+
+Read
+
+```
+> read
+> read -a
+```
+
+Update
+
+```
+> update -p 4567
+```
+
+Logout
+
+```
+> logout
+```
+
+**UI Version**
+
+Login  
+Register  
+Read  
+Update  
+Logout  
