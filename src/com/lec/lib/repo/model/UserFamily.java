@@ -1,4 +1,4 @@
-package com.lec.lib.model;
+package com.lec.lib.repo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

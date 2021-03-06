@@ -5,7 +5,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.lec.lib.model.User;
+import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
 public class UserListTable extends JTable implements ListSelectionListener {

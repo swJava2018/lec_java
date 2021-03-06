@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 import com.lec.gui.SwingApp;
 import com.lec.gui.controller.common.LecPanel;
-import com.lec.lib.model.User;
+import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
 public class UserListInfoPanel extends LecPanel {

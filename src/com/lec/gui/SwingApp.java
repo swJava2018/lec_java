@@ -13,7 +13,7 @@ import com.lec.gui.controller.student.StudentTab;
 import com.lec.lib.api.IAdmin;
 import com.lec.lib.api.config.Permission;
 import com.lec.lib.api.impl.AdminImpl;
-import com.lec.lib.service.UserDatabase;
+import com.lec.lib.repo.UserInfoRepo;
 
 @SuppressWarnings("serial")
 public class SwingApp extends JFrame {
@@ -80,7 +80,7 @@ public class SwingApp extends JFrame {
 	}
 
 	private static void InitDB() {
-		UserDatabase db = UserDatabase.getInstance();
+		UserInfoRepo db = UserInfoRepo.getInstance();
 		if(db.read("admin") != null)
 			return;
 		

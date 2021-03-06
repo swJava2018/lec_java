@@ -33,10 +33,10 @@ GUI
 
 ```
 $ docker run --name mysql -e MYSQL_ROOT_PASSWORD=mypass -d -p 3306:3306 mysql
-$ docker exec -it mysql /bin/bash`
+$ docker exec -it mysql /bin/bash
 $ mysql -u root -p mypass
 $ show databases;
-$ CREATE DATABASE lec_java
+$ CREATE DATABASE lec_java;
 $ use lec_java;
 $ show tables;
 ```

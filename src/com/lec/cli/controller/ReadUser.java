@@ -1,21 +1,23 @@
 package com.lec.cli.controller;
 
-import com.lec.lib.api.IAdmin;
-import com.lec.lib.api.UserAuth;
-import com.lec.lib.model.User;
+import com.lec.lib.auth.UserAuth;
+import com.lec.lib.repo.model.User;
+import com.lec.lib.service.UserService;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
 
 @Command(name = "read")
-public class CommonRead implements Runnable {
+public class ReadUser implements Runnable {
 	@Option(names = { "-a", "--all" }, description = "The All Users")
 	private boolean isAll;
 
 	@ParentCommand
 	CliCommands parent;
 
+	private UserService userService = UserService.getInstance();
+	
 	public void run() {
 		UserAuth auth = UserAuth.getInstance();
 
@@ -28,7 +30,7 @@ public class CommonRead implements Runnable {
 		if (isAll) {
 			if (auth.hasAdminPermission()) {
 				// 모든 사용자 정보 출력
-				for (User user : ((IAdmin) auth.getUserAPI()).readAll()) {
+				for (User user : userService.readAll()) {
 					parent.out.println(user.toString());
 				}
 			} else {

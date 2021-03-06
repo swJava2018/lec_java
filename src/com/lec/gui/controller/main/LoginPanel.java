@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 import com.lec.gui.SwingApp;
 import com.lec.gui.controller.common.LecPanel;
-import com.lec.lib.api.UserAuth;
+import com.lec.lib.auth.UserAuth;
 
 @SuppressWarnings("serial")
 public class LoginPanel extends LecPanel {

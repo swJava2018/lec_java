@@ -1,13 +1,13 @@
 package com.lec.cli.controller;
 
-import com.lec.lib.api.UserAuth;
+import com.lec.lib.auth.UserAuth;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.ParentCommand;
 
 @Command(name = "login")
-public class CommonLogin implements Runnable {
+public class LoginUser implements Runnable {
 	@Parameters(paramLabel = "ID", description = "The ID", index = "0")
 	private String id;
 

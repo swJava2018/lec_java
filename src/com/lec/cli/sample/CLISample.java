@@ -15,8 +15,7 @@ import org.jline.utils.AttributedStyle;
 
 import com.lec.cli.controller.CliCommands;
 import com.lec.cli.controller.DescriptionGenerator;
-import com.lec.lib.api.UserAuth;
-import com.lec.lib.api.impl.UserImpl;
+import com.lec.lib.auth.UserAuth;
 
 import picocli.CommandLine;
 import picocli.shell.jline3.PicocliCommands;
@@ -62,7 +61,7 @@ public class CLISample {
 					} else {
 						prompt = "prompt> ";
 					}
-					
+
 					// 명령어 읽기
 					line = reader.readLine(prompt, rightPrompt, (MaskingCallback) null, null);
 					if (line.matches("^\\s*#.*")) {

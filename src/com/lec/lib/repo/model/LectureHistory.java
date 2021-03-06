@@ -1,19 +1,20 @@
-package com.lec.lib.model;
+package com.lec.lib.repo.model;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
-@Entity
-@IdClass(LectureHistoryId.class)
-@Table(name = "lecture_history")
+//@SuppressWarnings("serial")
+//@Entity
+//@IdClass(LectureHistoryId.class)
+//@Table(name = "lecture_history")
 public class LectureHistory implements Serializable {
 	@Id
 	@ManyToOne

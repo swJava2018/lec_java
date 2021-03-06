@@ -1,18 +1,20 @@
 package com.lec.cli.controller;
 
-import com.lec.lib.api.UserAuth;
+import com.lec.lib.api.config.Permission;
+import com.lec.lib.auth.UserAuth;
+import com.lec.lib.service.UserService;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.ParentCommand;
 
-@Command(name = "update")
-public class CommonUpdate implements Runnable {
+@Command(name = "register")
+public class RegisterUser implements Runnable {
 	@Parameters(paramLabel = "Role", description = "The role")
 	private String role;
 
-	@Option(names = { "-i", "--id" }, description = "The student ID")
+	@Option(names = { "-id" }, description = "The student ID")
 	private String id;
 
 	@Option(names = { "-n", "--name" }, description = "The student Name")
@@ -27,6 +29,8 @@ public class CommonUpdate implements Runnable {
 	@ParentCommand
 	CliCommands parent;
 
+	private UserService userService = UserService.getInstance();
+	
 	public void run() {
 		UserAuth auth = UserAuth.getInstance();
 
@@ -36,12 +40,24 @@ public class CommonUpdate implements Runnable {
 			return;
 		}
 
-		// 사용자 정보 갱신
-		boolean result = auth.getUserAPI().update(id, name, password, address);
-		if (result) {
-			parent.out.println("update success");
+		// 권한 확인
+		if (!auth.hasAdminPermission()) {
+			parent.out.println("your account have not register permission");
+			return;
+		}
+
+		// 입력 내용 확인
+		Permission p = Permission.valueOfType(role);
+		if (p == null) {
+			parent.out.println("role is wrong");
+			return;
+		}
+
+		// 사용자 추가
+		if (userService.register(id, name, password, p)) {
+			parent.out.println("register success");
 		} else {
-			parent.out.println("update fail");
+			parent.out.println("register fail");
 		}
 	}
 }

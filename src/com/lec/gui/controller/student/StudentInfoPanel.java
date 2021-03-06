@@ -10,8 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.lec.lib.api.UserAuth;
-import com.lec.lib.model.User;
+import com.lec.lib.auth.UserAuth;
+import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
 public class StudentInfoPanel extends JPanel {

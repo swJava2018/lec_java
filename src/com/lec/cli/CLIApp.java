@@ -20,10 +20,9 @@ import org.jline.utils.AttributedStyle;
 
 import com.lec.cli.controller.CliCommands;
 import com.lec.cli.controller.DescriptionGenerator;
-import com.lec.lib.api.IAdmin;
-import com.lec.lib.api.UserAuth;
 import com.lec.lib.api.config.Permission;
-import com.lec.lib.api.impl.AdminImpl;
+import com.lec.lib.auth.UserAuth;
+import com.lec.lib.service.UserService;
 
 import picocli.CommandLine;
 import picocli.shell.jline3.PicocliCommands;
@@ -52,7 +51,7 @@ public class CLIApp {
 			new TailTipWidgets(reader, descriptionGenerator::commandDescription, 5, TipType.COMPLETER);
 
 			// 초기화 (Default 어드민 계정 추가)
-			InitDB();
+//			InitDB();
 
 			// start the shell and process input until the user quits with Ctrl-D
 			String prompt = "";
@@ -94,9 +93,8 @@ public class CLIApp {
 	}
 
 	private static void InitDB() {
-		IAdmin api = new AdminImpl();
-		boolean result = api.register("admin", "admin", "1234", Permission.Admin);
-		if (result) {
+		UserService userService = UserService.getInstance();
+		if (userService.register("admin", "admin", "1234", Permission.Admin)) {
 			System.out.println("init success");
 		} else {
 			System.out.println("init fail");

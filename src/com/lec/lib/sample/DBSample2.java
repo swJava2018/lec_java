@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.lec.lib.model.User;
+import com.lec.lib.repo.model.User;
 
 public class DBSample2 {
 	private static final String PERSISTENCE_UNIT_NAME = "h2";

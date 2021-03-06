@@ -4,12 +4,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.lec.gui.SwingApp;
-import com.lec.lib.service.UserDatabase;
+import com.lec.lib.repo.UserInfoRepo;
 
 @SuppressWarnings("serial")
 public class LecPanel extends JPanel {
 	protected SwingApp frame;
-	protected static UserDatabase db = UserDatabase.getInstance();
+	protected static UserInfoRepo db = UserInfoRepo.getInstance();
 
 	// component
 	private JOptionPane op = new JOptionPane();

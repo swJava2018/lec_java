@@ -1,4 +1,4 @@
-package com.lec.lib.model;
+package com.lec.lib.repo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,11 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "division")
-public class Division {
+@Table(name = "department")
+public class Department {
 	@Id
 	@Column(name = "code")
-	private String code; // 학부 코드
+	private String code; // 학과 코드
 
 	@Column(name = "name")
 	private String name; // 학과 이름

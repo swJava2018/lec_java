@@ -1,4 +1,4 @@
-package com.lec.lib.model;
+package com.lec.lib.repo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,4 +14,20 @@ public class Subject {
 
 	@Column(name = "name")
 	private String name; // 과목 이름
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

@@ -1,12 +1,12 @@
 package com.lec.cli.controller;
 
-import com.lec.lib.api.UserAuth;
+import com.lec.lib.auth.UserAuth;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ParentCommand;
 
 @Command(name = "logout")
-public class CommandLogout implements Runnable {
+public class LogoutUser implements Runnable {
 	@ParentCommand
 	CliCommands parent;
 

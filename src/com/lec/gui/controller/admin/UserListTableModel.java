@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import com.lec.lib.model.User;
+import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
 public class UserListTableModel extends AbstractTableModel {
