@@ -10,10 +10,8 @@ import com.lec.gui.controller.admin.AdminTab;
 import com.lec.gui.controller.main.MainTab;
 import com.lec.gui.controller.professor.ProfessorTab;
 import com.lec.gui.controller.student.StudentTab;
-import com.lec.lib.api.IAdmin;
 import com.lec.lib.api.config.Permission;
-import com.lec.lib.api.impl.AdminImpl;
-import com.lec.lib.repo.UserInfoRepo;
+import com.lec.lib.service.UserService;
 
 @SuppressWarnings("serial")
 public class SwingApp extends JFrame {
@@ -70,23 +68,21 @@ public class SwingApp extends JFrame {
 	public void changeStudentTab() {
 		layout.show(this.getContentPane(), StudentTab);
 	}
-	
+
 	public void changeEmployeeTab() {
 		layout.show(this.getContentPane(), EmployeeTab);
 	}
-	
+
 	public void changeAdminTab() {
 		layout.show(this.getContentPane(), AdminTab);
 	}
 
 	private static void InitDB() {
-		UserInfoRepo db = UserInfoRepo.getInstance();
-		if(db.read("admin") != null)
+		UserService userService = UserService.getInstance();
+		if (userService.read("admin") != null)
 			return;
-		
-		IAdmin api = new AdminImpl();
-		boolean result = api.register("admin", "admin", "1234", Permission.Admin);
-		if (result) {
+
+		if (userService.register("admin", "admin", "1234", Permission.Admin)) {
 			System.out.println("init success");
 		} else {
 			System.out.println("init fail");

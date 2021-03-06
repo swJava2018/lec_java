@@ -36,7 +36,7 @@ public class RegisterSubject implements Runnable {
 		}
 
 		// 과목 추가
-		if (subjectService.registerSubejct(code, name)) {
+		if (subjectService.register(code, name)) {
 			parent.out.println("register success");
 		} else {
 			parent.out.println("register fail");

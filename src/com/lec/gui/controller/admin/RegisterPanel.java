@@ -9,9 +9,9 @@ import javax.swing.JTextField;
 
 import com.lec.gui.SwingApp;
 import com.lec.gui.controller.common.LecPanel;
-import com.lec.lib.api.IAdmin;
 import com.lec.lib.api.config.Permission;
 import com.lec.lib.auth.UserAuth;
+import com.lec.lib.service.UserService;
 
 @SuppressWarnings("serial")
 public class RegisterPanel extends LecPanel {
@@ -21,6 +21,8 @@ public class RegisterPanel extends LecPanel {
 	private JTextField pwdField;
 	private JTextField roleField;
 	private JButton signUpBtn;
+
+	private UserService userService = UserService.getInstance();
 
 	public RegisterPanel(SwingApp frame) {
 		super(frame);
@@ -74,8 +76,7 @@ public class RegisterPanel extends LecPanel {
 			}
 
 			// 사용자 추가
-			boolean result = ((IAdmin) auth.getUserAPI()).register(id, name, password, p);
-			if (result) {
+			if (userService.register(id, name, password, p)) {
 				showMessageBox("회원등록 성공");
 			} else {
 				showMessageBox("회원등록 실패");

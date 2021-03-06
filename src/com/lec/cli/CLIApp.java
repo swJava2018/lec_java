@@ -51,7 +51,7 @@ public class CLIApp {
 			new TailTipWidgets(reader, descriptionGenerator::commandDescription, 5, TipType.COMPLETER);
 
 			// 초기화 (Default 어드민 계정 추가)
-//			InitDB();
+			InitDB();
 
 			// start the shell and process input until the user quits with Ctrl-D
 			String prompt = "";
@@ -94,6 +94,9 @@ public class CLIApp {
 
 	private static void InitDB() {
 		UserService userService = UserService.getInstance();
+		if (userService.read("admin") != null)
+			return;
+		
 		if (userService.register("admin", "admin", "1234", Permission.Admin)) {
 			System.out.println("init success");
 		} else {

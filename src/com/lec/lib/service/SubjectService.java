@@ -1,6 +1,9 @@
 package com.lec.lib.service;
 
+import java.util.List;
+
 import com.lec.lib.repo.SubjectRepo;
+import com.lec.lib.repo.model.Subject;
 
 public class SubjectService {
 	private static SubjectService instance;
@@ -13,7 +16,19 @@ public class SubjectService {
 		return instance;
 	}
 
-	public boolean registerSubejct(String code, String name) {
-		return db.registerSubject(code, name);
+	public boolean register(String code, String name) {
+		return db.register(code, name);
+	}
+	
+	public Subject read(String code) {
+		return db.read(code);
+	}
+	
+	public List<Subject> readAll() {
+		return db.readAll();
+	}
+	
+	public boolean update(String code, String name) {
+		return db.update(code, name);
 	}
 }
