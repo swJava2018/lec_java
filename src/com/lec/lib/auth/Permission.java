@@ -1,7 +1,7 @@
-package com.lec.lib.api.config;
+package com.lec.lib.auth;
 
 public enum Permission {
-	Admin("admin"), Employee("employee"), Professor("professor"), Student("student");
+	ADMIN("admin"), EMPLOYEE("employee"), PROFESSOR("professor"), STUDENT("student");
 
 	private final String value;
 

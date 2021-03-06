@@ -6,11 +6,11 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
-import com.lec.gui.controller.admin.AdminTab;
-import com.lec.gui.controller.main.MainTab;
-import com.lec.gui.controller.professor.ProfessorTab;
-import com.lec.gui.controller.student.StudentTab;
-import com.lec.lib.api.config.Permission;
+import com.lec.gui.component.admin.AdminTab;
+import com.lec.gui.component.main.MainTab;
+import com.lec.gui.component.professor.ProfessorTab;
+import com.lec.gui.component.student.StudentTab;
+import com.lec.lib.auth.Permission;
 import com.lec.lib.service.UserService;
 
 @SuppressWarnings("serial")
@@ -82,7 +82,7 @@ public class SwingApp extends JFrame {
 		if (userService.read("admin") != null)
 			return;
 
-		if (userService.register("admin", "admin", "1234", Permission.Admin)) {
+		if (userService.register("admin", "admin", "1234", "admin")) {
 			System.out.println("init success");
 		} else {
 			System.out.println("init fail");

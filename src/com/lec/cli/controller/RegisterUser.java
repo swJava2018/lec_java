@@ -1,6 +1,6 @@
 package com.lec.cli.controller;
 
-import com.lec.lib.api.config.Permission;
+import com.lec.lib.auth.Permission;
 import com.lec.lib.auth.UserAuth;
 import com.lec.lib.service.UserService;
 
@@ -46,15 +46,8 @@ public class RegisterUser implements Runnable {
 			return;
 		}
 
-		// 입력 내용 확인
-		Permission p = Permission.valueOfType(role);
-		if (p == null) {
-			parent.out.println("role is wrong");
-			return;
-		}
-
 		// 사용자 추가
-		if (userService.register(id, name, password, p)) {
+		if (userService.register(id, name, password, role)) {
 			parent.out.println("register success");
 		} else {
 			parent.out.println("register fail");

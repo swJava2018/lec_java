@@ -2,10 +2,14 @@ package com.lec.lib.repo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.PostLoad;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-import com.lec.lib.api.config.Permission;
+import com.lec.lib.auth.Permission;
 
 @Entity
 @Table(name = "user")
@@ -39,8 +43,9 @@ public class User {
 	private String password; // 비밀번호
 
 	@Column(name = "role")
+	@Enumerated(EnumType.STRING)
 	private Permission role; // 역할
-
+    
 	public String getId() {
 		return id;
 	}

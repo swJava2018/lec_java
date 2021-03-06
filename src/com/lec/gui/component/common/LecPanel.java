@@ -1,15 +1,17 @@
-package com.lec.gui.controller.common;
+package com.lec.gui.component.common;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.lec.gui.SwingApp;
-import com.lec.lib.repo.UserInfoRepo;
+import com.lec.lib.service.SubjectService;
+import com.lec.lib.service.UserService;
 
 @SuppressWarnings("serial")
 public class LecPanel extends JPanel {
 	protected SwingApp frame;
-	protected static UserInfoRepo db = UserInfoRepo.getInstance();
+	protected static UserService userService = UserService.getInstance();
+	protected static SubjectService subjectService = SubjectService.getInstance();
 
 	// component
 	private JOptionPane op = new JOptionPane();

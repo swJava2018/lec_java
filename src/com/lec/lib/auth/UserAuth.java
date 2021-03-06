@@ -1,6 +1,5 @@
 package com.lec.lib.auth;
 
-import com.lec.lib.api.config.Permission;
 import com.lec.lib.repo.UserInfoRepo;
 import com.lec.lib.repo.model.User;
 
@@ -34,7 +33,7 @@ public class UserAuth {
 
 	public boolean hasAdminPermission() {
 		Permission role = user.getRole();
-		if (Permission.Admin.equals(role) || Permission.Employee.equals(role)) {
+		if (Permission.ADMIN.equals(role) || Permission.EMPLOYEE.equals(role)) {
 			return true;
 		}
 		return false;

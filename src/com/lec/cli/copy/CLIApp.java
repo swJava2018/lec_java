@@ -1,4 +1,4 @@
-package com.lec.cli;
+package com.lec.cli.copy;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -97,7 +97,7 @@ public class CLIApp {
 		if (userService.read("admin") != null)
 			return;
 		
-		if (userService.register("admin", "admin", "1234", "admin")) {
+		if (userService.register("admin", "admin", "1234", Permission.ADMIN)) {
 			System.out.println("init success");
 		} else {
 			System.out.println("init fail");

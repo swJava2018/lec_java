@@ -1,4 +1,4 @@
-package com.lec.gui.controller.admin;
+package com.lec.gui.component.admin;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -8,8 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import com.lec.gui.SwingApp;
-import com.lec.gui.controller.common.LecPanel;
-import com.lec.lib.api.config.Permission;
+import com.lec.gui.component.common.LecPanel;
+import com.lec.lib.auth.Permission;
 import com.lec.lib.auth.UserAuth;
 import com.lec.lib.service.UserService;
 
@@ -55,28 +55,9 @@ public class RegisterPanel extends LecPanel {
 			if (id == "" || name == "" || password == "")
 				return;
 
-			UserAuth auth = UserAuth.getInstance();
-
-			// 로그인 확인
-			if (!auth.isLogin()) {
-				return;
-			}
-
-			// 권한 확인
-			if (!auth.hasAdminPermission()) {
-				showMessageBox("your account have not register permission");
-				return;
-			}
-
-			// 입력 내용 확인
-			Permission p = Permission.valueOfType(role);
-			if (p == null) {
-				showMessageBox("role is wrong");
-				return;
-			}
 
 			// 사용자 추가
-			if (userService.register(id, name, password, p)) {
+			if (userService.register(id, name, password, role)) {
 				showMessageBox("회원등록 성공");
 			} else {
 				showMessageBox("회원등록 실패");

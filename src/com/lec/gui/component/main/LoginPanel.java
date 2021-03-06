@@ -1,4 +1,4 @@
-package com.lec.gui.controller.main;
+package com.lec.gui.component.main;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.lec.gui.SwingApp;
-import com.lec.gui.controller.common.LecPanel;
+import com.lec.gui.component.common.LecPanel;
 import com.lec.lib.auth.UserAuth;
 
 @SuppressWarnings("serial")
@@ -84,16 +84,16 @@ public class LoginPanel extends LecPanel {
 			} else {
 				showMessageBox("로그인 성공");
 				switch (auth.getUser().getRole()) {
-				case Student:
+				case STUDENT:
 					frame.changeStudentTab();
 					break;
-				case Professor:
+				case PROFESSOR:
 					frame.changeProfessorTab();
 					break;
-				case Employee:
+				case EMPLOYEE:
 					frame.changeEmployeeTab();
 					break;
-				case Admin:
+				case ADMIN:
 					frame.changeAdminTab();
 					break;
 				default:

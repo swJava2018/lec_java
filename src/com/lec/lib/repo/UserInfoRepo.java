@@ -9,7 +9,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.lec.lib.api.config.Permission;
+import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.User;
 
 public class UserInfoRepo extends BaseRepo {
@@ -22,7 +22,7 @@ public class UserInfoRepo extends BaseRepo {
 		return instance;
 	}
 
-	public boolean register(String id, String name, String password, Permission role) {
+	public User register(String id, String name, String password, Permission role) {
 		try {
 			User user = new User();
 			user.setId(id);
@@ -34,11 +34,12 @@ public class UserInfoRepo extends BaseRepo {
 			transaction.begin();
 			em.persist(user);
 			transaction.commit();
+
+			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
-		return true;
 	}
 
 	public User login(String id, String pwd) {
@@ -69,6 +70,22 @@ public class UserInfoRepo extends BaseRepo {
 			user.setName(name);
 			user.setPassword(password);
 			user.setAddress(address);
+			transaction.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public boolean delete(String id) {
+		try {
+			User user = em.find(User.class, id);
+
+			EntityTransaction transaction = em.getTransaction();
+			transaction.begin();
+			em.remove(user);
 			transaction.commit();
 
 		} catch (Exception e) {
