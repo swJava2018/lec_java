@@ -1,4 +1,4 @@
-package com.lec.gui.component.admin;
+package com.lec.gui.component.admin.user;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
-import com.lec.gui.SwingApp;
+import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
 import com.lec.lib.repo.model.User;
 
@@ -25,7 +25,7 @@ public class UserPanel extends LecPanel {
 	private JButton registerBtn;
 	private JButton deleteBtn;
 
-	public UserPanel(SwingApp frame) {
+	public UserPanel(MainGui frame) {
 		super(frame);
 
 		// 선택된 사용자 정보

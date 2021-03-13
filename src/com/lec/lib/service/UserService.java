@@ -8,7 +8,7 @@ import com.lec.lib.repo.model.User;
 
 public class UserService {
 	private static UserService instance;
-	protected static UserInfoRepo userRepo = UserInfoRepo.getInstance();
+	protected static UserInfoRepo repo = UserInfoRepo.getInstance();
 
 	public static UserService getInstance() {
 		if (instance == null) {
@@ -23,7 +23,7 @@ public class UserService {
 			return false;
 		}
 
-		User user = userRepo.register(id, name, password, p);
+		User user = repo.register(id, name, password, p);
 		if (user == null) {
 			return false;
 		}
@@ -32,18 +32,18 @@ public class UserService {
 	}
 
 	public boolean update(String id, String name, String password, String address) {
-		return userRepo.update(id, name, password, address);
+		return repo.update(id, name, password, address);
 	}
 
 	public boolean delete(String id) {
-		return userRepo.delete(id);
+		return repo.delete(id);
 	}
 
 	public User read(String id) {
-		return userRepo.read(id);
+		return repo.read(id);
 	}
 
 	public List<User> readAll() {
-		return userRepo.readAll();
+		return repo.readAll();
 	}
 }

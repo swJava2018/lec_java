@@ -1,21 +1,21 @@
-package com.lec.gui.component.admin;
+package com.lec.gui.component.admin.user;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import com.lec.lib.repo.model.Subject;
+import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class SubjectListTableModel extends AbstractTableModel {
+public class UserListTableModel extends AbstractTableModel {
 
 	// 제목
-	private final String[] header = { "Code", "Name" };
+	private final String[] header = { "ID", "Name", "Role" };
 	
 	// 내용
-	private List<Subject> data;
+	private List<User> data;
 
-	public SubjectListTableModel(List<Subject> data) {
+	public UserListTableModel(List<User> data) {
 		this.data = data;
 	}
 
@@ -38,15 +38,17 @@ public class SubjectListTableModel extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
 		case 0:
-			return data.get(rowIndex).getCode();
+			return data.get(rowIndex).getId();
 		case 1:
 			return data.get(rowIndex).getName();
+		case 2:
+			return data.get(rowIndex).getRole();
 		default:
 			return "default";
 		}
 	}
 
-	public Subject getRow(int rowIndex) {
+	public User getRow(int rowIndex) {
 		return data.get(rowIndex);
 	}
 }

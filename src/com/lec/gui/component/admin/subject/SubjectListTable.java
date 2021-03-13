@@ -1,17 +1,17 @@
-package com.lec.gui.component.admin;
+package com.lec.gui.component.admin.subject;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.lec.lib.repo.model.User;
+import com.lec.lib.repo.model.Subject;
 
 @SuppressWarnings("serial")
-public class UserListTable extends JTable implements ListSelectionListener {
-	private UserInfoPanel detailPanel;
+public class SubjectListTable extends JTable implements ListSelectionListener {
+	private SubjectInfoPanel detailPanel;
 
-	public UserListTable(UserInfoPanel detailPanel) {
+	public SubjectListTable(SubjectInfoPanel detailPanel) {
 		this.detailPanel = detailPanel;
 
 		// 선택 방법 세팅
@@ -29,10 +29,10 @@ public class UserListTable extends JTable implements ListSelectionListener {
 			// 선택된 레코드가 없을 경우 -1을 반환
 			int row = this.getSelectedRow();
 			if (row != -1) {
-				User user = ((UserListTableModel) this.getModel()).getRow(row);
+				Subject subject = ((SubjectListTableModel) this.getModel()).getRow(row);
 				
 				// 선택된 레코드로 정보 변경
-				detailPanel.setData(user);
+				detailPanel.setData(subject);
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-package com.lec.cli;
+package com.lec;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,14 +20,13 @@ import org.jline.utils.AttributedStyle;
 
 import com.lec.cli.controller.CliCommands;
 import com.lec.cli.controller.DescriptionGenerator;
-import com.lec.lib.auth.Permission;
 import com.lec.lib.auth.UserAuth;
 import com.lec.lib.service.UserService;
 
 import picocli.CommandLine;
 import picocli.shell.jline3.PicocliCommands;
 
-public class CLIApp {
+public class MainCli {
 	private static CommandLine cmd;
 	private static CliCommands commands;
 	private static DescriptionGenerator descriptionGenerator;

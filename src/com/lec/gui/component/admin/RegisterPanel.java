@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import com.lec.gui.SwingApp;
+import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
 import com.lec.lib.auth.Permission;
 import com.lec.lib.auth.UserAuth;
@@ -24,7 +24,7 @@ public class RegisterPanel extends LecPanel {
 
 	private UserService userService = UserService.getInstance();
 
-	public RegisterPanel(SwingApp frame) {
+	public RegisterPanel(MainGui frame) {
 		super(frame);
 
 		idField = new JTextField("아이디");

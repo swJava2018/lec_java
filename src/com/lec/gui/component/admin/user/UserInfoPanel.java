@@ -1,4 +1,4 @@
-package com.lec.gui.component.admin;
+package com.lec.gui.component.admin.user;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.lec.gui.SwingApp;
+import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
 import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.User;
@@ -17,7 +17,7 @@ import com.lec.lib.repo.model.User;
 public class UserInfoPanel extends LecPanel {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 
-	public UserInfoPanel(SwingApp frame) {
+	public UserInfoPanel(MainGui frame) {
 		super(frame);
 
 		initLayout();

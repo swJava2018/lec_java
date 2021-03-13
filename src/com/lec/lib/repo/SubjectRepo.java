@@ -10,6 +10,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.lec.lib.repo.model.Subject;
+import com.lec.lib.repo.model.User;
 
 public class SubjectRepo extends BaseRepo {
 	private static SubjectRepo instance;
@@ -46,6 +47,22 @@ public class SubjectRepo extends BaseRepo {
 			transaction.begin();
 			subject.setCode(code);
 			subject.setName(name);
+			transaction.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public boolean delete(String code) {
+		try {
+			Subject subject = em.find(Subject.class, code);
+
+			EntityTransaction transaction = em.getTransaction();
+			transaction.begin();
+			em.remove(subject);
 			transaction.commit();
 
 		} catch (Exception e) {

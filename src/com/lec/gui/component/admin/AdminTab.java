@@ -2,11 +2,13 @@ package com.lec.gui.component.admin;
 
 import javax.swing.JTabbedPane;
 
-import com.lec.gui.SwingApp;
+import com.lec.MainGui;
+import com.lec.gui.component.admin.subject.SubjectPanel;
+import com.lec.gui.component.admin.user.UserPanel;
 
 @SuppressWarnings("serial")
 public class AdminTab extends JTabbedPane {
-	public AdminTab(SwingApp frame) {
+	public AdminTab(MainGui frame) {
 //		addTab("회원 등록", new RegisterPanel(frame));
 		addTab("회원 정보", new UserPanel(frame));
 		addTab("과목 정보", new SubjectPanel(frame));

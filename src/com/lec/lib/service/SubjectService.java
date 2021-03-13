@@ -7,7 +7,7 @@ import com.lec.lib.repo.model.Subject;
 
 public class SubjectService {
 	private static SubjectService instance;
-	protected static SubjectRepo db = SubjectRepo.getInstance();
+	protected static SubjectRepo repo = SubjectRepo.getInstance();
 
 	public static SubjectService getInstance() {
 		if (instance == null) {
@@ -17,18 +17,22 @@ public class SubjectService {
 	}
 
 	public boolean register(String code, String name) {
-		return db.register(code, name);
+		return repo.register(code, name);
 	}
-	
+
 	public Subject read(String code) {
-		return db.read(code);
+		return repo.read(code);
 	}
-	
+
 	public List<Subject> readAll() {
-		return db.readAll();
+		return repo.readAll();
 	}
-	
+
 	public boolean update(String code, String name) {
-		return db.update(code, name);
+		return repo.update(code, name);
+	}
+
+	public boolean delete(String code) {
+		return repo.delete(code);
 	}
 }

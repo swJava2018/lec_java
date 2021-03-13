@@ -1,4 +1,4 @@
-package com.lec.gui;
+package com.lec;
 
 import java.awt.CardLayout;
 import java.awt.Container;
@@ -14,8 +14,8 @@ import com.lec.lib.auth.Permission;
 import com.lec.lib.service.UserService;
 
 @SuppressWarnings("serial")
-public class SwingApp extends JFrame {
-	private static SwingApp instance = new SwingApp();
+public class MainGui extends JFrame {
+	private static MainGui instance = new MainGui();
 	private CardLayout layout = new CardLayout();
 
 	// tab
@@ -35,7 +35,7 @@ public class SwingApp extends JFrame {
 		instance.start();
 	}
 
-	public SwingApp() {
+	public MainGui() {
 		// set configuration
 		setSize(1000, 700);
 		setLocation(200, 400);

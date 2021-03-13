@@ -1,12 +1,12 @@
 package com.lec.gui.component.admin;
 
-import com.lec.gui.SwingApp;
+import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
 
 @SuppressWarnings("serial")
 public class DepartmentPanel extends LecPanel {
 
-	public DepartmentPanel(SwingApp frame) {
+	public DepartmentPanel(MainGui frame) {
 		super(frame);
 	}
 }

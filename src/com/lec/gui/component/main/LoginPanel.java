@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.lec.gui.SwingApp;
+import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
 import com.lec.lib.auth.UserAuth;
 
@@ -21,7 +21,7 @@ public class LoginPanel extends LecPanel {
 	private JTextField idField, pwdField;
 	private JButton loginBtn;
 
-	public LoginPanel(SwingApp frame) {
+	public LoginPanel(MainGui frame) {
 		super(frame);
 
 		idLabel = new JLabel("아이디");
