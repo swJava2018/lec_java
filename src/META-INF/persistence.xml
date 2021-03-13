@@ -12,6 +12,8 @@
 	 -->
 	
 	<!-- H2 Database -->
+	<!-- H2 reference :
+		DataBase URLs : https://www.h2database.com/html/cheatSheet.html -->
 
 	<persistence-unit name="h2" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
@@ -19,11 +21,11 @@
 			<property name="hibernate.archive.autodetection" value="class" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.connection.driver_class" value="org.h2.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:h2:target:./data/db" />
+			<property name="hibernate.connection.url" value="jdbc:h2:~/test/data/db" />
 			<property name="hibernate.connection.user" value="sa" />
 			<!-- <property name="hibernate.show_sql" value="true"/> -->
 			<property name="hibernate.flushMode" value="FLUSH_AUTO" />
-			<property name="hibernate.hbm2ddl.auto" value="create" /> <!-- create | create-drop | update | validate -->
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create | create-drop | update | validate -->
 		</properties>
 	</persistence-unit>
 

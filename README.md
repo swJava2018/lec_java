@@ -28,18 +28,54 @@ GUI
 - Singleton Pattern
 
 ## How to set database
-- H2 (auto)
-- MySQL (use docker)
+
+**MySQL (using docker)**
+
+1 execute mysql
 
 ```
 $ docker run --name mysql -e MYSQL_ROOT_PASSWORD=mypass -d -p 3306:3306 mysql
+```
+
+2 access bash
+
+```
 $ docker exec -it mysql /bin/bash
+```
+
+3 create database
+
+```
 $ mysql -u root -p mypass
 $ show databases;
 $ CREATE DATABASE lec_java;
 $ use lec_java;
 $ show tables;
 ```
+
+4 execute this program
+
+**H2 (using installer)**
+
+It's need to intall h2 when you check processed data in the database.
+
+1 execute this program
+
+2 download h2 [down](https://www.h2database.com/html/main.html)
+
+
+3 execute jar
+
+```
+$ java -jar h2-1.4.200.jar
+```
+
+4 open console page
+- URL : http://localhost:8082/
+- Setting : Generic H2 (Embedded)
+- Driver Class : org.h2.Driver
+- JDBC URL : jdbc:h2:target
+- User : sa
 
 ## How to run
 
