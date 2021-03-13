@@ -1,11 +1,18 @@
 package com.lec.lib.repo.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.lec.lib.auth.LectureDay;
 
 @Entity
 @Table(name = "lecture")
@@ -27,4 +34,56 @@ public class Lecture {
 
 	@Column(name = "description")
 	private String description; // 강의 내용
+
+	@Convert(converter = LectureTimeConverter.class)
+	@Column(name = "time")
+	private Map<LectureDay, List<Integer>> time = new HashMap<LectureDay, List<Integer>>(); // 강의 요일, 강의 시간
+	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public Subject getSubject() {
+		return subject;
+	}
+
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Map<LectureDay, List<Integer>> getTime() {
+		return time;
+	}
+
+	public void setTime(Map<LectureDay, List<Integer>> time) {
+		this.time = time;
+	}
 }

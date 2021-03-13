@@ -4,12 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.lec.lib.auth.LectureDay;
+import com.lec.lib.auth.LectureStatus;
 
 @SuppressWarnings("serial")
 @Entity
@@ -37,6 +41,10 @@ public class LectureHistory implements Serializable {
 	@Column(name = "opinion")
 	@JoinColumn(name = "opinion", insertable = false, updatable = false)
 	private String opinion; // 강의 평가
+	
+	@Column(name = "status")
+	@Enumerated(EnumType.STRING)
+	private LectureStatus status; // 상태
 
 	public Lecture getLecture() {
 		return lecture;
@@ -76,5 +84,13 @@ public class LectureHistory implements Serializable {
 
 	public void setOpinion(String opinion) {
 		this.opinion = opinion;
+	}
+
+	public LectureStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(LectureStatus status) {
+		this.status = status;
 	}
 }

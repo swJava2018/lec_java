@@ -52,9 +52,6 @@ public class MainGui extends JFrame {
 		pan.add(ProfessorTab, professorTab);
 		pan.add(StudentTab, studentTab);
 		pan.add(AdminTab, adminTab);
-
-		// 초기화 (Default 어드민 계정 추가)
-		InitDB();
 	}
 
 	private void start() {
@@ -75,17 +72,5 @@ public class MainGui extends JFrame {
 
 	public void changeAdminTab() {
 		layout.show(this.getContentPane(), AdminTab);
-	}
-
-	private static void InitDB() {
-		UserService userService = UserService.getInstance();
-		if (userService.read("admin") != null)
-			return;
-
-		if (userService.register("admin", "admin", "1234", "admin")) {
-			System.out.println("init success");
-		} else {
-			System.out.println("init fail");
-		}
 	}
 }

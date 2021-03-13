@@ -13,9 +13,9 @@ import javax.persistence.Table;
 @Table(name = "user_family")
 public class UserFamily {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private String id; // 구분 번호
+	private Long id; // 구분 번호
 
 	@ManyToOne
 	@JoinColumn(name = "user_id", insertable = false, updatable = false)

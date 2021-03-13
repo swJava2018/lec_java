@@ -1,0 +1,1 @@
+insert into user (id, password, role) values ("admin", "1234", "ADMIN");

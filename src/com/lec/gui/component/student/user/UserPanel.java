@@ -1,4 +1,4 @@
-package com.lec.gui.component.student;
+package com.lec.gui.component.student.user;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -14,11 +14,11 @@ import com.lec.lib.auth.UserAuth;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class StudentInfoPanel extends JPanel {
+public class UserPanel extends JPanel {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 	private JButton loadBtn;
 	
-	public StudentInfoPanel() {	
+	public UserPanel() {	
 		genInfoPair("id", "ID(학번)");
 		genInfoPair("name", "이름");
 		genInfoPair("phone", "전화번호");

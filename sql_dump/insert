@@ -6,8 +6,8 @@ insert into department values ("DEP001", "Computer Science");
 insert into division values ("DIV001", "Information Communication Technology");
 
 교수 정보 등록
-insert into user (id, password, role) values ("prof001", "1234", 2);
-insert into user (id, password, role) values ("prof002", "1234", 2);
+insert into user (id, password, role) values ("prof001", "1234", "PROFESSOR");
+insert into user (id, password, role) values ("prof002", "1234", "PROFESSOR");
 insert into professor values ("prof001", "DEP001", "DIV001");
 insert into professor values ("prof002", "DEP001", "DIV001");
 
@@ -33,10 +33,10 @@ insert into subject values ("COM006", "Database");
 insert into subject values ("COM007", "Network Programming");
 
 강의 등록
-insert into lecture (code, name, description, professor_id, subject_code) values ("LEC001", "C Programming #1", "Let's study how to develop a program", "prof001", "COM001");
-insert into lecture (code, name, description, professor_id, subject_code) values ("LEC002", "C Programming #2", "Let's study how to develop a program", "prof001", "COM001");
+insert into lecture (code, name, description, professor_id, subject_code, time) values ("LEC001", "C Programming #1", "Let's study how to develop a program", "prof001", "COM001", "{1:[13,14]},3:[15,16]}");
+insert into lecture (code, name, description, professor_id, subject_code, time) values ("LEC002", "C Programming #2", "Let's study how to develop a program", "prof001", "COM001", "{2:[10,11]},4:[9]}");
 
-강의 신청
-insert into lecture_history (lecture_code, student_id) values ("LEC001", "student001");
-insert into lecture_history (lecture_code, student_id) values ("LEC002", "student002");
-insert into lecture_history (lecture_code, student_id) values ("LEC002", "student003");
+강의 신청 완료
+insert into lecture_history (lecture_code, student_id, status) values ("LEC001", "student001", "ACCEPT");
+insert into lecture_history (lecture_code, student_id, status) values ("LEC002", "student002", "ACCEPT");
+insert into lecture_history (lecture_code, student_id, status) values ("LEC002", "student003", "ACCEPT");

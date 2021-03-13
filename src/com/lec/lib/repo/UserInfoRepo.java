@@ -1,5 +1,6 @@
 package com.lec.lib.repo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityTransaction;
@@ -124,6 +125,6 @@ public class UserInfoRepo extends BaseRepo {
 		if (resultList.size() > 0)
 			return resultList;
 		else
-			return null;
+			return new ArrayList<User>();
 	}
 }
