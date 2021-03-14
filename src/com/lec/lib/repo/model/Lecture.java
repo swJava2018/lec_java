@@ -37,8 +37,8 @@ public class Lecture {
 
 	@Convert(converter = LectureTimeConverter.class)
 	@Column(name = "time")
-	private Map<LectureDay, List<Integer>> time = new HashMap<LectureDay, List<Integer>>(); // 강의 요일, 강의 시간
-	
+	private Map<String, List<Integer>> time = new HashMap<String, List<Integer>>(); // 강의 요일, 강의 시간
+
 	public String getCode() {
 		return code;
 	}
@@ -79,11 +79,11 @@ public class Lecture {
 		this.description = description;
 	}
 
-	public Map<LectureDay, List<Integer>> getTime() {
+	public Map<String, List<Integer>> getTime() {
 		return time;
 	}
 
-	public void setTime(Map<LectureDay, List<Integer>> time) {
+	public void setTime(Map<String, List<Integer>> time) {
 		this.time = time;
 	}
 }

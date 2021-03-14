@@ -12,9 +12,9 @@ insert into professor values ("prof001", "DEP001", "DIV001");
 insert into professor values ("prof002", "DEP001", "DIV001");
 
 학생 정보 등록
-insert into user (id, password, role) values ("student001", "1234", 3);
-insert into user (id, password, role) values ("student002", "1234", 3);
-insert into user (id, password, role) values ("student003", "1234", 3);
+insert into user (id, password, role) values ("student001", "1234", "STUDENT");
+insert into user (id, password, role) values ("student002", "1234", "STUDENT");
+insert into user (id, password, role) values ("student003", "1234", "STUDENT");
 insert into student (id, dep_code, div_code, status, disability) values ("student001", "DEP001", "DIV001", "active", false);
 insert into student (id, dep_code, div_code, status, disability) values ("student002", "DEP001", "DIV001", "active", false);
 insert into student (id, dep_code, div_code, status, disability) values ("student003", "DEP001", "DIV001", "active", false);
@@ -33,10 +33,11 @@ insert into subject values ("COM006", "Database");
 insert into subject values ("COM007", "Network Programming");
 
 강의 등록
-insert into lecture (code, name, description, professor_id, subject_code, time) values ("LEC001", "C Programming #1", "Let's study how to develop a program", "prof001", "COM001", "{1:[13,14]},3:[15,16]}");
-insert into lecture (code, name, description, professor_id, subject_code, time) values ("LEC002", "C Programming #2", "Let's study how to develop a program", "prof001", "COM001", "{2:[10,11]},4:[9]}");
+insert into lecture (code, name, description, professor_id, subject_code, time) values ("LEC001", "C Programming #1", "Let's study how to develop a program", "prof001", "COM001", '{"1":[13,14],"3":[15,16]}');
+insert into lecture (code, name, description, professor_id, subject_code, time) values ("LEC002", "C Programming #2", "Let's study how to develop a program", "prof001", "COM001", '{"2":[10,11],"4":[9]}');
 
 강의 신청 완료
 insert into lecture_history (lecture_code, student_id, status) values ("LEC001", "student001", "ACCEPT");
+insert into lecture_history (lecture_code, student_id, status) values ("LEC002", "student001", "ACCEPT");
 insert into lecture_history (lecture_code, student_id, status) values ("LEC002", "student002", "ACCEPT");
 insert into lecture_history (lecture_code, student_id, status) values ("LEC002", "student003", "ACCEPT");

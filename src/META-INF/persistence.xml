@@ -69,7 +69,7 @@
 			<!-- <property name="hibernate.show_sql" value="true"/> -->
 			<property name="hibernate.flushMode" value="FLUSH_AUTO" />
 			<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/data.sql" />
-			<property name="hibernate.hbm2ddl.auto" value="create" /> <!-- create | create-drop | update | validate -->
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create | create-drop | update | validate -->
 		</properties>
 	</persistence-unit>
 	

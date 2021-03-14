@@ -33,13 +33,13 @@ public class LoginPanel extends LecPanel {
 		loginBtn = (new JButton("로그인"));
 		loginBtn.setPreferredSize(new Dimension(100, 30));
 		loginBtn.addActionListener(loginListener);
-		
+
 		initLayout();
 	}
-	
+
 	private void initLayout() {
 		setLayout(new GridBagLayout());
-		
+
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
