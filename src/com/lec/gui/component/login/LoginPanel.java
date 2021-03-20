@@ -1,4 +1,4 @@
-package com.lec.gui.component.main;
+package com.lec.gui.component.login;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -89,9 +89,6 @@ public class LoginPanel extends LecPanel {
 					break;
 				case PROFESSOR:
 					frame.changeProfessorTab();
-					break;
-				case EMPLOYEE:
-					frame.changeEmployeeTab();
 					break;
 				case ADMIN:
 					frame.changeAdminTab();

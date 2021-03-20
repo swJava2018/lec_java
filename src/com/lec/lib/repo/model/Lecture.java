@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.lec.lib.auth.LectureDay;
-
 @Entity
 @Table(name = "lecture")
 public class Lecture {
@@ -28,9 +26,6 @@ public class Lecture {
 	@ManyToOne
 	@JoinColumn(name = "subject_code", insertable = false, updatable = false)
 	private Subject subject; // 과목 코드
-
-	@Column(name = "name")
-	private String name; // 강의 제목
 
 	@Column(name = "description")
 	private String description; // 강의 내용
@@ -61,14 +56,6 @@ public class Lecture {
 
 	public void setSubject(Subject subject) {
 		this.subject = subject;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getDescription() {

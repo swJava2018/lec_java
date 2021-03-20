@@ -8,14 +8,14 @@ import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
 
 @SuppressWarnings("serial")
-public class ScheduleSubjectPanel extends LecPanel {
+public class ScheduleLecturePanel extends LecPanel {
 
 	private JLabel subjectLbl;
 
-	public ScheduleSubjectPanel(MainGui frame) {
+	public ScheduleLecturePanel(MainGui frame) {
 		super(frame);
 
-		subjectLbl = new JLabel("과목");
+		subjectLbl = new JLabel(".");
 
 		this.setLayout(new BorderLayout());
 		this.add(subjectLbl);

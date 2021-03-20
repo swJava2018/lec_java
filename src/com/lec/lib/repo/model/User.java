@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.PostLoad;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.lec.lib.auth.Permission;
@@ -45,7 +43,7 @@ public class User {
 	@Column(name = "role")
 	@Enumerated(EnumType.STRING)
 	private Permission role; // 역할
-    
+
 	public String getId() {
 		return id;
 	}

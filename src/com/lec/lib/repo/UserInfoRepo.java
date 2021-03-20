@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -23,6 +22,15 @@ public class UserInfoRepo extends BaseRepo {
 		return instance;
 	}
 
+	/**
+	 * 사용자 등록하기
+	 * 
+	 * @param id
+	 * @param name
+	 * @param password
+	 * @param role
+	 * @return
+	 */
 	public User register(String id, String name, String password, Permission role) {
 		try {
 			User user = new User();
@@ -43,25 +51,15 @@ public class UserInfoRepo extends BaseRepo {
 		}
 	}
 
-	public User login(String id, String pwd) {
-		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-
-		CriteriaQuery<User> cQuery = criteriaBuilder.createQuery(User.class);
-		Root<User> from = cQuery.from(User.class);
-		Predicate where1 = criteriaBuilder.equal(from.get("id"), id);
-		Predicate where2 = criteriaBuilder.equal(from.get("password"), pwd);
-		Predicate whereFinal = criteriaBuilder.and(where1, where2);
-		cQuery.where(whereFinal);
-
-		Query query = em.createQuery(cQuery);
-		List<User> resultList = query.getResultList();
-
-		if (resultList.size() == 1) {
-			return resultList.get(0);
-		} else
-			return null;
-	}
-
+	/**
+	 * 사용자 수정하기
+	 * 
+	 * @param id
+	 * @param name
+	 * @param password
+	 * @param address
+	 * @return
+	 */
 	public boolean update(String id, String name, String password, String address) {
 		try {
 			User user = em.find(User.class, id);
@@ -80,6 +78,39 @@ public class UserInfoRepo extends BaseRepo {
 		return true;
 	}
 
+	/**
+	 * 사용자 로그인하기
+	 * 
+	 * @param id
+	 * @param pwd
+	 * @return
+	 */
+	public User login(String id, String pwd) {
+		CriteriaQuery<User> query;
+		{
+			CriteriaBuilder builder = em.getCriteriaBuilder();
+			query = builder.createQuery(User.class);
+			Root<User> from = query.from(User.class);
+			Predicate where1 = builder.equal(from.get("id"), id);
+			Predicate where2 = builder.equal(from.get("password"), pwd);
+			Predicate whereFinal = builder.and(where1, where2);
+			query.where(whereFinal);
+		}
+
+		List<User> result = em.createQuery(query).getResultList();
+
+		if (result.size() == 1) {
+			return result.get(0);
+		} else
+			return null;
+	}
+
+	/**
+	 * 사용자 삭제하기
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public boolean delete(String id) {
 		try {
 			User user = em.find(User.class, id);
@@ -96,34 +127,47 @@ public class UserInfoRepo extends BaseRepo {
 		return true;
 	}
 
+	/**
+	 * 사용자 읽기
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public User read(String id) {
-		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+		CriteriaQuery<User> query;
+		{
+			CriteriaBuilder builder = em.getCriteriaBuilder();
+			query = builder.createQuery(User.class);
+			Root<User> from = query.from(User.class);
+			Predicate where = builder.equal(from.get("id"), id);
+			query.where(where);
+		}
 
-		CriteriaQuery<User> cQuery = criteriaBuilder.createQuery(User.class);
-		Root<User> from = cQuery.from(User.class);
-		Predicate where = criteriaBuilder.equal(from.get("id"), id);
-		cQuery.where(where);
+		List<User> result = em.createQuery(query).getResultList();
 
-		Query query = em.createQuery(cQuery);
-		List<User> resultList = query.getResultList();
-
-		if (resultList.size() == 1)
-			return resultList.get(0);
+		if (result.size() == 1)
+			return result.get(0);
 		else
 			return null;
 	}
 
+	/**
+	 * 모든 사용자 읽기
+	 * 
+	 * @return
+	 */
 	public List<User> readAll() {
-		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+		CriteriaQuery<User> query;
+		{
+			CriteriaBuilder builder = em.getCriteriaBuilder();
+			query = builder.createQuery(User.class);
+			query.from(User.class);
+		}
 
-		CriteriaQuery<User> cQuery = criteriaBuilder.createQuery(User.class);
-		cQuery.from(User.class);
+		List<User> result = em.createQuery(query).getResultList();
 
-		Query query = em.createQuery(cQuery);
-		List<User> resultList = query.getResultList();
-
-		if (resultList.size() > 0)
-			return resultList;
+		if (result.size() > 0)
+			return result;
 		else
 			return new ArrayList<User>();
 	}

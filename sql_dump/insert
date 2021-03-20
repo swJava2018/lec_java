@@ -8,8 +8,18 @@ insert into division values ("DIV001", "Information Communication Technology");
 교수 정보 등록
 insert into user (id, password, role) values ("prof001", "1234", "PROFESSOR");
 insert into user (id, password, role) values ("prof002", "1234", "PROFESSOR");
+insert into user (id, password, role) values ("prof003", "1234", "PROFESSOR");
+insert into user (id, password, role) values ("prof004", "1234", "PROFESSOR");
+insert into user (id, password, role) values ("prof005", "1234", "PROFESSOR");
+insert into user (id, password, role) values ("prof006", "1234", "PROFESSOR");
+insert into user (id, password, role) values ("prof007", "1234", "PROFESSOR");
 insert into professor values ("prof001", "DEP001", "DIV001");
 insert into professor values ("prof002", "DEP001", "DIV001");
+insert into professor values ("prof003", "DEP001", "DIV001");
+insert into professor values ("prof004", "DEP001", "DIV001");
+insert into professor values ("prof005", "DEP001", "DIV001");
+insert into professor values ("prof006", "DEP001", "DIV001");
+insert into professor values ("prof007", "DEP001", "DIV001");
 
 학생 정보 등록
 insert into user (id, password, role) values ("student001", "1234", "STUDENT");
@@ -33,11 +43,21 @@ insert into subject values ("COM006", "Database");
 insert into subject values ("COM007", "Network Programming");
 
 강의 등록
-insert into lecture (code, name, description, professor_id, subject_code, time) values ("LEC001", "C Programming #1", "Let's study how to develop a program", "prof001", "COM001", '{"1":[13,14],"3":[15,16]}');
-insert into lecture (code, name, description, professor_id, subject_code, time) values ("LEC002", "C Programming #2", "Let's study how to develop a program", "prof001", "COM001", '{"2":[10,11],"4":[9]}');
+insert into lecture (code, description, professor_id, subject_code, time) values ("LEC001", "Let's start C", "prof001", "COM001", '{"1":[13,14],"3":[15,16]}');
+insert into lecture (code, description, professor_id, subject_code, time) values ("LEC002", "Let's start OOP", "prof001", "COM002", '{"2":[10,11],"4":[9]}');
+insert into lecture (code, description, professor_id, subject_code, time) values ("LEC003", "Let's start Embedded", "prof001", "COM003", '{"1":[10],"3":[10]}');
+insert into lecture (code, description, professor_id, subject_code, time) values ("LEC004", "Let's study DS", "prof001", "COM004", '{"1":[9],"3":[9]}');
+insert into lecture (code, description, professor_id, subject_code, time) values ("LEC005", "Let's study OS", "prof001", "COM005", '{"3":[9,10]}');
+insert into lecture (code, description, professor_id, subject_code, time) values ("LEC006", "Let's study DB", "prof001", "COM006", '{"3":[11]}');
+insert into lecture (code, description, professor_id, subject_code, time) values ("LEC007", "Let's study Network", "prof001", "COM007", '{"4":[9,10,11],"4":[13]}');
 
 강의 신청 완료
 insert into lecture_history (lecture_code, student_id, status) values ("LEC001", "student001", "ACCEPT");
 insert into lecture_history (lecture_code, student_id, status) values ("LEC002", "student001", "ACCEPT");
+insert into lecture_history (lecture_code, student_id, status) values ("LEC003", "student001", "ACCEPT");
+insert into lecture_history (lecture_code, student_id, status) values ("LEC004", "student001", "ACCEPT");
+insert into lecture_history (lecture_code, student_id, status) values ("LEC005", "student001", "ACCEPT");
+insert into lecture_history (lecture_code, student_id, status) values ("LEC006", "student001", "ACCEPT");
+insert into lecture_history (lecture_code, student_id, status) values ("LEC007", "student001", "ACCEPT");
 insert into lecture_history (lecture_code, student_id, status) values ("LEC002", "student002", "ACCEPT");
 insert into lecture_history (lecture_code, student_id, status) values ("LEC002", "student003", "ACCEPT");
