@@ -1,6 +1,6 @@
 package com.lec.cli.controller;
 
-import com.lec.lib.auth.Permission;
+import com.lec.cli.input.UserInfoInput;
 import com.lec.lib.auth.UserAuth;
 import com.lec.lib.service.UserService;
 
@@ -26,11 +26,14 @@ public class RegisterUser implements Runnable {
 	@Option(names = { "-a", "--address" }, description = "The student Address")
 	private String address;
 
+	@Option(names = { "-info" }, description = "The student info or professor info", required = true)
+	private String info;
+
 	@ParentCommand
 	CliCommands parent;
 
 	private UserService userService = UserService.getInstance();
-	
+
 	public void run() {
 		UserAuth auth = UserAuth.getInstance();
 
@@ -46,8 +49,12 @@ public class RegisterUser implements Runnable {
 			return;
 		}
 
+		// 추가 가입 정보 필수
+		UserInfoInput userInfo = new UserInfoInput();
+		userInfo.parse(info);
+
 		// 사용자 추가
-		if (userService.register(id, name, password, role)) {
+		if (userService.register(id, name, password, role, userInfo)) {
 			parent.out.println("register success");
 		} else {
 			parent.out.println("register fail");

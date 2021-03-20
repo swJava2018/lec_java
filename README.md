@@ -108,9 +108,8 @@ Login
 Register
 
 ```
-> register student -id 2021160124 -p 1234 -n alice
+> register student -id king -p 1234 -info '{"div_code":"DIV001", "dep_code":"DEP001", "status":"active"}'
 ```
-
 
 Read
 

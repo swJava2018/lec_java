@@ -55,9 +55,8 @@ public class RegisterPanel extends LecPanel {
 			if (id == "" || name == "" || password == "")
 				return;
 
-
 			// 사용자 추가
-			if (userService.register(id, name, password, role)) {
+			if (userService.register(id, name, password, role, null)) {
 				showMessageBox("회원등록 성공");
 			} else {
 				showMessageBox("회원등록 실패");

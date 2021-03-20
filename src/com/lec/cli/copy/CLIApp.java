@@ -20,7 +20,6 @@ import org.jline.utils.AttributedStyle;
 
 import com.lec.cli.controller.CliCommands;
 import com.lec.cli.controller.DescriptionGenerator;
-import com.lec.lib.auth.Permission;
 import com.lec.lib.auth.UserAuth;
 import com.lec.lib.service.UserService;
 
@@ -96,8 +95,8 @@ public class CLIApp {
 		UserService userService = UserService.getInstance();
 		if (userService.read("admin") != null)
 			return;
-		
-		if (userService.register("admin", "admin", "1234", Permission.ADMIN)) {
+
+		if (userService.register("admin", "admin", "1234", "admin", null)) {
 			System.out.println("init success");
 		} else {
 			System.out.println("init fail");

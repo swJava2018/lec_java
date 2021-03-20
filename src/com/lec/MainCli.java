@@ -95,8 +95,8 @@ public class MainCli {
 		UserService userService = UserService.getInstance();
 		if (userService.read("admin") != null)
 			return;
-		
-		if (userService.register("admin", "admin", "1234", "admin")) {
+
+		if (userService.register("admin", "admin", "1234", "admin", null)) {
 			System.out.println("init success");
 		} else {
 			System.out.println("init fail");

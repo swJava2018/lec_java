@@ -17,11 +17,11 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.9.8</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
 		</dependency>
-		
+
 		<!-- JPA -->
 		<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
 		<dependency>
@@ -29,7 +29,7 @@
 			<artifactId>persistence-api</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<!-- H2 -->
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<dependency>
@@ -42,9 +42,9 @@
 		<!-- MySQL -->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>8.0.22</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.22</version>
 		</dependency>
 
 		<!-- Pico CLI -->
@@ -75,6 +75,13 @@
 		<!-- <dependency> <groupId>org.jline</groupId> <artifactId>jline-terminal</artifactId> 
 			<version>3.17.1</version> </dependency> <dependency> <groupId>org.jline</groupId> 
 			<artifactId>jline-reader</artifactId> <version>3.17.1</version> </dependency> -->
+
+		<!-- JSON Parser -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
 
 	</dependencies>
 

@@ -28,11 +28,8 @@ public class StudentRepo extends BaseRepo {
 	 * @param user
 	 * @return
 	 */
-	public Student register(User user) {
+	public Student register(Student student) {
 		try {
-			Student student = new Student();
-			student.setUser(user);
-
 			EntityTransaction transaction = em.getTransaction();
 			transaction.begin();
 			em.persist(student);

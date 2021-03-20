@@ -114,7 +114,8 @@ public class UserPanel extends LecPanel {
 	private ActionListener registerListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			User user = selected.getData();
-			if (userService.register(user.getId(), user.getName(), user.getPassword(), user.getRole().getValue())) {
+			if (userService.register(user.getId(), user.getName(), user.getPassword(), user.getRole().getValue(),
+					null)) {
 				refresh();
 			}
 		}

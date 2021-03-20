@@ -10,6 +10,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.lec.lib.auth.Permission;
+import com.lec.lib.repo.model.Professor;
+import com.lec.lib.repo.model.Student;
 import com.lec.lib.repo.model.User;
 
 public class UserInfoRepo extends BaseRepo {
@@ -42,6 +44,36 @@ public class UserInfoRepo extends BaseRepo {
 			EntityTransaction transaction = em.getTransaction();
 			transaction.begin();
 			em.persist(user);
+			transaction.commit();
+
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public User registerWithStudent(User user, Student student) {
+		try {
+			EntityTransaction transaction = em.getTransaction();
+			transaction.begin();
+			em.persist(user);
+			em.persist(student);
+			transaction.commit();
+
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public User registerWithProfessor(User user, Professor professor) {
+		try {
+			EntityTransaction transaction = em.getTransaction();
+			transaction.begin();
+			em.persist(user);
+			em.persist(professor);
 			transaction.commit();
 
 			return user;
