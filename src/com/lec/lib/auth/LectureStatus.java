@@ -1,7 +1,7 @@
 package com.lec.lib.auth;
 
 public enum LectureStatus {
-	APPLY("apply"), ACCEPT("accept"), REJECT("reject");
+	APPLY("apply"), ACCEPT("accept"), REJECT("reject"), COMPLETE("complete");
 
 	private final String value;
 

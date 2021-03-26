@@ -6,12 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import com.lec.lib.auth.Permission;
+import com.lec.lib.repo.model.QUser;
 import com.lec.lib.repo.model.User;
+import com.querydsl.jpa.impl.JPAQuery;
 
-public class DBSample {
+public class QueryDSLSample {
 	private static final String PERSISTENCE_UNIT_NAME = "mysql";
 	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	protected static final EntityManager em = factory.createEntityManager();
@@ -47,10 +48,10 @@ public class DBSample {
 		transaction.commit();
 	}
 
-	@SuppressWarnings("unchecked")
 	private static List<User> read(String id) {
-		Query query = em.createQuery("select u from User u where u.id = '" + id + "'");
-		List<User> result = query.getResultList();
+		QUser user = QUser.user;
+
+		List<User> result = new JPAQuery<User>(em).from(user).where(user.id.eq(id)).fetch();
 		return result;
 	}
 

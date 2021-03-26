@@ -28,11 +28,10 @@ public class LectureRepo extends BaseRepo {
 	 * @return
 	 */
 	public List<Lecture> readWithHistoryByStudentID(String studentID) {
-		CriteriaBuilder builder = em.getCriteriaBuilder();
-
 		// User 조회
 		CriteriaQuery<User> query;
 		{
+			CriteriaBuilder builder = em.getCriteriaBuilder();
 			query = builder.createQuery(User.class);
 			Root<User> from = query.from(User.class);
 			Predicate where = builder.equal(from.get("id"), studentID);

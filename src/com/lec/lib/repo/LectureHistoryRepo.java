@@ -1,5 +1,11 @@
 package com.lec.lib.repo;
 
+import java.util.List;
+
+import com.lec.lib.repo.model.LectureHistory;
+import com.lec.lib.repo.model.QLectureHistory;
+import com.querydsl.jpa.impl.JPAQuery;
+
 public class LectureHistoryRepo extends BaseRepo {
 	private static LectureHistoryRepo instance;
 
@@ -10,32 +16,16 @@ public class LectureHistoryRepo extends BaseRepo {
 		return instance;
 	}
 
-//	public List<LectureHistory> readLectureTimeByStudentID(String studentID) {
-//		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-//
-////		CriteriaQuery<Tuple> cQuery = criteriaBuilder.createTupleQuery();
-////		Root<LectureHistory> lecH = cQuery.from(LectureHistory.class);
-////		Join<LectureHistory, Lecture> lec = lecH.join("lecture", JoinType.INNER);
-////		cQuery.multiselect(lecH.alias("lecH"), lec.alias("lec"))
-////				.where(criteriaBuilder.equal(lecH.get("student"), studentID));
-////
-////		TypedQuery<Tuple> tQuery = em.createQuery(cQuery);
-////		List<Tuple> resultList = tQuery.getResultList();
-//
-//		List<LectureHistory> resultList = em.createQuery("from LectureHistory as lecH left join Lecture as lec on lecH.lecture_code = lec.code where lecH.student.id = :student_id", LectureHistory.class)
-//				.setParameter("student_id", studentID)
-//				.getResultList();
-//		
-//
-//		if (resultList.size() > 0) {
-////			List<LectureHistory> lecHList = new ArrayList<LectureHistory>();
-////			for (LectureHistory tuple : resultList) {
-////				LectureHistory lecHR = tuple.get("lecH", LectureHistory.class);
-////				Lecture lecR = tuple.get("lec", Lecture.class);
-////				lecHList.add(lecHR);
-////			}
-//			return resultList;
-//		} else
-//			return new ArrayList<LectureHistory>();
-//	}
+	/**
+	 * 학생의 수강하는 모든 강의 내역 읽기
+	 * 
+	 * @param studentID
+	 * @return
+	 */
+	public List<LectureHistory> readLectureHistoryByID(String id) {
+		QLectureHistory lecH = QLectureHistory.lectureHistory;
+		List<LectureHistory> result = new JPAQuery<LectureHistory>(em).from(lecH).where(lecH.student.user.id.eq(id))
+				.fetch();
+		return result;
+	}
 }

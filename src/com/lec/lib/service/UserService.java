@@ -1,10 +1,7 @@
 package com.lec.lib.service;
 
-import java.io.IOException;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lec.cli.controller.RegisterUser;
 import com.lec.cli.input.UserInfoInput;
 import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.StudentRepo;

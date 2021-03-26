@@ -17,8 +17,8 @@ public class ScheduleLecturePanel extends LecPanel {
 
 		subjectLbl = new JLabel(".");
 
-		this.setLayout(new BorderLayout());
-		this.add(subjectLbl);
+		setLayout(new BorderLayout());
+		add(subjectLbl);
 	}
 
 	public void setSubjectLbl(String name) {

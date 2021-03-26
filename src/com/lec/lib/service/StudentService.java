@@ -6,6 +6,7 @@ import com.lec.lib.repo.LectureHistoryRepo;
 import com.lec.lib.repo.LectureRepo;
 import com.lec.lib.repo.StudentRepo;
 import com.lec.lib.repo.model.Lecture;
+import com.lec.lib.repo.model.LectureHistory;
 import com.lec.lib.repo.model.Student;
 
 public class StudentService {
@@ -28,5 +29,9 @@ public class StudentService {
 
 	public List<Lecture> readByStudentID(String studentID) {
 		return lRepo.readWithHistoryByStudentID(studentID);
+	}
+	
+	public List<LectureHistory> readLectureHistoryByID(String studentID) {
+		return lhRepo.readLectureHistoryByID(studentID);
 	}
 }
