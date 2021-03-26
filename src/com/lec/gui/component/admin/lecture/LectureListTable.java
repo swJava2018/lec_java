@@ -1,17 +1,18 @@
-package com.lec.gui.component.student.grade;
+package com.lec.gui.component.admin.lecture;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.lec.lib.repo.model.LectureHistory;
+import com.lec.lib.repo.model.Lecture;
+import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class SubjectListTable extends JTable implements ListSelectionListener {
-	private SubjectInfoPanel detailPanel;
+public class LectureListTable extends JTable implements ListSelectionListener {
+	private LectureInfoPanel detailPanel;
 
-	public SubjectListTable(SubjectInfoPanel detailPanel) {
+	public LectureListTable(LectureInfoPanel detailPanel) {
 		this.detailPanel = detailPanel;
 
 		// 선택 방법 세팅
@@ -29,10 +30,10 @@ public class SubjectListTable extends JTable implements ListSelectionListener {
 			// 선택된 레코드가 없을 경우 -1을 반환
 			int row = this.getSelectedRow();
 			if (row != -1) {
-				LectureHistory lecH = ((SubjectListTableModel) this.getModel()).getRow(row);
+				Lecture lecture = ((LectureListTableModel) this.getModel()).getRow(row);
 				
 				// 선택된 레코드로 정보 변경
-				detailPanel.setData(lecH);
+				detailPanel.setData(lecture);
 			}
 		}
 	}

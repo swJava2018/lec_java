@@ -10,7 +10,7 @@ import com.lec.lib.repo.model.Subject;
 public class SubjectListTableModel extends AbstractTableModel {
 
 	// 제목
-	private final String[] header = { "Code", "Name" };
+	private final String[] header = { "과목코드", "과목이름" };
 	
 	// 내용
 	private List<Subject> data;

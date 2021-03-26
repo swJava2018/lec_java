@@ -26,16 +26,17 @@ public class UserInfoPanel extends LecPanel {
 	private void initLayout() {
 		setLayout(new GridBagLayout());
 
-		genInfoPair("id", "ID", 0);
-		genInfoPair("name", "이름", 1);
-		genInfoPair("address", "주소", 2);
-		genInfoPair("phone", "전화번호", 3);
-		genInfoPair("country", "국적", 4);
-		genInfoPair("regdent", "주민등록번호", 5);
-		genInfoPair("email", "이메일", 6);
-		genInfoPair("birth", "생년월일", 7);
-		genInfoPair("pwd", "비밀번호", 8);
-		genInfoPair("role", "권한", 9);
+		int row = 0;
+		genInfoPair("id", "학번", row++);
+		genInfoPair("name", "이름", row++);
+		genInfoPair("address", "주소", row++);
+		genInfoPair("phone", "전화번호", row++);
+		genInfoPair("country", "국적", row++);
+		genInfoPair("regdent", "주민등록번호", row++);
+		genInfoPair("email", "이메일", row++);
+		genInfoPair("birth", "생년월일", row++);
+		genInfoPair("pwd", "비밀번호", row++);
+		genInfoPair("role", "권한", row++);
 	}
 
 	private void genInfoPair(String id, String name, int row) {

@@ -25,8 +25,9 @@ public class SubjectInfoPanel extends LecPanel {
 	private void initLayout() {
 		setLayout(new GridBagLayout());
 
-		genInfoPair("code", "CODE", 0);
-		genInfoPair("name", "이름", 1);
+		int row = 0;
+		genInfoPair("code", "과목코드", row++);
+		genInfoPair("name", "과목이름", row++);
 	}
 
 	private void genInfoPair(String id, String name, int row) {

@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import com.lec.MainGui;
 import com.lec.lib.auth.UserAuth;
+import com.lec.lib.service.LectureService;
 import com.lec.lib.service.StudentService;
 import com.lec.lib.service.SubjectService;
 import com.lec.lib.service.UserService;
@@ -15,6 +16,7 @@ public class LecPanel extends JPanel {
 	protected static UserService userService = UserService.getInstance();
 	protected static SubjectService subjectService = SubjectService.getInstance();
 	protected static StudentService studentService = StudentService.getInstance();
+	protected static LectureService lectureService = LectureService.getInstance();
 	protected static UserAuth auth = UserAuth.getInstance();
 
 	// component

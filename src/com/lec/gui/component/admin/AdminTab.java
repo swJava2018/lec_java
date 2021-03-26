@@ -3,6 +3,9 @@ package com.lec.gui.component.admin;
 import javax.swing.JTabbedPane;
 
 import com.lec.MainGui;
+import com.lec.gui.component.admin.depart.DepartmentPanel;
+import com.lec.gui.component.admin.division.DivisionPanel;
+import com.lec.gui.component.admin.lecture.LecturePanel;
 import com.lec.gui.component.admin.subject.SubjectPanel;
 import com.lec.gui.component.admin.user.UserPanel;
 

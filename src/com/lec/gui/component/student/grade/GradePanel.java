@@ -16,18 +16,18 @@ import com.lec.lib.repo.model.LectureHistory;
 public class GradePanel extends LecPanel {
 	// components
 	private JScrollPane scrollPane;
-	private SubjectListTable subjectList;
-	private SubjectInfoPanel selected;
+	private GradeListTable subjectList;
+	private GradeInfoPanel selected;
 
 	public GradePanel(MainGui frame) {
 		super(frame);
 
 		// 선택된 과목 정보
-		selected = new SubjectInfoPanel(frame);
+		selected = new GradeInfoPanel(frame);
 		selected.setPreferredSize(new Dimension(400, 400));
 
 		// 과목 리스트
-		subjectList = new SubjectListTable(selected);
+		subjectList = new GradeListTable(selected);
 		scrollPane = new JScrollPane(subjectList);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 
@@ -57,7 +57,7 @@ public class GradePanel extends LecPanel {
 		if (auth.isLogin()) {
 			String id = auth.getUser().getId();
 			List<LectureHistory> lecH = studentService.readLectureHistoryByID(id);
-			subjectList.setModel(new SubjectListTableModel(lecH));
+			subjectList.setModel(new GradeListTableModel(lecH));
 		}
 	}
 }

@@ -13,11 +13,11 @@ import com.lec.gui.component.common.LecPanel;
 import com.lec.lib.repo.model.LectureHistory;
 
 @SuppressWarnings("serial")
-public class SubjectInfoPanel extends LecPanel {
+public class GradeInfoPanel extends LecPanel {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 	private LectureHistory data;
 
-	public SubjectInfoPanel(MainGui frame) {
+	public GradeInfoPanel(MainGui frame) {
 		super(frame);
 
 		initLayout();

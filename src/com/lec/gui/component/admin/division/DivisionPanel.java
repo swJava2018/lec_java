@@ -1,4 +1,4 @@
-package com.lec.gui.component.admin;
+package com.lec.gui.component.admin.division;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;

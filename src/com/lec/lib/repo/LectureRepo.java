@@ -3,6 +3,7 @@ package com.lec.lib.repo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -19,6 +20,106 @@ public class LectureRepo extends BaseRepo {
 			instance = new LectureRepo();
 		}
 		return instance;
+	}
+
+	public boolean register(String code, Lecture lecture) {
+		try {
+			Lecture lec = new Lecture();
+			lec.setCode(code);
+			lec.setDescription(lecture.getDescription());
+			lec.setSemester(lecture.getSemester());
+			lec.setTime(lecture.getTime());
+			lec.setYear(lecture.getYear());
+			lec.setProfessor(lecture.getProfessor());
+			lec.setSubject(lecture.getSubject());
+
+			EntityTransaction transaction = em.getTransaction();
+			transaction.begin();
+			em.persist(lec);
+			transaction.commit();
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean update(String code, Lecture lecture) {
+		try {
+			Lecture lec = em.find(Lecture.class, code);
+
+			EntityTransaction transaction = em.getTransaction();
+			transaction.begin();
+			if (!lecture.getDescription().isEmpty())
+				lec.setDescription(lecture.getDescription());
+			if (lecture.getSemester() != 0)
+				lec.setSemester(lecture.getSemester());
+			if (!lecture.getTime().isEmpty())
+				lec.setTime(lecture.getTime());
+			if (lecture.getYear() != 0)
+				lec.setYear(lecture.getYear());
+			if (lecture.getProfessor() != null)
+				lec.setProfessor(lecture.getProfessor());
+			if (lecture.getSubject() != null)
+				lec.setSubject(lecture.getSubject());
+			transaction.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public boolean delete(String code) {
+		try {
+			Lecture lecture = em.find(Lecture.class, code);
+
+			EntityTransaction transaction = em.getTransaction();
+			transaction.begin();
+			em.remove(lecture);
+			transaction.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public Lecture read(String code) {
+		CriteriaQuery<Lecture> query;
+		{
+			CriteriaBuilder builder = em.getCriteriaBuilder();
+			query = builder.createQuery(Lecture.class);
+			Root<Lecture> from = query.from(Lecture.class);
+			Predicate where = builder.equal(from.get("code"), code);
+			query.where(where);
+		}
+
+		List<Lecture> result = em.createQuery(query).getResultList();
+
+		if (result.size() == 1)
+			return result.get(0);
+		else
+			return null;
+	}
+
+	public List<Lecture> readAll() {
+		CriteriaQuery<Lecture> query;
+		{
+			CriteriaBuilder builder = em.getCriteriaBuilder();
+			query = builder.createQuery(Lecture.class);
+			query.from(Lecture.class);
+		}
+
+		List<Lecture> result = em.createQuery(query).getResultList();
+
+		if (result.size() > 0)
+			return result;
+		else
+			return new ArrayList<Lecture>();
 	}
 
 	/**

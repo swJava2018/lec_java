@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 import com.lec.lib.repo.model.LectureHistory;
 
 @SuppressWarnings("serial")
-public class SubjectListTableModel extends AbstractTableModel {
+public class GradeListTableModel extends AbstractTableModel {
 
 	// 제목
 	private final String[] header = { "Year", "Semester", "Subject Name", "Grade" };
@@ -15,7 +15,7 @@ public class SubjectListTableModel extends AbstractTableModel {
 	// 내용
 	private List<LectureHistory> data;
 
-	public SubjectListTableModel(List<LectureHistory> data) {
+	public GradeListTableModel(List<LectureHistory> data) {
 		this.data = data;
 	}
 
