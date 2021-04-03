@@ -1,4 +1,4 @@
-package com.lec.gui.component.admin.lecture;
+package com.lec.gui.layout;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -8,17 +8,16 @@ import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.lec.MainGui;
-import com.lec.gui.component.common.LecPanel;
+import com.lec.gui.layout.common.LecView;
 import com.lec.lib.repo.model.Lecture;
 
 @SuppressWarnings("serial")
-public class LectureInfoPanel extends LecPanel {
+public class LectureInfoView extends LecView {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 	private Lecture data;
 
-	public LectureInfoPanel(MainGui frame) {
-		super(frame);
+	public LectureInfoView() {
+		super();
 
 		initLayout();
 	}
@@ -53,17 +52,19 @@ public class LectureInfoPanel extends LecPanel {
 		infoMap.put(id, field);
 	}
 
-	public void setData(Lecture lecture) {
-		data = lecture;
-		infoMap.get("year").setText(lecture.getYear() + "");
-		infoMap.get("semester").setText(lecture.getSemester() + "");
-		infoMap.get("code").setText(lecture.getCode());
-		infoMap.get("desc").setText(lecture.getDescription());
-		infoMap.get("professor").setText(lecture.getProfessor().getUser().getName());
-		infoMap.get("subject").setText(lecture.getSubject().getName());
+	@Override
+	public void setData(Object lecture) {
+		data = (Lecture) lecture;
+		infoMap.get("year").setText(data.getYear() + "");
+		infoMap.get("semester").setText(data.getSemester() + "");
+		infoMap.get("code").setText(data.getCode());
+		infoMap.get("desc").setText(data.getDescription());
+		infoMap.get("professor").setText(data.getProfessor().getUser().getName());
+		infoMap.get("subject").setText(data.getSubject().getName());
 	}
 
-	public Lecture getData() {
+	@Override
+	public Object getData() {
 		data.setYear(Integer.parseInt(infoMap.get("year").getText()));
 		data.setSemester(Integer.parseInt(infoMap.get("semester").getText()));
 		data.setCode(infoMap.get("code").getText());

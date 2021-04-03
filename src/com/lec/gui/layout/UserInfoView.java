@@ -1,4 +1,4 @@
-package com.lec.gui.component.admin.user;
+package com.lec.gui.layout;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -10,15 +10,16 @@ import javax.swing.JTextField;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
+import com.lec.gui.layout.common.LecView;
 import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class UserInfoPanel extends LecPanel {
+public class UserInfoView extends LecView {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 
-	public UserInfoPanel(MainGui frame) {
-		super(frame);
+	public UserInfoView() {
+		super();
 
 		initLayout();
 	}
@@ -57,7 +58,9 @@ public class UserInfoPanel extends LecPanel {
 		infoMap.put(id, field);
 	}
 
-	public void setData(User user) {
+	@Override
+	public void setData(Object model) {
+		User user = (User) model;
 		infoMap.get("id").setText(user.getId());
 		infoMap.get("name").setText(user.getName());
 		infoMap.get("address").setText(user.getAddress());
@@ -70,7 +73,8 @@ public class UserInfoPanel extends LecPanel {
 		infoMap.get("role").setText(user.getRole().getValue());
 	}
 
-	public User getData() {
+	@Override
+	public Object getData() {
 		User user = new User();
 		user.setId(infoMap.get("id").getText());
 		user.setName(infoMap.get("name").getText());

@@ -1,21 +1,22 @@
-package com.lec.gui.component.admin.lecture;
+package com.lec.gui.component.admin.user;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import com.lec.lib.repo.model.Lecture;
+import com.lec.gui.layout.common.LecTableAdapter;
+import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class LectureListTableModel extends AbstractTableModel {
+public class UserListTableAdapter extends LecTableAdapter {
 
 	// 제목
-	private final String[] header = { "강의코드", "과목이름", "강의소개" };
+	private final String[] header = { "학번", "이름", "권한" };
 
 	// 내용
-	private List<Lecture> data;
+	private List<User> data;
 
-	public LectureListTableModel(List<Lecture> data) {
+	public UserListTableAdapter(List<User> data) {
 		this.data = data;
 	}
 
@@ -38,17 +39,18 @@ public class LectureListTableModel extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
 		case 0:
-			return data.get(rowIndex).getCode();
+			return data.get(rowIndex).getId();
 		case 1:
-			return data.get(rowIndex).getSubject().getName();
+			return data.get(rowIndex).getName();
 		case 2:
-			return data.get(rowIndex).getDescription();
+			return data.get(rowIndex).getRole();
 		default:
 			return "default";
 		}
 	}
 
-	public Lecture getRow(int rowIndex) {
+	@Override
+	public Object getRow(int rowIndex) {
 		return data.get(rowIndex);
 	}
 }
