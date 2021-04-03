@@ -188,12 +188,16 @@ public class UserInfoRepo extends BaseRepo {
 	 * 
 	 * @return
 	 */
-	public List<User> readAll() {
+	public List<User> readAll(Permission role) {
 		CriteriaQuery<User> query;
 		{
 			CriteriaBuilder builder = em.getCriteriaBuilder();
 			query = builder.createQuery(User.class);
-			query.from(User.class);
+			Root<User> from = query.from(User.class);
+			if (role != null) {
+				Predicate where = builder.equal(from.get("role"), role);
+				query.where(where);
+			}
 		}
 
 		List<User> result = em.createQuery(query).getResultList();

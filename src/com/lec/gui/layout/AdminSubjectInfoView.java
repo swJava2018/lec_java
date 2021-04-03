@@ -15,10 +15,10 @@ import com.lec.lib.repo.model.Subject;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class SubjectInfoView extends LecView {
+public class AdminSubjectInfoView extends LecView {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 
-	public SubjectInfoView() {
+	public AdminSubjectInfoView() {
 		super();
 
 		initLayout();

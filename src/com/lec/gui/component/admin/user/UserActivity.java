@@ -6,12 +6,14 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
-import com.lec.gui.layout.UserLayout;
+import com.lec.gui.layout.AdminUserLayout;
 import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
+import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
@@ -19,12 +21,23 @@ public class UserActivity extends LecPanel {
 	private LecTableView list;
 	private LecView info;
 
+	// layout components
+	JComboBox<String> roleComboBox;
+
 	public UserActivity(MainGui frame) {
 		super(frame);
 
 		// set layout
-		UserLayout layout = new UserLayout();
+		AdminUserLayout layout = new AdminUserLayout();
 		add(layout);
+
+		// set combo box
+		roleComboBox = layout.getRoleComboBox();
+		for (Permission p : Permission.values()) {
+			roleComboBox.addItem(p.getValue());
+		}
+		roleComboBox.setSelectedIndex(0);
+		roleComboBox.addActionListener(roleListener);
 
 		// set button
 		JButton loadBtn = layout.getLoadBtn();
@@ -49,10 +62,16 @@ public class UserActivity extends LecPanel {
 
 	private void refresh() {
 		if (auth.isLogin()) {
-			List<User> users = userService.readAll();
+			List<User> users = userService.readAll(roleComboBox.getSelectedItem().toString());
 			list.setModel(new UserListTableAdapter(users));
 		}
 	}
+
+	private ActionListener roleListener = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			refresh();
+		}
+	};
 
 	private ActionListener loadListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {

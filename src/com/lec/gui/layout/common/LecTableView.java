@@ -5,7 +5,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.lec.gui.layout.UserInfoView;
+import com.lec.gui.layout.AdminUserInfoView;
 
 @SuppressWarnings("serial")
 public class LecTableView extends JTable implements ListSelectionListener {

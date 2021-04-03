@@ -9,7 +9,7 @@ import javax.swing.JButton;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
-import com.lec.gui.layout.LectureLayout;
+import com.lec.gui.layout.AdminLectureLayout;
 import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
 import com.lec.lib.repo.model.Lecture;
@@ -23,7 +23,7 @@ public class LectureActivity extends LecPanel {
 		super(frame);
 
 		// set layout
-		LectureLayout layout = new LectureLayout();
+		AdminLectureLayout layout = new AdminLectureLayout();
 		add(layout);
 
 		// set button

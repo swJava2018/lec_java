@@ -1,5 +1,6 @@
 package com.lec.gui.layout;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,13 +16,14 @@ import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class UserInfoView extends LecView {
+public class AdminUserInfoView extends LecView {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 
-	public UserInfoView() {
+	public AdminUserInfoView() {
 		super();
 
 		initLayout();
+		setBackground(new Color(200, 200, 200));
 	}
 
 	private void initLayout() {

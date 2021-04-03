@@ -98,6 +98,10 @@ public class UserService {
 	}
 
 	public List<User> readAll() {
-		return repo.readAll();
+		return repo.readAll(null);
+	}
+
+	public List<User> readAll(String role) {
+		return repo.readAll(Permission.valueOfType(role));
 	}
 }

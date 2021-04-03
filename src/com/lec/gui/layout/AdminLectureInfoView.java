@@ -12,11 +12,11 @@ import com.lec.gui.layout.common.LecView;
 import com.lec.lib.repo.model.Lecture;
 
 @SuppressWarnings("serial")
-public class LectureInfoView extends LecView {
+public class AdminLectureInfoView extends LecView {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 	private Lecture data;
 
-	public LectureInfoView() {
+	public AdminLectureInfoView() {
 		super();
 
 		initLayout();

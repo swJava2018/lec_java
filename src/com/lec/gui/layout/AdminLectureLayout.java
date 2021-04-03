@@ -13,7 +13,7 @@ import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
 
 @SuppressWarnings("serial")
-public class LectureLayout extends JPanel {
+public class AdminLectureLayout extends JPanel {
 	// components
 	private LayoutManager layout;
 
@@ -25,9 +25,9 @@ public class LectureLayout extends JPanel {
 	private JButton registerBtn;
 	private JButton deleteBtn;
 
-	public LectureLayout() {
+	public AdminLectureLayout() {
 		// 선택된 사용자 정보
-		selected = new LectureInfoView();
+		selected = new AdminLectureInfoView();
 		selected.setPreferredSize(new Dimension(400, 400));
 
 		// 사용자 리스트
