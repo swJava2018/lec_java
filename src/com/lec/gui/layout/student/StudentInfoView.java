@@ -30,6 +30,10 @@ public class StudentInfoView extends LecView {
 		genInfoPair("dep_code", "학과", row++);
 		genInfoPair("status", "학적 상태", row++);
 		genInfoPair("disability", "장애 여부", row++);
+		genInfoPair("admission_year", "입학년도", row++);
+		genInfoPair("admission_semester", "입학학기", row++);
+		genInfoPair("graduation_year", "졸업년도", row++);
+		genInfoPair("graduation_semester", "졸업학기", row++);
 	}
 
 	private void genInfoPair(String id, String name, int row) {
@@ -58,6 +62,10 @@ public class StudentInfoView extends LecView {
 		infoMap.get("dep_code").setText(student.getDep().getCode());
 		infoMap.get("status").setText(student.getStatus());
 		infoMap.get("disability").setText(student.getDisability().toString());
+		infoMap.get("admission_year").setText(student.getAdmissionYear().toString());
+		infoMap.get("admission_semester").setText(student.getAdmissionSemester().toString());
+		infoMap.get("graduation_year").setText(student.getGraduationYear().toString());
+		infoMap.get("graduation_semester").setText(student.getGraduationSemester().toString());
 	}
 
 	@Override

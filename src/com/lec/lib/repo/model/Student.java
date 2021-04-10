@@ -39,6 +39,18 @@ public class Student implements Serializable {
 	@Column(name = "disability")
 	private Boolean disability; // 장애 여부
 
+	@Column(name = "admission_year", nullable = false, columnDefinition = "integer default 0")
+	private Integer admissionYear; // 입학년도
+
+	@Column(name = "admission_semester", nullable = false, columnDefinition = "integer default 0")
+	private Integer admissionSemester; // 입학학기
+
+	@Column(name = "graduation_year", nullable = false, columnDefinition = "integer default 0")
+	private Integer graduationYear; // 졸업년도
+
+	@Column(name = "graduation_semester", nullable = false, columnDefinition = "integer default 0")
+	private Integer graduationSemester; // 졸업학기
+
 	public User getUser() {
 		return user;
 	}
@@ -77,5 +89,37 @@ public class Student implements Serializable {
 
 	public void setDisability(Boolean disability) {
 		this.disability = disability;
+	}
+
+	public Integer getAdmissionYear() {
+		return admissionYear;
+	}
+
+	public Integer getAdmissionSemester() {
+		return admissionSemester;
+	}
+
+	public Integer getGraduationYear() {
+		return graduationYear;
+	}
+
+	public Integer getGraduationSemester() {
+		return graduationSemester;
+	}
+
+	public void setAdmissionYear(Integer admissionYear) {
+		this.admissionYear = admissionYear;
+	}
+
+	public void setAdmissionSemester(Integer admissionSemester) {
+		this.admissionSemester = admissionSemester;
+	}
+
+	public void setGraduationYear(Integer graduationYear) {
+		this.graduationYear = graduationYear;
+	}
+
+	public void setGraduationSemester(Integer graduationSemester) {
+		this.graduationSemester = graduationSemester;
 	}
 }

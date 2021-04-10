@@ -34,4 +34,8 @@ public class StudentService {
 	public List<LectureHistory> readLectureHistoryByStudentID(String studentID) {
 		return lhRepo.readLectureHistoryByID(studentID);
 	}
+
+	public List<LectureHistory> readLectureHistoryByStudentIDAndYear(String studentID, int year) {
+		return lhRepo.readLectureHistoryByIDAndYear(studentID, year);
+	}
 }

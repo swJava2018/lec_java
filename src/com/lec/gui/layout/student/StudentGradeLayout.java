@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
 
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -13,11 +14,12 @@ import com.lec.gui.layout.common.LecView;
 
 @SuppressWarnings("serial")
 public class StudentGradeLayout extends JPanel {
-	// components
 	private LayoutManager layout;
+
 	private JScrollPane scrollPane;
 	private LecTableView list;
 	private LecView gradeInfo;
+	private JComboBox<String> yearComboBox;
 
 	public StudentGradeLayout() {
 
@@ -29,6 +31,9 @@ public class StudentGradeLayout extends JPanel {
 		list = new LecTableView(gradeInfo);
 		scrollPane = new JScrollPane(list);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
+
+		// 년도 선택
+		yearComboBox = new JComboBox<String>();
 
 		initLayout();
 	}
@@ -44,6 +49,10 @@ public class StudentGradeLayout extends JPanel {
 		c.gridx = 1;
 		c.gridy = 0;
 		add(gradeInfo, c);
+
+		c.gridx = 0;
+		c.gridy = 1;
+		add(yearComboBox, c);
 	}
 
 	public LayoutManager getLayout() {
@@ -60,5 +69,9 @@ public class StudentGradeLayout extends JPanel {
 
 	public LecView getGradeInfo() {
 		return gradeInfo;
+	}
+
+	public JComboBox<String> getYearComboBox() {
+		return yearComboBox;
 	}
 }

@@ -38,7 +38,7 @@ public class AdminUserLayout extends JPanel {
 		scrollPane = new JScrollPane(userList);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 
-		// 권한 선택 박스
+		// 권한 선택
 		roleComboBox = new JComboBox<String>();
 
 		loadBtn = (new JButton("사용자 리스트 불러오기"));

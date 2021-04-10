@@ -20,9 +20,7 @@ import com.lec.lib.repo.model.User;
 public class UserActivity extends LecPanel {
 	private LecTableView list;
 	private LecView info;
-
-	// layout components
-	JComboBox<String> roleComboBox;
+	private JComboBox<String> roleComboBox;
 
 	public UserActivity(MainGui frame) {
 		super(frame);

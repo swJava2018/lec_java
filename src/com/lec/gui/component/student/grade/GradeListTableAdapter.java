@@ -9,7 +9,7 @@ import com.lec.lib.repo.model.LectureHistory;
 public class GradeListTableAdapter extends LecTableAdapter {
 
 	// 제목
-	private final String[] header = { "Year", "Semester", "Subject Name", "Grade" };
+	private final String[] header = { "년도", "학기", "과목명", "점수" };
 
 	// 내용
 	private List<LectureHistory> data;

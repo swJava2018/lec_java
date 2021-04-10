@@ -25,9 +25,9 @@ insert into professor values ("prof007", "DEP001", "DIV001");
 insert into user (id, password, role) values ("student001", "1234", "STUDENT");
 insert into user (id, password, role) values ("student002", "1234", "STUDENT");
 insert into user (id, password, role) values ("student003", "1234", "STUDENT");
-insert into student (id, dep_code, div_code, status, disability) values ("student001", "DEP001", "DIV001", "active", false);
-insert into student (id, dep_code, div_code, status, disability) values ("student002", "DEP001", "DIV001", "active", false);
-insert into student (id, dep_code, div_code, status, disability) values ("student003", "DEP001", "DIV001", "active", false);
+insert into student (id, dep_code, div_code, status, disability, admission_year, admission_semester) values ("student001", "DEP001", "DIV001", "active", false, 2008, 1);
+insert into student (id, dep_code, div_code, status, disability, admission_year, admission_semester) values ("student002", "DEP001", "DIV001", "active", false, 2006, 1);
+insert into student (id, dep_code, div_code, status, disability, admission_year, admission_semester) values ("student003", "DEP001", "DIV001", "active", false, 2021, 1);
 
 학생 가족 정보 등록
 insert into user_family (name, phone_number, relation, user_id) values ("lee min jae", "010-1234-5678", "father", "student001");
@@ -43,13 +43,13 @@ insert into subject values ("COM006", "Database");
 insert into subject values ("COM007", "Network Programming");
 
 강의 등록
-insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC001", 2020, 1, "Let's start C", "prof001", "COM001", '{"1":[13,14],"3":[15,16]}');
-insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC002", 2020, 1, "Let's start OOP", "prof002", "COM002", '{"2":[10,11],"4":[9]}');
-insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC003", 2020, 1, "Let's start Embedded", "prof003", "COM003", '{"1":[10],"3":[10]}');
-insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC004", 2020, 1, "Let's study DS", "prof004", "COM004", '{"1":[9],"3":[9]}');
-insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC005", 2020, 1, "Let's study OS", "prof005", "COM005", '{"3":[9,10]}');
-insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC006", 2020, 2, "Let's study DB", "prof006", "COM006", '{"3":[11]}');
-insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC007", 2020, 2, "Let's study Network", "prof007", "COM007", '{"4":[9,10,11],"4":[13]}');
+insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC001", 2021, 1, "Let's start C", "prof001", "COM001", '{"1":[13,14],"3":[15,16]}');
+insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC002", 2021, 1, "Let's start OOP", "prof002", "COM002", '{"2":[10,11],"4":[9]}');
+insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC003", 2021, 1, "Let's start Embedded", "prof003", "COM003", '{"1":[10],"3":[10]}');
+insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC004", 2021, 1, "Let's study DS", "prof004", "COM004", '{"1":[9],"3":[9]}');
+insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC005", 2021, 1, "Let's study OS", "prof005", "COM005", '{"3":[9,10]}');
+insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC006", 2021, 2, "Let's study DB", "prof006", "COM006", '{"3":[11]}');
+insert into lecture (code, year, semester, description, professor_id, subject_code, time) values ("LEC007", 2021, 2, "Let's study Network", "prof007", "COM007", '{"4":[9,10,11],"4":[13]}');
 
 강의 신청 완료
 insert into lecture_history (lecture_code, student_id, grade, status) values ("LEC001", "student001", "A+", "COMPLETE");

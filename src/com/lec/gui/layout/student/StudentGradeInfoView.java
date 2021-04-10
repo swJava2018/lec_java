@@ -31,7 +31,7 @@ public class StudentGradeInfoView extends LecView {
 		genInfoPair("code", "과목 코드", row++);
 		genInfoPair("name", "과목 이름", row++);
 		genInfoPair("professor", "교수 이름", row++);
-		genInfoPair("grade", "성적", row++);
+		genInfoPair("grade", "점수", row++);
 		genInfoPair("status", "상태", row++);
 	}
 
@@ -51,10 +51,6 @@ public class StudentGradeInfoView extends LecView {
 		add(field, c);
 
 		infoMap.put(id, field);
-	}
-
-	public void setData(LectureHistory lecH) {
-
 	}
 
 	@Override

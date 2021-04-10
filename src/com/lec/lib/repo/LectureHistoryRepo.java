@@ -28,4 +28,11 @@ public class LectureHistoryRepo extends BaseRepo {
 				.fetch();
 		return result;
 	}
+
+	public List<LectureHistory> readLectureHistoryByIDAndYear(String id, int year) {
+		QLectureHistory lecH = QLectureHistory.lectureHistory;
+		List<LectureHistory> result = new JPAQuery<LectureHistory>(em).from(lecH)
+				.where(lecH.student.user.id.eq(id).and(lecH.lecture.year.eq(Integer.valueOf(year)))).fetch();
+		return result;
+	}
 }
