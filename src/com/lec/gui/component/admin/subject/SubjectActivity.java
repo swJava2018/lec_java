@@ -38,7 +38,7 @@ public class SubjectActivity extends LecPanel {
 
 		// set list
 		list = layout.getList();
-		info = layout.getSelected();
+		info = layout.getSubjectInfo();
 	}
 
 	@Override

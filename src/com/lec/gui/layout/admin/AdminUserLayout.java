@@ -20,7 +20,7 @@ public class AdminUserLayout extends JPanel {
 
 	private JScrollPane scrollPane;
 	private LecTableView userList;
-	private LecView selected;
+	private LecView userInfo;
 	private JComboBox<String> roleComboBox;
 	private JButton loadBtn;
 	private JButton updateBtn;
@@ -30,11 +30,11 @@ public class AdminUserLayout extends JPanel {
 	public AdminUserLayout() {
 
 		// 선택된 사용자 정보
-		selected = new AdminUserInfoView();
-		selected.setPreferredSize(new Dimension(400, 400));
+		userInfo = new AdminUserInfoView();
+		userInfo.setPreferredSize(new Dimension(400, 400));
 
 		// 사용자 리스트
-		userList = new LecTableView(selected);
+		userList = new LecTableView(userInfo);
 		scrollPane = new JScrollPane(userList);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 
@@ -66,7 +66,7 @@ public class AdminUserLayout extends JPanel {
 
 		c.gridx = 1;
 		c.gridy = 0;
-		add(selected, c);
+		add(userInfo, c);
 
 		c.gridx = 0;
 		c.gridy = 1;
@@ -104,8 +104,8 @@ public class AdminUserLayout extends JPanel {
 		return userList;
 	}
 
-	public LecView getSelected() {
-		return selected;
+	public LecView getUserInfo() {
+		return userInfo;
 	}
 
 	public JComboBox<String> getRoleComboBox() {

@@ -14,11 +14,11 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class StudentScheduleLayout extends JPanel {
-	private static final String[] day = new String[] { "일", "월", "화", "수", "목", "금", "토" };
-
 	// components
 	private LayoutManager layout;
 	private Map<Integer, List<StudentScheduleLectureView>> schedule;
+
+	private static final String[] day = new String[] { "일", "월", "화", "수", "목", "금", "토" };
 
 	public StudentScheduleLayout() {
 

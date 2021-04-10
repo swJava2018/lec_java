@@ -19,7 +19,7 @@ public class AdminSubjectLayout extends JPanel {
 
 	private JScrollPane scrollPane;
 	private LecTableView list;
-	private LecView selected;
+	private LecView subjectInfo;
 	private JButton loadBtn;
 	private JButton updateBtn;
 	private JButton registerBtn;
@@ -27,11 +27,11 @@ public class AdminSubjectLayout extends JPanel {
 
 	public AdminSubjectLayout() {
 		// 선택된 과목 정보
-		selected = new AdminSubjectInfoView();
-		selected.setPreferredSize(new Dimension(400, 400));
+		subjectInfo = new AdminSubjectInfoView();
+		subjectInfo.setPreferredSize(new Dimension(400, 400));
 
 		// 과목 리스트
-		list = new LecTableView(selected);
+		list = new LecTableView(subjectInfo);
 		scrollPane = new JScrollPane(list);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 
@@ -60,7 +60,7 @@ public class AdminSubjectLayout extends JPanel {
 
 		c.gridx = 1;
 		c.gridy = 0;
-		add(selected, c);
+		add(subjectInfo, c);
 
 		c.gridwidth = 2;
 		c.gridx = 1;
@@ -95,8 +95,8 @@ public class AdminSubjectLayout extends JPanel {
 		return list;
 	}
 
-	public LecView getSelected() {
-		return selected;
+	public LecView getSubjectInfo() {
+		return subjectInfo;
 	}
 
 	public JButton getLoadBtn() {

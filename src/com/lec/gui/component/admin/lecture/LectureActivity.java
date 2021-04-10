@@ -38,7 +38,7 @@ public class LectureActivity extends LecPanel {
 
 		// set list
 		list = layout.getList();
-		info = layout.getSelected();
+		info = layout.getLectureInfo();
 	}
 
 	@Override

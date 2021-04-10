@@ -51,7 +51,7 @@ public class UserActivity extends LecPanel {
 
 		// set list
 		list = layout.getUserList();
-		info = layout.getSelected();
+		info = layout.getUserInfo();
 	}
 
 	@Override

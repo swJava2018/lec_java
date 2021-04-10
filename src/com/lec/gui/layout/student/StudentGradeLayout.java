@@ -17,16 +17,16 @@ public class StudentGradeLayout extends JPanel {
 	private LayoutManager layout;
 	private JScrollPane scrollPane;
 	private LecTableView list;
-	private LecView selected;
+	private LecView gradeInfo;
 
 	public StudentGradeLayout() {
 
 		// 선택된 성적 정보
-		selected = new StudentGradeInfoView();
-		selected.setPreferredSize(new Dimension(400, 400));
+		gradeInfo = new StudentGradeInfoView();
+		gradeInfo.setPreferredSize(new Dimension(400, 400));
 
 		// 성적 정보
-		list = new LecTableView(selected);
+		list = new LecTableView(gradeInfo);
 		scrollPane = new JScrollPane(list);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 
@@ -43,7 +43,7 @@ public class StudentGradeLayout extends JPanel {
 
 		c.gridx = 1;
 		c.gridy = 0;
-		add(selected, c);
+		add(gradeInfo, c);
 	}
 
 	public LayoutManager getLayout() {
@@ -58,7 +58,7 @@ public class StudentGradeLayout extends JPanel {
 		return list;
 	}
 
-	public LecView getSelected() {
-		return selected;
+	public LecView getGradeInfo() {
+		return gradeInfo;
 	}
 }
