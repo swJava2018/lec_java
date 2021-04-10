@@ -1,6 +1,5 @@
 package com.lec.gui.layout;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,25 +9,23 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.lec.gui.layout.common.LecView;
-import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class AdminUserInfoView extends LecView {
+public class StudentUserInfoView extends LecView {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 
-	public AdminUserInfoView() {
+	public StudentUserInfoView() {
 		super();
 
 		initLayout();
-		setBackground(new Color(200, 200, 200));
 	}
 
 	private void initLayout() {
 		setLayout(new GridBagLayout());
 
 		int row = 0;
-		genInfoPair("id", "학번", row++);
+		genInfoPair("id", "ID", row++);
 		genInfoPair("name", "이름", row++);
 		genInfoPair("address", "주소", row++);
 		genInfoPair("phone", "전화번호", row++);
@@ -75,17 +72,6 @@ public class AdminUserInfoView extends LecView {
 
 	@Override
 	public Object getData() {
-		User user = new User();
-		user.setId(infoMap.get("id").getText());
-		user.setName(infoMap.get("name").getText());
-		user.setAddress(infoMap.get("address").getText());
-		user.setPhoneNumber(infoMap.get("phone").getText());
-		user.setCountry(infoMap.get("country").getText());
-		user.setRegdentNumber(infoMap.get("regdent").getText());
-		user.setEmail(infoMap.get("email").getText());
-		user.setBirthDate(infoMap.get("birth").getText());
-		user.setPassword(infoMap.get("pwd").getText());
-		user.setRole(Permission.valueOfType(infoMap.get("role").getText()));
-		return user;
+		return null;
 	}
 }

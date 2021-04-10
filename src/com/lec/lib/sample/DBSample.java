@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import com.lec.lib.auth.Permission;
+import com.lec.lib.repo.model.Lecture;
 import com.lec.lib.repo.model.User;
 
 public class DBSample {
@@ -17,20 +18,33 @@ public class DBSample {
 	protected static final EntityManager em = factory.createEntityManager();
 
 	public static void main(String[] args) {
+//		try {
+//			User user = new User();
+//			user.setId("test_id");
+//			user.setName("test_name");
+//			user.setPassword("test_password");
+//			user.setRole(Permission.STUDENT);
+//
+//			// insert
+//			register(user);
+//
+//			// select
+//			List<User> users = read("test_id");
+//			for (User u : users) {
+//				System.out.println(u.toString());
+//			}
+//
+//			// delete
+//			delete("test_id");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
 		try {
-			User user = new User();
-			user.setId("test_id");
-			user.setName("test_name");
-			user.setPassword("test_password");
-			user.setRole(Permission.STUDENT);
-
-			// insert
-			register(user);
-
 			// select
-			List<User> users = read("test_id");
-			for (User u : users) {
-				System.out.println(u.toString());
+			List<Lecture> lectures = readAll("prof001");
+			for (Lecture lec : lectures) {
+				System.out.println(lec.toString());
 			}
 
 			// delete
@@ -51,6 +65,13 @@ public class DBSample {
 	private static List<User> read(String id) {
 		Query query = em.createQuery("select u from User u where u.id = '" + id + "'");
 		List<User> result = query.getResultList();
+		return result;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static List<Lecture> readAll(String professorId) {
+		Query query = em.createQuery("select lec from Lecture lec where lec.professor.user.id = '" + professorId + "'");
+		List<Lecture> result = query.getResultList();
 		return result;
 	}
 

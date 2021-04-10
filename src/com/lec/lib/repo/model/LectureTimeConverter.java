@@ -21,12 +21,13 @@ public class LectureTimeConverter implements AttributeConverter<Map<String, List
 		try {
 			customerInfoJson = objectMapper.writeValueAsString(customerInfo);
 		} catch (final JsonProcessingException e) {
-//			logger.error("JSON writing error", e);
+			System.out.println("JSON writing error : " + e);
 		}
 
 		return customerInfoJson;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, List<Integer>> convertToEntityAttribute(String customerInfoJSON) {
 
@@ -35,7 +36,7 @@ public class LectureTimeConverter implements AttributeConverter<Map<String, List
 			customerInfo = objectMapper.readValue(customerInfoJSON,
 					(new HashMap<String, ArrayList<Integer>>()).getClass());
 		} catch (final IOException e) {
-//			logger.error("JSON reading error", e);
+			System.out.println("JSON reading error : " + e);
 		}
 
 		return customerInfo;

@@ -27,11 +27,11 @@ public class StudentService {
 		return sRepo.read(studentID);
 	}
 
-	public List<Lecture> readByStudentID(String studentID) {
+	public List<Lecture> readLectureByStudentID(String studentID) {
 		return lRepo.readWithHistoryByStudentID(studentID);
 	}
-	
-	public List<LectureHistory> readLectureHistoryByID(String studentID) {
+
+	public List<LectureHistory> readLectureHistoryByStudentID(String studentID) {
 		return lhRepo.readLectureHistoryByID(studentID);
 	}
 }

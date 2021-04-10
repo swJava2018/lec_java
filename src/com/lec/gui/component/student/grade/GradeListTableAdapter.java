@@ -2,12 +2,11 @@ package com.lec.gui.component.student.grade;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
+import com.lec.gui.layout.common.LecTableAdapter;
 import com.lec.lib.repo.model.LectureHistory;
 
 @SuppressWarnings("serial")
-public class GradeListTableModel extends AbstractTableModel {
+public class GradeListTableAdapter extends LecTableAdapter {
 
 	// 제목
 	private final String[] header = { "Year", "Semester", "Subject Name", "Grade" };
@@ -15,7 +14,7 @@ public class GradeListTableModel extends AbstractTableModel {
 	// 내용
 	private List<LectureHistory> data;
 
-	public GradeListTableModel(List<LectureHistory> data) {
+	public GradeListTableAdapter(List<LectureHistory> data) {
 		this.data = data;
 	}
 

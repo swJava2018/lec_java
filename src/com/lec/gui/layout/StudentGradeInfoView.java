@@ -1,4 +1,4 @@
-package com.lec.gui.component.student.grade;
+package com.lec.gui.layout;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -8,17 +8,16 @@ import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.lec.MainGui;
-import com.lec.gui.component.common.LecPanel;
+import com.lec.gui.layout.common.LecView;
 import com.lec.lib.repo.model.LectureHistory;
 
 @SuppressWarnings("serial")
-public class GradeInfoPanel extends LecPanel {
+public class StudentGradeInfoView extends LecView {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 	private LectureHistory data;
 
-	public GradeInfoPanel(MainGui frame) {
-		super(frame);
+	public StudentGradeInfoView() {
+		super();
 
 		initLayout();
 	}
@@ -55,9 +54,14 @@ public class GradeInfoPanel extends LecPanel {
 	}
 
 	public void setData(LectureHistory lecH) {
-		data = lecH;
-		infoMap.get("year").setText(data.getLecture().getYear()+"");
-		infoMap.get("semester").setText(data.getLecture().getSemester()+"");
+
+	}
+
+	@Override
+	public void setData(Object model) {
+		data = (LectureHistory) model;
+		infoMap.get("year").setText(data.getLecture().getYear() + "");
+		infoMap.get("semester").setText(data.getLecture().getSemester() + "");
 		infoMap.get("code").setText(data.getLecture().getSubject().getCode());
 		infoMap.get("name").setText(data.getLecture().getSubject().getName());
 		infoMap.get("professor").setText(data.getLecture().getProfessor().getUser().getName());
@@ -65,6 +69,7 @@ public class GradeInfoPanel extends LecPanel {
 		infoMap.get("status").setText(data.getStatus().getValue());
 	}
 
+	@Override
 	public LectureHistory getData() {
 		return data;
 	}

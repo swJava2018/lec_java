@@ -26,6 +26,7 @@ public class LecPanel extends JPanel {
 		this.frame = frame;
 	}
 
+	@SuppressWarnings("static-access")
 	protected void showMessageBox(String message) {
 		op.showMessageDialog(this, message);
 	}

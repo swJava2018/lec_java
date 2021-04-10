@@ -2,7 +2,6 @@ package com.lec.lib.service;
 
 import java.util.List;
 
-import com.lec.cli.input.UserInfoInput;
 import com.lec.lib.repo.LectureRepo;
 import com.lec.lib.repo.model.Lecture;
 
@@ -20,7 +19,7 @@ public class LectureService {
 	public boolean register(String code, Lecture lecture) {
 		return lectureRepo.register(code, lecture);
 	}
-	
+
 	public boolean update(String code, Lecture lecture) {
 		return lectureRepo.update(code, lecture);
 	}

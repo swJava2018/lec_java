@@ -2,8 +2,6 @@ package com.lec.gui.component.admin.user;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import com.lec.gui.layout.common.LecTableAdapter;
 import com.lec.lib.repo.model.User;
 
