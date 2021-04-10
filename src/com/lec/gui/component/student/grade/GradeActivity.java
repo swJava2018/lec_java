@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
-import com.lec.gui.layout.StudentGradeLayout;
 import com.lec.gui.layout.common.LecTableView;
+import com.lec.gui.layout.student.StudentGradeLayout;
 import com.lec.lib.repo.model.LectureHistory;
 
 @SuppressWarnings("serial")

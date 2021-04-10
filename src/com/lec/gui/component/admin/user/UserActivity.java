@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
-import com.lec.gui.layout.AdminUserLayout;
+import com.lec.gui.layout.admin.AdminUserLayout;
 import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
 import com.lec.lib.auth.Permission;

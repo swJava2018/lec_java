@@ -1,4 +1,4 @@
-package com.lec.gui.layout;
+package com.lec.gui.layout.student;
 
 import java.awt.BorderLayout;
 

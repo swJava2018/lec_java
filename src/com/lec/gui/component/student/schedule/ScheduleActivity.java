@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
-import com.lec.gui.layout.StudentScheduleLayout;
-import com.lec.gui.layout.StudentScheduleLectureView;
+import com.lec.gui.layout.student.StudentScheduleLayout;
+import com.lec.gui.layout.student.StudentScheduleLectureView;
 import com.lec.lib.repo.model.Lecture;
 
 @SuppressWarnings("serial")

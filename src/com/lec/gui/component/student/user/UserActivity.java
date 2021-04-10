@@ -4,8 +4,8 @@ import java.awt.Graphics;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
-import com.lec.gui.layout.StudentUserLayout;
 import com.lec.gui.layout.common.LecView;
+import com.lec.gui.layout.student.StudentUserLayout;
 import com.lec.lib.repo.model.Student;
 import com.lec.lib.repo.model.User;
 

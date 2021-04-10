@@ -1,4 +1,4 @@
-package com.lec.gui.layout;
+package com.lec.gui.layout.admin;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -13,7 +13,7 @@ import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
 
 @SuppressWarnings("serial")
-public class AdminSubjectLayout extends JPanel {
+public class AdminLectureLayout extends JPanel {
 	// components
 	private LayoutManager layout;
 
@@ -25,26 +25,26 @@ public class AdminSubjectLayout extends JPanel {
 	private JButton registerBtn;
 	private JButton deleteBtn;
 
-	public AdminSubjectLayout() {
-		// 선택된 과목 정보
-		selected = new AdminSubjectInfoView();
+	public AdminLectureLayout() {
+		// 선택된 사용자 정보
+		selected = new AdminLectureInfoView();
 		selected.setPreferredSize(new Dimension(400, 400));
 
-		// 과목 리스트
+		// 사용자 리스트
 		list = new LecTableView(selected);
 		scrollPane = new JScrollPane(list);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 
-		loadBtn = (new JButton("과목 리스트 불러오기"));
+		loadBtn = (new JButton("강의 리스트 불러오기"));
 		loadBtn.setPreferredSize(new Dimension(200, 30));
 
-		updateBtn = (new JButton("과목 정보 변경하기"));
+		updateBtn = (new JButton("강의 정보 변경하기"));
 		updateBtn.setPreferredSize(new Dimension(200, 30));
 
-		registerBtn = (new JButton("과목 정보 추가하기"));
+		registerBtn = (new JButton("강의 정보 추가하기"));
 		registerBtn.setPreferredSize(new Dimension(200, 30));
 
-		deleteBtn = (new JButton("과목 정보 삭제하기"));
+		deleteBtn = (new JButton("강의 정보 삭제하기"));
 		deleteBtn.setPreferredSize(new Dimension(200, 30));
 
 		initLayout();

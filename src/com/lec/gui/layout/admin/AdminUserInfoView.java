@@ -1,4 +1,4 @@
-package com.lec.gui.layout;
+package com.lec.gui.layout.admin;
 
 import java.awt.Color;
 import java.awt.Dimension;

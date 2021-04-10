@@ -9,7 +9,7 @@ import javax.swing.JButton;
 
 import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
-import com.lec.gui.layout.AdminSubjectLayout;
+import com.lec.gui.layout.admin.AdminSubjectLayout;
 import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
 import com.lec.lib.repo.model.Subject;

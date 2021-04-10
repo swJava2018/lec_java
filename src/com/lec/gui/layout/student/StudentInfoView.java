@@ -1,4 +1,4 @@
-package com.lec.gui.layout;
+package com.lec.gui.layout.student;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -9,13 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.lec.gui.layout.common.LecView;
-import com.lec.lib.repo.model.Subject;
+import com.lec.lib.repo.model.Student;
 
 @SuppressWarnings("serial")
-public class AdminSubjectInfoView extends LecView {
+public class StudentInfoView extends LecView {
 	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
 
-	public AdminSubjectInfoView() {
+	public StudentInfoView() {
 		super();
 
 		initLayout();
@@ -25,8 +25,11 @@ public class AdminSubjectInfoView extends LecView {
 		setLayout(new GridBagLayout());
 
 		int row = 0;
-		genInfoPair("code", "과목코드", row++);
-		genInfoPair("name", "과목이름", row++);
+		genInfoPair("id", "ID", row++);
+		genInfoPair("div_code", "학부", row++);
+		genInfoPair("dep_code", "학과", row++);
+		genInfoPair("status", "학적 상태", row++);
+		genInfoPair("disability", "장애 여부", row++);
 	}
 
 	private void genInfoPair(String id, String name, int row) {
@@ -49,16 +52,16 @@ public class AdminSubjectInfoView extends LecView {
 
 	@Override
 	public void setData(Object model) {
-		Subject obj = (Subject) model;
-		infoMap.get("code").setText(obj.getCode());
-		infoMap.get("name").setText(obj.getName());
+		Student student = (Student) model;
+		infoMap.get("id").setText(student.getUser().getId());
+		infoMap.get("div_code").setText(student.getDiv().getCode());
+		infoMap.get("dep_code").setText(student.getDep().getCode());
+		infoMap.get("status").setText(student.getStatus());
+		infoMap.get("disability").setText(student.getDisability().toString());
 	}
 
 	@Override
 	public Object getData() {
-		Subject subject = new Subject();
-		subject.setCode(infoMap.get("code").getText());
-		subject.setName(infoMap.get("name").getText());
-		return subject;
+		return null;
 	}
 }
