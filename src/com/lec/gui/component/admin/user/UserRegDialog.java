@@ -12,6 +12,8 @@ import com.lec.MainGui;
 import com.lec.gui.component.common.LecPanel;
 import com.lec.gui.layout.admin.AdminUserInfoRegDlgView;
 import com.lec.lib.auth.Permission;
+import com.lec.lib.repo.model.Department;
+import com.lec.lib.repo.model.Division;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
@@ -42,6 +44,17 @@ public class UserRegDialog extends LecPanel {
 		}
 		roleComboBox.setSelectedIndex(0);
 		roleComboBox.addActionListener(roleListener);
+		initComboBox(view.getStudent().getDivComboBox(), view.getStudent().getDepComboBox());
+		initComboBox(view.getProfessor().getDivComboBox(), view.getProfessor().getDepComboBox());
+	}
+
+	private void initComboBox(JComboBox<Division> divComboBox, JComboBox<Department> depComboBox) {
+		for (Division div : schoolService.readAllDiv()) {
+			divComboBox.addItem(div);
+		}
+		for (Department dep : schoolService.readAllDep()) {
+			depComboBox.addItem(dep);
+		}
 	}
 
 	public void show() {
@@ -68,10 +81,10 @@ public class UserRegDialog extends LecPanel {
 			Permission selected = (Permission) roleComboBox.getSelectedItem();
 			switch (selected) {
 			case STUDENT:
-				view.changeStudent();
+				view.changeToStudent();
 				break;
 			case PROFESSOR:
-				view.changeProfessor();
+				view.changeToProfessor();
 				break;
 			default:
 				break;

@@ -42,7 +42,6 @@ public class AdminProfessorRegDlgView extends LecView {
 		genTextFieldPair("email", "이메일", row++);
 		genTextFieldPair("birth", "생년월일", row++);
 		genTextFieldPair("pwd", "비밀번호", row++);
-		genComboBoxPair("role", "권한", row++);
 		genComboBoxPair("dep", "학부", row++);
 		genComboBoxPair("div", "학과", row++);
 	}
@@ -95,7 +94,6 @@ public class AdminProfessorRegDlgView extends LecView {
 		((JTextField) infoMap.get("email")).setText(user.getEmail());
 		((JTextField) infoMap.get("birth")).setText(user.getBirthDate());
 		((JTextField) infoMap.get("pwd")).setText(user.getPassword());
-		((JTextField) infoMap.get("role")).setText(user.getRole().getValue());
 		((JTextField) infoMap.get("dep")).setText(professor.getDep().getName());
 		((JTextField) infoMap.get("div")).setText(professor.getDiv().getName());
 	}
@@ -113,7 +111,6 @@ public class AdminProfessorRegDlgView extends LecView {
 		user.setEmail(((JTextField) infoMap.get("email")).getText());
 		user.setBirthDate(((JTextField) infoMap.get("birth")).getText());
 		user.setPassword(((JTextField) infoMap.get("pwd")).getText());
-		user.setRole(Permission.valueOfType(((JTextField) infoMap.get("role")).getText()));
 		professor.setUser(user);
 
 		Division div = new Division();
@@ -126,5 +123,15 @@ public class AdminProfessorRegDlgView extends LecView {
 		dep.setName("name");
 		professor.setDep(dep);
 		return professor;
+	}
+
+	@SuppressWarnings("unchecked")
+	public JComboBox<Division> getDivComboBox() {
+		return (JComboBox<Division>) infoMap.get("div");
+	}
+
+	@SuppressWarnings("unchecked")
+	public JComboBox<Department> getDepComboBox() {
+		return (JComboBox<Department>) infoMap.get("dep");
 	}
 }

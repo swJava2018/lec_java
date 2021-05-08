@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.lec.gui.layout.common.LecView;
-import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.Department;
 import com.lec.lib.repo.model.Division;
 import com.lec.lib.repo.model.Student;
@@ -42,7 +41,6 @@ public class AdminStudentRegDlgView extends LecView {
 		genTextFieldPair("email", "이메일", row++);
 		genTextFieldPair("birth", "생년월일", row++);
 		genTextFieldPair("pwd", "비밀번호", row++);
-		genComboBoxPair("role", "권한", row++);
 		genComboBoxPair("dep", "학부", row++);
 		genComboBoxPair("div", "학과", row++);
 	}
@@ -95,7 +93,6 @@ public class AdminStudentRegDlgView extends LecView {
 		((JTextField) infoMap.get("email")).setText(user.getEmail());
 		((JTextField) infoMap.get("birth")).setText(user.getBirthDate());
 		((JTextField) infoMap.get("pwd")).setText(user.getPassword());
-		((JTextField) infoMap.get("role")).setText(user.getRole().getValue());
 		((JTextField) infoMap.get("dep")).setText(student.getDep().getName());
 		((JTextField) infoMap.get("div")).setText(student.getDiv().getName());
 	}
@@ -113,7 +110,6 @@ public class AdminStudentRegDlgView extends LecView {
 		user.setEmail(((JTextField) infoMap.get("email")).getText());
 		user.setBirthDate(((JTextField) infoMap.get("birth")).getText());
 		user.setPassword(((JTextField) infoMap.get("pwd")).getText());
-		user.setRole(Permission.valueOfType(((JTextField) infoMap.get("role")).getText()));
 		student.setUser(user);
 
 		Division div = new Division();
@@ -126,5 +122,15 @@ public class AdminStudentRegDlgView extends LecView {
 		dep.setName("name");
 		student.setDep(dep);
 		return student;
+	}
+
+	@SuppressWarnings("unchecked")
+	public JComboBox<Division> getDivComboBox() {
+		return (JComboBox<Division>) infoMap.get("div");
+	}
+
+	@SuppressWarnings("unchecked")
+	public JComboBox<Department> getDepComboBox() {
+		return (JComboBox<Department>) infoMap.get("dep");
 	}
 }

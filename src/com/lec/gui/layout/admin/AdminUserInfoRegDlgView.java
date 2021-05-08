@@ -23,8 +23,8 @@ public class AdminUserInfoRegDlgView extends LecView {
 
 		initLayout();
 		setBackground(new Color(200, 200, 200));
-		
-		changeStudent();
+
+		changeToStudent();
 	}
 
 	private void initLayout() {
@@ -78,12 +78,20 @@ public class AdminUserInfoRegDlgView extends LecView {
 		return (JComboBox<Permission>) infoMap.get("role");
 	}
 
-	public void changeStudent() {
+	public AdminStudentRegDlgView getStudent() {
+		return (AdminStudentRegDlgView) infoMap.get("student");
+	}
+
+	public AdminProfessorRegDlgView getProfessor() {
+		return (AdminProfessorRegDlgView) infoMap.get("professor");
+	}
+
+	public void changeToStudent() {
 		infoMap.get("professor").setVisible(false);
 		infoMap.get("student").setVisible(true);
 	}
 
-	public void changeProfessor() {
+	public void changeToProfessor() {
 		infoMap.get("professor").setVisible(true);
 		infoMap.get("student").setVisible(false);
 	}
