@@ -20,7 +20,7 @@ import com.lec.lib.auth.LectureStatus;
 @Table(name = "lecture_history")
 public class LectureHistory implements Serializable {
 	@EmbeddedId
-	private LectureHistoryId id;
+	private LectureHistoryId id = new LectureHistoryId();
 
 	@ManyToOne
 	@MapsId("lecture")
@@ -33,15 +33,15 @@ public class LectureHistory implements Serializable {
 	private Student student; // 학생 번호
 
 	@Column(name = "grade")
-	@JoinColumn(name = "grade", insertable = false, updatable = false)
+	//@JoinColumn(name = "grade", insertable = false, updatable = false)
 	private String grade; // 강의 성적
 
 	@Column(name = "problem")
-	@JoinColumn(name = "problem", insertable = false, updatable = false)
+	//@JoinColumn(name = "problem", insertable = false, updatable = false)
 	private String problem; // 강의 이의 제기
 
 	@Column(name = "opinion")
-	@JoinColumn(name = "opinion", insertable = false, updatable = false)
+	//@JoinColumn(name = "opinion", insertable = false, updatable = false)
 	private String opinion; // 강의 평가
 
 	@Column(name = "status")
