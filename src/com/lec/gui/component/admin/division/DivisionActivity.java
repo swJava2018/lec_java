@@ -3,10 +3,10 @@ package com.lec.gui.component.admin.division;
 import java.awt.Graphics;
 
 import com.lec.MainGui;
-import com.lec.gui.component.common.LecPanel;
+import com.lec.gui.component.common.LecActivityPanel;
 
 @SuppressWarnings("serial")
-public class DivisionActivity extends LecPanel {
+public class DivisionActivity extends LecActivityPanel {
 
 	public DivisionActivity(MainGui frame) {
 		super(frame);

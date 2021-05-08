@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 import com.lec.MainGui;
-import com.lec.gui.component.common.LecPanel;
+import com.lec.gui.component.common.LecActivityPanel;
 import com.lec.gui.layout.admin.AdminUserLayout;
 import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
@@ -17,7 +17,7 @@ import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class UserActivity extends LecPanel {
+public class UserActivity extends LecActivityPanel {
 	private LecTableView list;
 	private LecView info;
 	private JComboBox<String> roleComboBox;
@@ -88,11 +88,8 @@ public class UserActivity extends LecPanel {
 
 	private ActionListener registerListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			User user = (User) info.getData();
-			if (userService.register(user.getId(), user.getName(), user.getPassword(), user.getRole().getValue(),
-					null)) {
-				refresh();
-			}
+			UserRegDialog dlg = new UserRegDialog(frame);
+			dlg.show();
 		}
 	};
 
