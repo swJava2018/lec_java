@@ -6,11 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.transaction.Transactional;
 
 import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.QUser;
 import com.lec.lib.repo.model.User;
 import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAUpdateClause;
 
 public class QueryDSLSample {
 	private static final String PERSISTENCE_UNIT_NAME = "mysql";
@@ -26,13 +28,16 @@ public class QueryDSLSample {
 			user.setRole(Permission.STUDENT);
 
 			// insert
-			register(user);
+//			register(user);
 
 			// select
-			List<User> users = read("test_id");
-			for (User u : users) {
-				System.out.println(u.toString());
-			}
+			User readUser = read("test_id");
+			System.out.println(readUser.toString());
+			
+			// update
+			update("test_id", "update name", null);
+			readUser = read("test_id");
+			System.out.println(readUser.toString());
 
 			// delete
 			delete("test_id");
@@ -48,11 +53,42 @@ public class QueryDSLSample {
 		transaction.commit();
 	}
 
-	private static List<User> read(String id) {
+	private static List<User> readAll(String id) {
 		QUser user = QUser.user;
 
 		List<User> result = new JPAQuery<User>(em).from(user).where(user.id.eq(id)).fetch();
 		return result;
+	}
+	
+	private static User read(String id) {
+		QUser user = QUser.user;
+
+		User result = new JPAQuery<User>(em)
+				.from(user)
+				.where(user.id.eq(id))
+				.fetchOne();
+		return result;
+	}
+
+	private static void update(String id, String name, String password) {
+		QUser user = QUser.user;
+
+//		em.getTransaction().begin();
+//		new JPAUpdateClause(em, user)
+//				.set(user.name, name)
+//				.where(user.id.eq(id))
+//				.execute();
+//		em.getTransaction().commit();
+		
+		JPAUpdateClause update = new JPAUpdateClause(em, user);
+		
+		if (name != null) {
+			update.set(user.name, name);
+		} else if (password != null) {
+			update.set(user.password, password);
+		}
+		
+		update.where(user.id.eq(id)).execute();
 	}
 
 	public static void delete(String id) {
