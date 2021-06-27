@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.HashMap;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,7 +14,16 @@ import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
 public class AdminUserInfoView extends LecView {
-	private HashMap<String, JTextField> infoMap = new HashMap<String, JTextField>();
+	private JTextField idTxtField = new JTextField();
+	private JTextField nameTxtField = new JTextField();
+	private JTextField addressTxtField = new JTextField();
+	private JTextField phoneTxtField = new JTextField();
+	private JTextField countryTxtField = new JTextField();
+	private JTextField regdentTxtField = new JTextField();
+	private JTextField emailTxtField = new JTextField();
+	private JTextField birthTxtField = new JTextField();
+	private JTextField pwdTxtField = new JTextField();
+	private JTextField roleTxtField = new JTextField();
 	
 	public AdminUserInfoView() {
 		super();
@@ -28,19 +36,19 @@ public class AdminUserInfoView extends LecView {
 		setLayout(new GridBagLayout());
 
 		int row = 0;
-		genTextFieldPair("id", "학번", row++, false);
-		genTextFieldPair("name", "이름", row++, true);
-		genTextFieldPair("address", "주소", row++, true);
-		genTextFieldPair("phone", "전화번호", row++, true);
-		genTextFieldPair("country", "국적", row++, true);
-		genTextFieldPair("regdent", "주민등록번호", row++, true);
-		genTextFieldPair("email", "이메일", row++, true);
-		genTextFieldPair("birth", "생년월일", row++, true);
-		genTextFieldPair("pwd", "비밀번호", row++, true);
-		genTextFieldPair("role", "권한", row++, true);
+		addTxtField("학번", idTxtField, row++, false);
+		addTxtField("이름", nameTxtField, row++, true);
+		addTxtField("주소", addressTxtField, row++, true);
+		addTxtField("전화번호", phoneTxtField, row++, true);
+		addTxtField("국적", countryTxtField, row++, true);
+		addTxtField("주민등록번호", regdentTxtField, row++, true);
+		addTxtField("이메일", emailTxtField, row++, true);
+		addTxtField("생년월일", birthTxtField, row++, true);
+		addTxtField("비밀번호", pwdTxtField, row++, true);
+		addTxtField("권한", roleTxtField, row++, true);
 	}
 
-	private void genTextFieldPair(String id, String name, int row, boolean isEditable) {
+	private void addTxtField(String name, JTextField txtField, int row, boolean isEditable) {
 		GridBagConstraints c = new GridBagConstraints();
 
 		JLabel label = new JLabel(name);
@@ -49,45 +57,82 @@ public class AdminUserInfoView extends LecView {
 		c.gridy = row;
 		add(label, c);
 
-		JTextField field = new JTextField();
-		field.setPreferredSize(new Dimension(200, 30));
-		field.setEditable(isEditable);
-		field.setBackground(isEditable ? Color.WHITE : Color.LIGHT_GRAY);
+		txtField.setPreferredSize(new Dimension(200, 30));
+		txtField.setEditable(isEditable);
+		txtField.setBackground(isEditable ? Color.WHITE : Color.LIGHT_GRAY);
 		c.gridx = 1;
 		c.gridy = row;
-		add(field, c);
+		add(txtField, c);
+	}
 
-		infoMap.put(id, field);
+	public JTextField getIdTxtField() {
+		return idTxtField;
+	}
+
+	public JTextField getNameTxtField() {
+		return nameTxtField;
+	}
+
+	public JTextField getAddressTxtField() {
+		return addressTxtField;
+	}
+
+	public JTextField getPhoneTxtField() {
+		return phoneTxtField;
+	}
+
+	public JTextField getCountryTxtField() {
+		return countryTxtField;
+	}
+
+	public JTextField getRegdentTxtField() {
+		return regdentTxtField;
+	}
+
+	public JTextField getEmailTxtField() {
+		return emailTxtField;
+	}
+
+	public JTextField getBirthTxtField() {
+		return birthTxtField;
+	}
+
+	public JTextField getPwdTxtField() {
+		return pwdTxtField;
+	}
+
+	public JTextField getRoleTxtField() {
+		return roleTxtField;
 	}
 
 	@Override
 	public void setData(Object model) {
 		User user = (User) model;
-		(infoMap.get("id")).setText(user.getId());
-		(infoMap.get("name")).setText(user.getName());
-		(infoMap.get("address")).setText(user.getAddress());
-		(infoMap.get("phone")).setText(user.getPhoneNumber());
-		(infoMap.get("country")).setText(user.getCountry());
-		(infoMap.get("regdent")).setText(user.getRegdentNumber());
-		(infoMap.get("email")).setText(user.getEmail());
-		(infoMap.get("birth")).setText(user.getBirthDate());
-		(infoMap.get("pwd")).setText(user.getPassword());
-		(infoMap.get("role")).setText(user.getRole().getValue());
+		idTxtField.setText(user.getId());
+		nameTxtField.setText(user.getName());
+		addressTxtField.setText(user.getAddress());
+		phoneTxtField.setText(user.getPhoneNumber());
+		countryTxtField.setText(user.getCountry());
+		regdentTxtField.setText(user.getRegdentNumber());
+		emailTxtField.setText(user.getEmail());
+		birthTxtField.setText(user.getBirthDate());
+		pwdTxtField.setText(user.getPassword());
+		roleTxtField.setText(user.getRole().getValue());
 	}
 
 	@Override
 	public Object getData() {
 		User user = new User();
-		user.setId((infoMap.get("id")).getText());
-		user.setName((infoMap.get("name")).getText());
-		user.setAddress((infoMap.get("address")).getText());
-		user.setPhoneNumber((infoMap.get("phone")).getText());
-		user.setCountry((infoMap.get("country")).getText());
-		user.setRegdentNumber((infoMap.get("regdent")).getText());
-		user.setEmail((infoMap.get("email")).getText());
-		user.setBirthDate((infoMap.get("birth")).getText());
-		user.setPassword((infoMap.get("pwd")).getText());
-		user.setRole(Permission.valueOfType(infoMap.get("role").getText()));
+		user.setId(idTxtField.getText());
+		user.setName(nameTxtField.getText());
+		user.setAddress(addressTxtField.getText());
+		user.setPhoneNumber(phoneTxtField.getText());
+		user.setCountry(countryTxtField.getText());
+		user.setRegdentNumber(regdentTxtField.getText());
+		user.setEmail(emailTxtField.getText());
+		user.setBirthDate(birthTxtField.getText());
+		user.setPassword(pwdTxtField.getText());
+		user.setRole(Permission.valueOfType(roleTxtField.getText()));
 		return user;
 	}
 }
