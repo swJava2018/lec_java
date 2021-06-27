@@ -64,7 +64,7 @@ public class LecCardPanel extends LecPanel {
 		public void actionPerformed(ActionEvent e) {
 			if (auth.logout()) {
 				showMessageBox("로그아웃 성공");
-				frame.changeLoginTab();
+				frame.changeLoginCard();
 			} else
 				showMessageBox("로그아웃 실패");
 		}

@@ -8,28 +8,28 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.lec.MainGui;
-import com.lec.gui.component.admin.depart.DepartmentActivity;
-import com.lec.gui.component.admin.division.DivisionActivity;
-import com.lec.gui.component.admin.lecture.LectureActivity;
-import com.lec.gui.component.admin.subject.SubjectActivity;
-import com.lec.gui.component.admin.user.UserActivity;
-import com.lec.gui.component.common.Activity;
+import com.lec.gui.component.admin.depart.DepartmentTab;
+import com.lec.gui.component.admin.division.DivisionTab;
+import com.lec.gui.component.admin.lecture.LectureTab;
+import com.lec.gui.component.admin.subject.SubjectTab;
+import com.lec.gui.component.admin.user.UserTab;
+import com.lec.gui.component.common.LecTab;
 
 @SuppressWarnings("serial")
 public class AdminTab extends JTabbedPane implements ChangeListener {
-	private List<Activity> activities;
+	private List<LecTab> activities;
 
 	public AdminTab(MainGui frame) {
-		activities = new ArrayList<Activity>();
+		activities = new ArrayList<LecTab>();
 //		activities.add(new ActivityPanel("회원 등록", new RegisterPanel(frame)));
-		activities.add(new Activity("회원 정보", new UserActivity(frame)));
-		activities.add(new Activity("과목 정보", new SubjectActivity(frame)));
-		activities.add(new Activity("강의 정보", new LectureActivity(frame)));
-		activities.add(new Activity("학부 정보", new DivisionActivity(frame)));
-		activities.add(new Activity("학과 정보", new DepartmentActivity(frame)));
+		activities.add(new LecTab("회원 정보", new UserTab(frame)));
+		activities.add(new LecTab("과목 정보", new SubjectTab(frame)));
+		activities.add(new LecTab("강의 정보", new LectureTab(frame)));
+		activities.add(new LecTab("학부 정보", new DivisionTab(frame)));
+		activities.add(new LecTab("학과 정보", new DepartmentTab(frame)));
 
 		for (int i = 0; i < activities.size(); i++) {
-			Activity activity = activities.get(i);
+			LecTab activity = activities.get(i);
 			addTab(activity.getName(), activity.getPanel());
 		}
 	}

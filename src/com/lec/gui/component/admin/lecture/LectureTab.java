@@ -8,18 +8,18 @@ import java.util.List;
 import javax.swing.JButton;
 
 import com.lec.MainGui;
-import com.lec.gui.component.common.LecActivityPanel;
+import com.lec.gui.component.common.LecTabPanel;
 import com.lec.gui.layout.admin.AdminLectureLayout;
 import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
 import com.lec.lib.repo.model.Lecture;
 
 @SuppressWarnings("serial")
-public class LectureActivity extends LecActivityPanel {
+public class LectureTab extends LecTabPanel {
 	private LecTableView list;
 	private LecView info;
 
-	public LectureActivity(MainGui frame) {
+	public LectureTab(MainGui frame) {
 		super(frame);
 
 		// set layout

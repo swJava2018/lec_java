@@ -11,11 +11,11 @@ import com.lec.gui.layout.student.StudentScheduleLectureView;
 import com.lec.lib.repo.model.Lecture;
 
 @SuppressWarnings("serial")
-public class ScheduleActivity extends LecPanel {
+public class ScheduleTab extends LecPanel {
 	// components
 	private Map<Integer, List<StudentScheduleLectureView>> schedule;
 
-	public ScheduleActivity(MainGui frame) {
+	public ScheduleTab(MainGui frame) {
 		super(frame);
 
 		// set layout

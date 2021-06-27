@@ -10,11 +10,11 @@ import com.lec.lib.repo.model.Student;
 import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class UserActivity extends LecPanel {
+public class UserTab extends LecPanel {
 	private LecView userInfo;
 	private LecView studentInfo;
 
-	public UserActivity(MainGui frame) {
+	public UserTab(MainGui frame) {
 		super(frame);
 
 		// set layout

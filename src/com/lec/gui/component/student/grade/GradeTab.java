@@ -16,11 +16,11 @@ import com.lec.lib.repo.model.LectureHistory;
 import com.lec.lib.repo.model.Student;
 
 @SuppressWarnings("serial")
-public class GradeActivity extends LecPanel {
+public class GradeTab extends LecPanel {
 	private LecTableView list;
 	private JComboBox<String> yearComboBox;
 
-	public GradeActivity(MainGui frame) {
+	public GradeTab(MainGui frame) {
 		super(frame);
 
 		// set layout

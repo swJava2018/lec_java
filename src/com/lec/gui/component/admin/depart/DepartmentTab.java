@@ -3,12 +3,12 @@ package com.lec.gui.component.admin.depart;
 import java.awt.Graphics;
 
 import com.lec.MainGui;
-import com.lec.gui.component.common.LecActivityPanel;
+import com.lec.gui.component.common.LecTabPanel;
 
 @SuppressWarnings("serial")
-public class DepartmentActivity extends LecActivityPanel {
+public class DepartmentTab extends LecTabPanel {
 
-	public DepartmentActivity(MainGui frame) {
+	public DepartmentTab(MainGui frame) {
 		super(frame);
 	}
 

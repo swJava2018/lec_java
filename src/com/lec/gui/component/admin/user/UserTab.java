@@ -1,4 +1,4 @@
-package com.lec.gui.component.admin.subject;
+package com.lec.gui.component.admin.user;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -6,25 +6,36 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 import com.lec.MainGui;
-import com.lec.gui.component.common.LecActivityPanel;
-import com.lec.gui.layout.admin.AdminSubjectLayout;
+import com.lec.gui.component.common.LecTabPanel;
+import com.lec.gui.layout.admin.AdminUserLayout;
 import com.lec.gui.layout.common.LecTableView;
 import com.lec.gui.layout.common.LecView;
-import com.lec.lib.repo.model.Subject;
+import com.lec.lib.auth.Permission;
+import com.lec.lib.repo.model.User;
 
 @SuppressWarnings("serial")
-public class SubjectActivity extends LecActivityPanel {
+public class UserTab extends LecTabPanel {
 	private LecTableView list;
 	private LecView info;
+	private JComboBox<String> roleComboBox;
 
-	public SubjectActivity(MainGui frame) {
+	public UserTab(MainGui frame) {
 		super(frame);
 
 		// set layout
-		AdminSubjectLayout layout = new AdminSubjectLayout();
+		AdminUserLayout layout = new AdminUserLayout();
 		add(layout);
+
+		// set combo box
+		roleComboBox = layout.getRoleComboBox();
+		for (Permission p : Permission.values()) {
+			roleComboBox.addItem(p.getValue());
+		}
+		roleComboBox.setSelectedIndex(0);
+		roleComboBox.addActionListener(roleListener);
 
 		// set button
 		JButton loadBtn = layout.getLoadBtn();
@@ -37,8 +48,8 @@ public class SubjectActivity extends LecActivityPanel {
 		deleteBtn.addActionListener(deleteListener);
 
 		// set list
-		list = layout.getList();
-		info = layout.getSubjectInfo();
+		list = layout.getUserList();
+		info = layout.getUserInfo();
 	}
 
 	@Override
@@ -49,10 +60,16 @@ public class SubjectActivity extends LecActivityPanel {
 
 	private void refresh() {
 		if (auth.isLogin()) {
-			List<Subject> subjects = subjectService.readAll();
-			list.setModel(new SubjectListTableAdapter(subjects));
+			List<User> users = userService.readAll(roleComboBox.getSelectedItem().toString());
+			list.setModel(new UserListTableAdapter(users));
 		}
 	}
+
+	private ActionListener roleListener = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			refresh();
+		}
+	};
 
 	private ActionListener loadListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -62,8 +79,8 @@ public class SubjectActivity extends LecActivityPanel {
 
 	private ActionListener updateListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Subject subject = (Subject) info.getData();
-			if (subjectService.update(subject.getCode(), subject.getName())) {
+			User user = (User) info.getData();
+			if (userService.update(user.getId(), user.getName(), user.getPassword(), user.getAddress())) {
 				refresh();
 			}
 		}
@@ -71,17 +88,15 @@ public class SubjectActivity extends LecActivityPanel {
 
 	private ActionListener registerListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Subject subject = (Subject) info.getData();
-			if (subjectService.register(subject.getCode(), subject.getName())) {
-				refresh();
-			}
+			UserRegDialog dlg = new UserRegDialog(frame);
+			dlg.show();
 		}
 	};
 
 	private ActionListener deleteListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Subject subject = (Subject) info.getData();
-			if (subjectService.delete(subject.getCode())) {
+			User user = (User) info.getData();
+			if (userService.delete(user.getId())) {
 				refresh();
 			}
 		}

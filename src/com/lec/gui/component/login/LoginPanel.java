@@ -85,13 +85,13 @@ public class LoginPanel extends LecPanel {
 				showMessageBox("로그인 성공");
 				switch (auth.getUser().getRole()) {
 				case STUDENT:
-					frame.changeStudentTab();
+					frame.changeStudentCard();
 					break;
 				case PROFESSOR:
-					frame.changeProfessorTab();
+					frame.changeProfessorCard();
 					break;
 				case ADMIN:
-					frame.changeAdminTab();
+					frame.changeAdminCard();
 					break;
 				default:
 					break;

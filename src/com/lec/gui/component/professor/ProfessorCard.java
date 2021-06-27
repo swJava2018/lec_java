@@ -9,6 +9,6 @@ public class ProfessorCard extends LecCardPanel {
 	public ProfessorCard(MainGui frame) {
 		super(frame);
 
-		this.setPanel(new ProfessorCard(frame));
+		this.setPanel(new ProfessorTab(frame));
 	}
 }

@@ -1,10 +1,10 @@
 package com.lec.gui.component.common;
 
-public class Activity {
+public class LecTab {
 	private String name;
-	private LecActivityPanel panel;
+	private LecTabPanel panel;
 
-	public Activity(String name, LecActivityPanel panel) {
+	public LecTab(String name, LecTabPanel panel) {
 		this.name = name;
 		this.panel = panel;
 	}
@@ -13,7 +13,7 @@ public class Activity {
 		return name;
 	}
 
-	public LecActivityPanel getPanel() {
+	public LecTabPanel getPanel() {
 		return panel;
 	}
 }

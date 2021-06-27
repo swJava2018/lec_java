@@ -26,7 +26,7 @@ public class DBSample {
 	public static void main(String[] args) {
 //		testUser();
 		testUserLectureHistory();
-		
+
 	}
 
 	private static void testUser() {
@@ -51,7 +51,7 @@ public class DBSample {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			// select
 			List<Lecture> lectures = readAll("prof001");
@@ -65,20 +65,21 @@ public class DBSample {
 			e.printStackTrace();
 		}
 	}
+
 	private static void register(User user) {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		em.persist(user);
 		transaction.commit();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private static List<User> read(String id) {
 		Query query = em.createQuery("select u from User u where u.id = '" + id + "'");
 		List<User> result = query.getResultList();
 		return result;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private static List<Lecture> readAll(String professorId) {
 		Query query = em.createQuery("select lec from Lecture lec where lec.professor.user.id = '" + professorId + "'");
@@ -94,7 +95,7 @@ public class DBSample {
 		em.remove(user);
 		transaction.commit();
 	}
-	
+
 	private static void testUserLectureHistory() {
 		try {
 			// insert
@@ -103,13 +104,12 @@ public class DBSample {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static void registerLectureHistory(String lecture_code, String student_id) {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		em.createNativeQuery("INSERT INTO lecture_history (lecture_code, student_id, grade) VALUES (?,?,?)")
-		.setParameter(1, lecture_code).setParameter(2,student_id).setParameter(3, "A+")
-		.executeUpdate();
+				.setParameter(1, lecture_code).setParameter(2, student_id).setParameter(3, "A+").executeUpdate();
 		transaction.commit();
 	}
 }
