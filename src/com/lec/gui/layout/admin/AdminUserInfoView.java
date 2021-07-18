@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.lec.gui.config.ViewRes;
 import com.lec.gui.layout.common.LecView;
 import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.User;
@@ -24,7 +25,7 @@ public class AdminUserInfoView extends LecView {
 	private JTextField birthTxtField = new JTextField();
 	private JTextField pwdTxtField = new JTextField();
 	private JTextField roleTxtField = new JTextField();
-	
+
 	public AdminUserInfoView() {
 		super();
 
@@ -36,16 +37,16 @@ public class AdminUserInfoView extends LecView {
 		setLayout(new GridBagLayout());
 
 		int row = 0;
-		addTxtField("학번", idTxtField, row++, false);
-		addTxtField("이름", nameTxtField, row++, true);
-		addTxtField("주소", addressTxtField, row++, true);
-		addTxtField("전화번호", phoneTxtField, row++, true);
-		addTxtField("국적", countryTxtField, row++, true);
-		addTxtField("주민등록번호", regdentTxtField, row++, true);
-		addTxtField("이메일", emailTxtField, row++, true);
-		addTxtField("생년월일", birthTxtField, row++, true);
-		addTxtField("비밀번호", pwdTxtField, row++, true);
-		addTxtField("권한", roleTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().id, idTxtField, row++, false);
+		addTxtField(ViewRes.getAdmin().name, nameTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().address, addressTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().phone, phoneTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().country, countryTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().regdent, regdentTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().email, emailTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().birth, birthTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().pwd, pwdTxtField, row++, true);
+		addTxtField(ViewRes.getAdmin().role, roleTxtField, row++, true);
 	}
 
 	private void addTxtField(String name, JTextField txtField, int row, boolean isEditable) {

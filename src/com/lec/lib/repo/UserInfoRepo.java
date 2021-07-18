@@ -3,16 +3,24 @@ package com.lec.lib.repo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Cache;
+import javax.persistence.CacheStoreMode;
 import javax.persistence.EntityTransaction;
+import javax.persistence.FlushModeType;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.FlushMode;
+
 import com.lec.lib.auth.Permission;
 import com.lec.lib.repo.model.Professor;
+import com.lec.lib.repo.model.QUser;
 import com.lec.lib.repo.model.Student;
 import com.lec.lib.repo.model.User;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAUpdateClause;
 
 public class UserInfoRepo extends BaseRepo {
 	private static UserInfoRepo instance;
@@ -94,22 +102,40 @@ public class UserInfoRepo extends BaseRepo {
 	 */
 	public boolean update(String id, String name, String password, String address) {
 		try {
-			User user = em.find(User.class, id);
-
-			EntityTransaction transaction = em.getTransaction();
-			transaction.begin();
-			user.setName(name);
-			user.setPassword(password);
-			user.setAddress(address);
-			transaction.commit();
-
+			// use only JPA (deprecated)
+//			User user = em.find(User.class, id);
+//
+//			EntityTransaction transaction = em.getTransaction();
+//			transaction.begin();
+//			user.setName(name);
+//			user.setPassword(password);
+//			user.setAddress(address);
+//			transaction.commit();
+			
+			QUser user = QUser.user;
+			em.getTransaction().begin();
+			JPAUpdateClause update = new JPAUpdateClause(em, user);
+			update.set(user.name, name);
+			update.set(user.password, password);
+			update.set(user.address, address);
+			update.where(user.id.eq(id)).execute();
+			em.getTransaction().commit();
+			em.clear();
+			
+			printCacheState();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 		return true;
 	}
-
+	
+	  private static void printCacheState() {
+	      Cache cache = factory.getCache();
+	      boolean contains = cache.contains(User.class, 1L);
+	      System.out.printf("Cache#contains() for User: %5s%n", contains);
+	  }
+	  
 	/**
 	 * 사용자 로그인하기
 	 * 
@@ -189,19 +215,22 @@ public class UserInfoRepo extends BaseRepo {
 	 * @return
 	 */
 	public List<User> readAll(Permission role) {
-		CriteriaQuery<User> query;
-		{
-			CriteriaBuilder builder = em.getCriteriaBuilder();
-			query = builder.createQuery(User.class);
-			Root<User> from = query.from(User.class);
-			if (role != null) {
-				Predicate where = builder.equal(from.get("role"), role);
-				query.where(where);
-			}
-		}
+//		CriteriaQuery<User> query;
+//		{
+//			CriteriaBuilder builder = em.getCriteriaBuilder();
+//			query = builder.createQuery(User.class);
+//			Root<User> from = query.from(User.class);
+//			if (role != null) {
+//				Predicate where = builder.equal(from.get("role"), role);
+//				query.where(where);
+//			}
+//		}
+//
+//		List<User> result = em.createQuery(query).getResultList();
 
-		List<User> result = em.createQuery(query).getResultList();
-
+		QUser user = QUser.user;
+		List<User> result = new JPAQuery<User>(em).from(user).where(user.role.eq(role)).fetch();
+		
 		if (result.size() > 0)
 			return result;
 		else

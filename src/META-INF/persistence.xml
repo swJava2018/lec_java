@@ -59,6 +59,7 @@
 	<!-- MySQL Database -->
 	<persistence-unit name="mysql">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- <shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode> -->
 		<properties>
 			<property name="hibernate.archive.autodetection" value="class" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />

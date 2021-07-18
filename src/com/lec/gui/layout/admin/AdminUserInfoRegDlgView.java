@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.HashMap;
 
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -15,8 +14,9 @@ import com.lec.lib.auth.Permission;
 
 @SuppressWarnings("serial")
 public class AdminUserInfoRegDlgView extends LecView {
-
-	private HashMap<String, JComponent> infoMap = new HashMap<String, JComponent>();
+	private JComboBox<Permission> roleCbx = new JComboBox<Permission>();
+	private AdminStudentRegDlgView studRegDlg = new AdminStudentRegDlgView();
+	private AdminProfessorRegDlgView profRegDlg = new AdminProfessorRegDlgView();
 
 	public AdminUserInfoRegDlgView() {
 		super();
@@ -31,23 +31,21 @@ public class AdminUserInfoRegDlgView extends LecView {
 		setLayout(new GridBagLayout());
 
 		int row = 0;
-		genComboBoxPair("role", "권한", row++);
-		genView("student", new AdminStudentRegDlgView(), row);
-		genView("professor", new AdminProfessorRegDlgView(), row);
+		genComboBoxPair("권한", roleCbx, row++);
+		genView(studRegDlg, row);
+		genView(profRegDlg, row);
 	}
 
-	private void genView(String id, JComponent view, int row) {
+	private void genView(JComponent view, int row) {
 		GridBagConstraints c = new GridBagConstraints();
 
 		c.gridwidth = 2;
 		c.gridx = 0;
 		c.gridy = row;
 		add(view, c);
-
-		infoMap.put(id, view);
 	}
 
-	private void genComboBoxPair(String id, String name, int row) {
+	private void genComboBoxPair(String name, JComboBox<Permission> cbx, int row) {
 		GridBagConstraints c = new GridBagConstraints();
 
 		JLabel label = new JLabel(name);
@@ -56,12 +54,9 @@ public class AdminUserInfoRegDlgView extends LecView {
 		c.gridy = row;
 		add(label, c);
 
-		JComboBox<Permission> comboBox = new JComboBox<Permission>();
 		c.gridx = 1;
 		c.gridy = row;
-		add(comboBox, c);
-
-		infoMap.put(id, comboBox);
+		add(cbx, c);
 	}
 
 	@Override
@@ -73,26 +68,25 @@ public class AdminUserInfoRegDlgView extends LecView {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public JComboBox<Permission> getRoleComboBox() {
-		return (JComboBox<Permission>) infoMap.get("role");
+		return roleCbx;
 	}
 
 	public AdminStudentRegDlgView getStudent() {
-		return (AdminStudentRegDlgView) infoMap.get("student");
+		return studRegDlg;
 	}
 
 	public AdminProfessorRegDlgView getProfessor() {
-		return (AdminProfessorRegDlgView) infoMap.get("professor");
+		return profRegDlg;
 	}
 
 	public void changeToStudent() {
-		infoMap.get("professor").setVisible(false);
-		infoMap.get("student").setVisible(true);
+		profRegDlg.setVisible(false);
+		studRegDlg.setVisible(true);
 	}
 
 	public void changeToProfessor() {
-		infoMap.get("professor").setVisible(true);
-		infoMap.get("student").setVisible(false);
+		profRegDlg.setVisible(true);
+		studRegDlg.setVisible(false);
 	}
 }
