@@ -15,7 +15,9 @@ import com.lec.lib.repo.UserInfoRepo;
 import com.lec.lib.repo.model.Lecture;
 import com.lec.lib.repo.model.LectureHistory;
 import com.lec.lib.repo.model.LectureHistoryId;
+import com.lec.lib.repo.model.Professor;
 import com.lec.lib.repo.model.Student;
+import com.lec.lib.repo.model.Subject;
 import com.lec.lib.repo.model.User;
 
 public class DBSample {
@@ -110,6 +112,19 @@ public class DBSample {
 		transaction.begin();
 		em.createNativeQuery("INSERT INTO lecture_history (lecture_code, student_id, grade) VALUES (?,?,?)")
 				.setParameter(1, lecture_code).setParameter(2, student_id).setParameter(3, "A+").executeUpdate();
+		transaction.commit();
+	}
+	
+	private static void registerLecture(String prof_id, String subj_code) {
+		Lecture lec = new Lecture();
+		Professor prof = em.getReference(Professor.class, prof_id);
+		Subject sub = em.getReference(Subject.class, subj_code);
+		lec.setProfessor(prof);
+		lec.setSubject(sub);
+		
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		em.persist(lec);
 		transaction.commit();
 	}
 }
